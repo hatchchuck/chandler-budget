@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_10.html -->
+<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_11.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -350,6 +350,9 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
       </div>
     </div>
   </div>
+
+  <button class="action-btn green" onclick="forceSave()" id="save-btn" style="margin-bottom:4px">✓ Save All Changes</button>
+  <p id="save-confirm" style="text-align:center;font-size:12px;font-family:&#39;DM Mono&#39;,monospace;color:var(--green);height:18px;margin-bottom:8px;opacity:0;transition:opacity 0.4s"></p>
 
   <p class="section-title">zelle / payment log</p>
   <div class="card">
@@ -863,6 +866,16 @@ function checkPassword() {
 }
 
 document.getElementById('lock-input').addEventListener('keydown', e => { if(e.key==='Enter') checkPassword(); });
+
+function forceSave() {
+  save();
+  recalc();
+  renderBillsTab();
+  const confirm = document.getElementById('save-confirm');
+  confirm.textContent = 'all changes saved — ' + new Date().toLocaleTimeString();
+  confirm.style.opacity = '1';
+  setTimeout(() => confirm.style.opacity = '0', 3000);
+}
 
 function lockPlanner() {
   plannerUnlocked = false;
