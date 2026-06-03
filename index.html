@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_11.html -->
+<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_12.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -339,14 +339,14 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
       <div><div class="row-label">checking floor</div><div class="row-sub">minimum always in checking</div></div>
       <div style="display:flex;align-items:center;gap:4px">
         <span style="font-size:14px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace">$</span>
-        <input type="number" class="amt-input" id="floor-input" value="300" inputmode="decimal" oninput="state.floor=parseFloat(this.value)||300;recalc();dSave()" style="width:80px">
+        <input type="number" class="amt-input" id="floor-input" value="300" inputmode="decimal" oninput="state.floor=parseFloat(this.value)||300;" onblur="state.floor=parseFloat(this.value)||300;recalc();save();" style="width:80px">
       </div>
     </div>
     <div class="card-row">
       <div><div class="row-label">annual savings goal</div></div>
       <div style="display:flex;align-items:center;gap:4px">
         <span style="font-size:14px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace">$</span>
-        <input type="number" class="amt-input" id="goal-input" value="10000" inputmode="decimal" oninput="state.savingsGoal=parseFloat(this.value)||10000;dSave();document.getElementById(&#39;savings-goal-display&#39;).textContent=&#39;$&#39;+state.savingsGoal.toLocaleString()" style="width:90px">
+        <input type="number" class="amt-input" id="goal-input" value="10000" inputmode="decimal" oninput="state.savingsGoal=parseFloat(this.value)||10000;document.getElementById(&#39;savings-goal-display&#39;).textContent=&#39;$&#39;+state.savingsGoal.toLocaleString();" onblur="state.savingsGoal=parseFloat(this.value)||10000;save();" style="width:90px">
       </div>
     </div>
   </div>
@@ -785,8 +785,11 @@ function renderPlannerBills() {
     return `<div class="planner-row">
       <div class="day-badge">${b.day}</div>
       <div><div class="planner-name">${b.name}</div><div class="planner-sub">${b.payMethod}${b.quarterly?' · quarterly':b.skipMonths?.length?' · skips Jul/Aug':''}</div></div>
-      <input type="number" class="amt-input" value="${b.amount}" onchange="state.bills[${i}].amount=parseFloat(this.value)||0;recalc();renderBillsTab();dSave()" inputmode="decimal" />
-      <select class="payer-select" style="background:${pc}" onchange="state.bills[${i}].payer=this.value;recalc();renderBillsTab();renderPlannerBills();dSave()">
+      <input type="number" class="amt-input" value="${b.amount}" 
+        oninput="state.bills[${i}].amount=parseFloat(this.value)||0;" 
+        onblur="state.bills[${i}].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" 
+        inputmode="decimal" />
+      <select class="payer-select" style="background:${pc}" onchange="state.bills[${i}].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
         <option value="you" ${b.payer==='you'?'selected':''}>Dad Pays</option>
         <option value="trans" ${b.payer==='trans'?'selected':''}>Transitioning</option>
         <option value="him" ${b.payer==='him'?'selected':''}>Chandler Pays</option>
@@ -799,7 +802,8 @@ function renderPlannerBills() {
     <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
       <div style="font-size:13px;font-weight:500">${b.name}</div>
       <input type="number" min="1" max="31" value="${b.day}" class="amt-input" style="width:56px;text-align:center"
-        onchange="state.bills[${i}].day=parseInt(this.value)||${b.day};recalc();renderBillsTab();dSave()" />
+        oninput="state.bills[${i}].day=parseInt(this.value)||${b.day};"
+        onblur="state.bills[${i}].day=parseInt(this.value)||${b.day};recalc();renderBillsTab();save();" />
     </div>
   `).join('') + '<div style="height:1px"></div>';
 }
@@ -868,11 +872,24 @@ function checkPassword() {
 document.getElementById('lock-input').addEventListener('keydown', e => { if(e.key==='Enter') checkPassword(); });
 
 function forceSave() {
+  // Read all current planner input values before saving
+  const amtInputs = document.querySelectorAll('#planner-bills .amt-input');
+  amtInputs.forEach((inp, i) => {
+    if (state.bills[i]) state.bills[i].amount = parseFloat(inp.value) || state.bills[i].amount;
+  });
+  const dateInputs = document.querySelectorAll('#planner-dates input');
+  dateInputs.forEach((inp, i) => {
+    if (state.bills[i]) state.bills[i].day = parseInt(inp.value) || state.bills[i].day;
+  });
+  const floorVal = document.getElementById('floor-input');
+  if (floorVal) state.floor = parseFloat(floorVal.value) || 300;
+  const goalVal = document.getElementById('goal-input');
+  if (goalVal) state.savingsGoal = parseFloat(goalVal.value) || 10000;
   save();
   recalc();
   renderBillsTab();
   const confirm = document.getElementById('save-confirm');
-  confirm.textContent = 'all changes saved — ' + new Date().toLocaleTimeString();
+  confirm.textContent = '✓ all changes saved — ' + new Date().toLocaleTimeString();
   confirm.style.opacity = '1';
   setTimeout(() => confirm.style.opacity = '0', 3000);
 }
