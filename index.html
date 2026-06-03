@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_12.html -->
+<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_13.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -498,14 +498,20 @@ function billsForDateRange(startDate, endDate) {
 
 function getCurrentPeriodBills() {
   const today = new Date(); today.setHours(0,0,0,0);
-  const start = getPrevPayday(today);
-  const end = getPeriodEnd(today);
+  // If next payday is today or in the past (already hit), use it as period start
+  const nextPD = getNextPayday(today);
+  const prevPD = getPrevPayday(today);
+  // Use the payday that most recently occurred or is today
+  const start = isPayday(today) ? today : prevPD;
+  const end = getPeriodEnd(start);
   return billsForDateRange(start, end);
 }
 
 function getNextPeriodBills() {
   const today = new Date(); today.setHours(0,0,0,0);
-  const nextPD = getNextPayday(today);
+  const currentStart = isPayday(today) ? today : getPrevPayday(today);
+  const currentEnd = getPeriodEnd(currentStart);
+  const nextPD = getNextPayday(currentEnd);
   if (!nextPD) return [];
   const end = getPeriodEnd(nextPD);
   return billsForDateRange(nextPD, end);
@@ -528,8 +534,8 @@ function recalc() {
   state.balance = balance;
 
   // Current period
-  const periodStart = getPrevPayday(today);
-  const periodEnd = getPeriodEnd(today);
+  const periodStart = isPayday(today) ? today : getPrevPayday(today);
+  const periodEnd = getPeriodEnd(periodStart);
   const currentBills = getCurrentPeriodBills();
   const currentBillsTotal = currentBills.reduce((s,b) => s + b.amount, 0);
 
