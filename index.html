@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_21.html -->
+<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_22.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -196,7 +196,7 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
   <div class="transfer-card zero" id="transfer-card">
     <div class="transfer-label" id="transfer-label">transfer to fidelity</div>
     <div class="transfer-amount" id="transfer-amount">$0</div>
-    <div class="transfer-sub" id="transfer-sub">nothing available to transfer this period</div>
+    <div class="transfer-sub" id="transfer-sub">use Payday tab on payday to calculate transfer</div>
   </div>
 
   <!-- Breakdown -->
@@ -458,8 +458,23 @@ function dSave() { clearTimeout(saveTimer); saveTimer = setTimeout(save, 700); }
 // ── BILL HELPERS ──
 function billsForDateRange(startDate, endDate) {
   const result = [];
-  const tempDate = new Date(startDate);
   const seen = new Set();
+
+  // PRE-PASS: register all one-time bills and their suppress keys FIRST
+  for (const b of (state.oneBills || [])) {
+    const bd = new Date(b.year, b.month, b.day);
+    if (bd >= startDate && bd <= endDate) {
+      const key = 'one-' + b.id;
+      if (!seen.has(key)) {
+        seen.add(key);
+        seen.add('suppress-' + b.month + '-' + b.day + '-' + b.year);
+        result.push({...b, dueDate: bd});
+      }
+    }
+  }
+
+  // MAIN PASS: add recurring bills, skipping any suppressed by one-time bills
+  const tempDate = new Date(startDate);
   while (tempDate <= endDate) {
     const month = tempDate.getMonth();
     const day = tempDate.getDate();
@@ -468,7 +483,6 @@ function billsForDateRange(startDate, endDate) {
       if (b.day !== day) continue;
       if (b.skipMonths?.includes(month)) continue;
       if (b.quarterly && !b.quarterMonths?.includes(month)) continue;
-      // Skip if a one-time bill already covers this day/month/year
       if (seen.has('suppress-' + month + '-' + day + '-' + year)) continue;
       const key = b.id + '-' + month + '-' + year;
       if (!seen.has(key)) {
@@ -476,21 +490,9 @@ function billsForDateRange(startDate, endDate) {
         result.push({...b, dueDate: new Date(year, month, day)});
       }
     }
-    // One-time bills — also suppress any recurring bill on same day/month
-    for (const b of (state.oneBills || [])) {
-      const bd = new Date(b.year, b.month, b.day);
-      if (bd >= startDate && bd <= endDate) {
-        const key = 'one-' + b.id;
-        if (!seen.has(key)) {
-          seen.add(key);
-          // Mark this day/month as covered so recurring bills skip it
-          seen.add('suppress-' + b.month + '-' + b.day + '-' + b.year);
-          result.push({...b, dueDate: bd});
-        }
-      }
-    }
     tempDate.setDate(tempDate.getDate() + 1);
   }
+
   result.sort((a,b) => a.dueDate - b.dueDate);
   return result;
 }
@@ -587,7 +589,7 @@ function recalc() {
     tc.className = 'transfer-card zero';
     ta.textContent = '$0';
     tl.textContent = 'transfer to fidelity';
-    ts.textContent = 'nothing available to transfer this period';
+    ts.textContent = 'use Payday tab on payday to calculate transfer';
   } else {
     tc.className = 'transfer-card positive';
     ta.textContent = '$' + transfer.toFixed(2);
@@ -799,11 +801,11 @@ function logPaycheck() {
   state.savings = (state.savings || 0) + transfer;
   state.paycheckLog = state.paycheckLog || [];
   state.paycheckLog.push({id:Date.now(),reg,bonus,transfer,date:new Date().toLocaleDateString(),ts:new Date().toISOString()});
-  document.getElementById('savings-ytd').value = state.savings.toFixed(2);
   document.getElementById('pc-regular').value = 0;
   document.getElementById('pc-bonus').value = 0;
   save();
-  alert('Logged! $'+transfer.toFixed(2)+' added to Fidelity savings.');
+  calcPayday();
+  alert('Logged! $'+transfer.toFixed(2)+' added to Fidelity savings. YTD: $'+state.savings.toFixed(2));
 }
 
 function renderPaydayTab() {
@@ -884,7 +886,6 @@ function resetAll() {
     oneBills:[{id:'june15prog',name:'Progressive Auto (15th) — June',amount:172.92,day:15,month:5,year:2026,payer:'you',payMethod:'Discover'}],
     zelleLog:[],paycheckLog:[]};
   document.getElementById('balance-input').value = 317;
-  document.getElementById('savings-ytd').value = 0;
   document.getElementById('floor-input').value = 300;
   document.getElementById('goal-input').value = 10000;
   init(); save();
