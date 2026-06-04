@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_22.html -->
+<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_27.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -144,7 +144,7 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
 <body>
 
 <!-- LOCK SCREEN -->
-<div class="lock-screen" id="lock-screen" style="display:none">
+<div class="lock-screen" id="lock-screen" style="display: none;">
   <h2>planner access</h2>
   <h3>Chandler's Budget</h3>
   <input type="password" class="lock-input" id="lock-input" placeholder="••••••••">
@@ -247,30 +247,154 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
 <div class="container">
 
   <p class="section-title">current period bills</p>
-  <div class="card" id="current-period-bills">
-    <div class="empty-state">loading...</div>
-  </div>
+  <div class="card" id="current-period-bills"><div class="bill-item" style="opacity:0.45">
+      <div class="bill-day-badge urgent">
+        <div class="bday" style="">25</div>
+        <div class="bmo">May</div>
+      </div>
+      <div class="bill-info">
+        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">Rumpke Trash<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--gray-100);color:var(--gray-600);font-weight:500;margin-left:4px">recurring</span></div>
+        <div class="bill-sub">Checking · overdue</div>
+      </div>
+      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <div class="bill-amount" style="">$0.00</div>
+        <button onclick="toggleBillPaid(&#39;rumpke-4-2026&#39;)" style="font-size:11px;padding:3px 10px;border-radius:20px;border:none;cursor:pointer;font-weight:500;
+          background:var(--gray-100);color:var(--gray-600)">
+          mark zelled
+        </button>
+      </div>
+    </div><div class="bill-item" style="opacity:0.45">
+      <div class="bill-day-badge urgent">
+        <div class="bday" style="">1</div>
+        <div class="bmo">Jun</div>
+      </div>
+      <div class="bill-info">
+        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">Progressive Auto (1st)<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--gray-100);color:var(--gray-600);font-weight:500;margin-left:4px">recurring</span></div>
+        <div class="bill-sub">Discover · overdue</div>
+      </div>
+      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <div class="bill-amount" style="">$142.17</div>
+        <button onclick="toggleBillPaid(&#39;auto1-5-2026&#39;)" style="font-size:11px;padding:3px 10px;border-radius:20px;border:none;cursor:pointer;font-weight:500;
+          background:var(--gray-100);color:var(--gray-600)">
+          mark zelled
+        </button>
+      </div>
+    </div><div class="bill-item" style="opacity:0.45">
+      <div class="bill-day-badge urgent">
+        <div class="bday" style="">2</div>
+        <div class="bmo">Jun</div>
+      </div>
+      <div class="bill-info">
+        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">CSAA Home Insurance<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--gray-100);color:var(--gray-600);font-weight:500;margin-left:4px">recurring</span></div>
+        <div class="bill-sub">Discover · overdue</div>
+      </div>
+      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <div class="bill-amount" style="">$68.93</div>
+        <button onclick="toggleBillPaid(&#39;csaa-5-2026&#39;)" style="font-size:11px;padding:3px 10px;border-radius:20px;border:none;cursor:pointer;font-weight:500;
+          background:var(--gray-100);color:var(--gray-600)">
+          mark zelled
+        </button>
+      </div>
+    </div><div class="card-row" style="background:var(--gray-50)"><div class="row-label" style="font-weight:500">period total</div><div class="row-val">$211.10</div></div></div>
 
   <p class="section-title">next period bills <span style="font-size:10px;color:var(--blue);font-family:&#39;DM Mono&#39;,monospace;background:var(--blue-light);padding:2px 8px;border-radius:20px;margin-left:6px">lookahead</span></p>
-  <div class="card" id="next-period-bills">
-    <div class="empty-state">loading...</div>
-  </div>
-
-  <p class="section-title">add one-time bill</p>
-  <div class="card">
-    <div style="display:grid;grid-template-columns:1fr 80px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--gray-100);gap:8px">
-      <input type="text" id="new-bill-name" placeholder="bill name" style="font-size:14px;border:none;outline:none;background:transparent;color:var(--gray-900);width:100%">
-      <div style="display:flex;align-items:center;gap:4px;justify-content:flex-end">
-        <span style="font-size:13px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace">$</span>
-        <input type="number" id="new-bill-amount" style="font-family:&#39;DM Mono&#39;,monospace;font-size:15px;font-weight:500;border:none;outline:none;background:transparent;text-align:right;width:70px;-moz-appearance:textfield;color:var(--gray-900)" inputmode="decimal">
+  <div class="card" id="next-period-bills"><div class="bill-item" style="">
+      <div class="bill-day-badge next-period">
+        <div class="bday" style="">5</div>
+        <div class="bmo">Jun</div>
       </div>
-    </div>
-    <div style="display:flex;align-items:center;gap:12px;padding:12px 16px">
-      <label style="font-size:13px;color:var(--gray-600)">Day of month:</label>
-      <input type="number" id="new-bill-day" min="1" max="31" style="width:50px;font-family:&#39;DM Mono&#39;,monospace;font-size:14px;border:1px solid var(--gray-200);border-radius:6px;padding:4px 8px;background:var(--gray-50);text-align:center">
-      <button onclick="addOneBill()" style="margin-left:auto;padding:8px 16px;background:var(--gray-900);color:white;border:none;border-radius:var(--radius-sm);font-size:13px;font-weight:500;cursor:pointer">Add</button>
-    </div>
-  </div>
+      <div class="bill-info">
+        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">Hamilton County Title<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:#EDE9FE;color:#6D28D9;font-weight:500;margin-left:4px">one-time</span></div>
+        <div class="bill-sub">Checking · next period</div>
+      </div>
+      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <div class="bill-amount" style="">$59.74</div>
+        <span class="bill-payer "></span>
+      </div>
+    </div><div class="bill-item" style="">
+      <div class="bill-day-badge next-period">
+        <div class="bday" style="">5</div>
+        <div class="bmo">Jun</div>
+      </div>
+      <div class="bill-info">
+        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">Ohio BMV<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:#EDE9FE;color:#6D28D9;font-weight:500;margin-left:4px">one-time</span></div>
+        <div class="bill-sub">Checking · next period</div>
+      </div>
+      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <div class="bill-amount" style="">$136.13</div>
+        <span class="bill-payer "></span>
+      </div>
+    </div><div class="bill-item" style="">
+      <div class="bill-day-badge next-period">
+        <div class="bday" style="">8</div>
+        <div class="bmo">Jun</div>
+      </div>
+      <div class="bill-info">
+        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">GCWW Water<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--gray-100);color:var(--gray-600);font-weight:500;margin-left:4px">recurring</span></div>
+        <div class="bill-sub">Checking · next period</div>
+      </div>
+      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <div class="bill-amount" style="">$75.74</div>
+        <span class="bill-payer "></span>
+      </div>
+    </div><div class="bill-item" style="">
+      <div class="bill-day-badge next-period">
+        <div class="bday" style="">10</div>
+        <div class="bmo">Jun</div>
+      </div>
+      <div class="bill-info">
+        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">Real Estate Taxes<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--gray-100);color:var(--gray-600);font-weight:500;margin-left:4px">recurring</span></div>
+        <div class="bill-sub">Checking · next period</div>
+      </div>
+      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <div class="bill-amount" style="">$472.48</div>
+        <span class="bill-payer "></span>
+      </div>
+    </div><div class="bill-item" style="">
+      <div class="bill-day-badge next-period">
+        <div class="bday" style="">11</div>
+        <div class="bmo">Jun</div>
+      </div>
+      <div class="bill-info">
+        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">Duke Energy<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--gray-100);color:var(--gray-600);font-weight:500;margin-left:4px">recurring</span></div>
+        <div class="bill-sub">Checking · next period</div>
+      </div>
+      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <div class="bill-amount" style="">$298.00</div>
+        <span class="bill-payer "></span>
+      </div>
+    </div><div class="bill-item" style="">
+      <div class="bill-day-badge next-period">
+        <div class="bday" style="">15</div>
+        <div class="bmo">Jun</div>
+      </div>
+      <div class="bill-info">
+        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">Progressive Auto (15th) — June<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--amber-light);color:var(--amber);font-weight:500;margin-left:4px">temp amount</span></div>
+        <div class="bill-sub">Discover · next period</div>
+      </div>
+      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <div class="bill-amount" style="">$172.92</div>
+        <span class="bill-payer "></span>
+      </div>
+    </div><div class="bill-item" style="">
+      <div class="bill-day-badge next-period">
+        <div class="bday" style="">17</div>
+        <div class="bmo">Jun</div>
+      </div>
+      <div class="bill-info">
+        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">Spectrum<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--gray-100);color:var(--gray-600);font-weight:500;margin-left:4px">recurring</span></div>
+        <div class="bill-sub">Citi · next period</div>
+      </div>
+      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <div class="bill-amount" style="">$108.51</div>
+        <span class="bill-payer "></span>
+      </div>
+    </div><div class="card-row" style="background:var(--blue-light)">
+        <div><div class="row-label" style="font-weight:500;color:#1E40AF">next period total</div></div>
+        <div class="row-val" style="color:#1E40AF">$1323.52</div>
+      </div></div>
+
+  <div class="tip-box" style="margin-top:8px">To add or remove bills, use the <strong>Planner tab</strong> (password protected).</div>
 
 </div>
 </div>
@@ -327,10 +451,182 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
   <div class="tip-box">Manage bill amounts, handoff status, and settings. Flip bills from "Dad Pays" to "Chandler Pays" as he takes over each one.</div>
 
   <p class="section-title">recurring bills</p>
-  <div class="card" id="planner-bills"></div>
+  <div class="card" id="planner-bills"><div class="planner-row">
+      <div class="day-badge">1</div>
+      <div><div class="planner-name">Progressive Auto (1st)</div><div class="planner-sub">Discover</div></div>
+      <input type="number" class="amt-input" value="142.17" oninput="state.bills[0].amount=parseFloat(this.value)||0;" onblur="state.bills[0].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" inputmode="decimal">
+      <select class="payer-select" style="background:#FEF3C7" onchange="state.bills[0].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
+        <option value="you" selected="">Dad Pays</option>
+        <option value="trans">Transitioning</option>
+        <option value="him">Chandler Pays</option>
+      </select>
+    </div><div class="planner-row">
+      <div class="day-badge">15</div>
+      <div><div class="planner-name">Progressive Auto (15th)</div><div class="planner-sub">Discover</div></div>
+      <input type="number" class="amt-input" value="142.17" oninput="state.bills[1].amount=parseFloat(this.value)||0;" onblur="state.bills[1].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" inputmode="decimal">
+      <select class="payer-select" style="background:#FEF3C7" onchange="state.bills[1].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
+        <option value="you" selected="">Dad Pays</option>
+        <option value="trans">Transitioning</option>
+        <option value="him">Chandler Pays</option>
+      </select>
+    </div><div class="planner-row">
+      <div class="day-badge">2</div>
+      <div><div class="planner-name">CSAA Home Insurance</div><div class="planner-sub">Discover</div></div>
+      <input type="number" class="amt-input" value="68.93" oninput="state.bills[2].amount=parseFloat(this.value)||0;" onblur="state.bills[2].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" inputmode="decimal">
+      <select class="payer-select" style="background:#FEF3C7" onchange="state.bills[2].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
+        <option value="you" selected="">Dad Pays</option>
+        <option value="trans">Transitioning</option>
+        <option value="him">Chandler Pays</option>
+      </select>
+    </div><div class="planner-row">
+      <div class="day-badge">10</div>
+      <div><div class="planner-name">Real Estate Taxes</div><div class="planner-sub">Checking · skips Jul/Aug</div></div>
+      <input type="number" class="amt-input" value="472.48" oninput="state.bills[3].amount=parseFloat(this.value)||0;" onblur="state.bills[3].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" inputmode="decimal">
+      <select class="payer-select" style="background:#FEF3C7" onchange="state.bills[3].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
+        <option value="you" selected="">Dad Pays</option>
+        <option value="trans">Transitioning</option>
+        <option value="him">Chandler Pays</option>
+      </select>
+    </div><div class="planner-row">
+      <div class="day-badge">11</div>
+      <div><div class="planner-name">Duke Energy</div><div class="planner-sub">Checking</div></div>
+      <input type="number" class="amt-input" value="298" oninput="state.bills[4].amount=parseFloat(this.value)||0;" onblur="state.bills[4].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" inputmode="decimal">
+      <select class="payer-select" style="background:#FEF3C7" onchange="state.bills[4].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
+        <option value="you" selected="">Dad Pays</option>
+        <option value="trans">Transitioning</option>
+        <option value="him">Chandler Pays</option>
+      </select>
+    </div><div class="planner-row">
+      <div class="day-badge">8</div>
+      <div><div class="planner-name">GCWW Water</div><div class="planner-sub">Checking</div></div>
+      <input type="number" class="amt-input" value="75.74" oninput="state.bills[5].amount=parseFloat(this.value)||0;" onblur="state.bills[5].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" inputmode="decimal">
+      <select class="payer-select" style="background:#FEF3C7" onchange="state.bills[5].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
+        <option value="you" selected="">Dad Pays</option>
+        <option value="trans">Transitioning</option>
+        <option value="him">Chandler Pays</option>
+      </select>
+    </div><div class="planner-row">
+      <div class="day-badge">17</div>
+      <div><div class="planner-name">Spectrum</div><div class="planner-sub">Citi</div></div>
+      <input type="number" class="amt-input" value="108.51" oninput="state.bills[6].amount=parseFloat(this.value)||0;" onblur="state.bills[6].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" inputmode="decimal">
+      <select class="payer-select" style="background:#FEF3C7" onchange="state.bills[6].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
+        <option value="you" selected="">Dad Pays</option>
+        <option value="trans">Transitioning</option>
+        <option value="him">Chandler Pays</option>
+      </select>
+    </div><div class="planner-row">
+      <div class="day-badge">20</div>
+      <div><div class="planner-name">Cell Phone</div><div class="planner-sub">Citi</div></div>
+      <input type="number" class="amt-input" value="60" oninput="state.bills[7].amount=parseFloat(this.value)||0;" onblur="state.bills[7].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" inputmode="decimal">
+      <select class="payer-select" style="background:#FEF3C7" onchange="state.bills[7].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
+        <option value="you" selected="">Dad Pays</option>
+        <option value="trans">Transitioning</option>
+        <option value="him">Chandler Pays</option>
+      </select>
+    </div><div class="planner-row">
+      <div class="day-badge">25</div>
+      <div><div class="planner-name">Rumpke Trash</div><div class="planner-sub">Checking · quarterly</div></div>
+      <input type="number" class="amt-input" value="0" oninput="state.bills[8].amount=parseFloat(this.value)||0;" onblur="state.bills[8].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" inputmode="decimal">
+      <select class="payer-select" style="background:#FEF3C7" onchange="state.bills[8].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
+        <option value="you" selected="">Dad Pays</option>
+        <option value="trans">Transitioning</option>
+        <option value="him">Chandler Pays</option>
+      </select>
+    </div></div>
+
+  <p class="section-title">add a bill</p>
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 80px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--gray-100);gap:8px">
+      <input type="text" id="new-bill-name" placeholder="bill name" style="font-size:14px;border:none;outline:none;background:transparent;color:var(--gray-900);width:100%">
+      <div style="display:flex;align-items:center;gap:4px;justify-content:flex-end">
+        <span style="font-size:13px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace">$</span>
+        <input type="number" id="new-bill-amount" style="font-family:&#39;DM Mono&#39;,monospace;font-size:15px;font-weight:500;border:none;outline:none;background:transparent;text-align:right;width:70px;-moz-appearance:textfield;color:var(--gray-900)" inputmode="decimal">
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--gray-100)">
+      <label style="font-size:13px;color:var(--gray-600)">Day of month:</label>
+      <input type="number" id="new-bill-day" min="1" max="31" style="width:50px;font-family:&#39;DM Mono&#39;,monospace;font-size:14px;border:1px solid var(--gray-200);border-radius:6px;padding:4px 8px;background:var(--gray-50);text-align:center">
+    </div>
+    <div style="display:flex;align-items:center;gap:0;padding:0;border-bottom:1px solid var(--gray-100)">
+      <button id="bill-type-once" onclick="setBillType(&#39;once&#39;)" style="flex:1;padding:10px;font-size:13px;font-weight:500;border:none;cursor:pointer;background:#EDE9FE;color:#6D28D9;transition:all 0.15s">
+        one-time
+      </button>
+      <button id="bill-type-recurring" onclick="setBillType(&#39;recurring&#39;)" style="flex:1;padding:10px;font-size:13px;font-weight:500;border:none;cursor:pointer;background:var(--gray-50);color:var(--gray-400);border-left:1px solid var(--gray-200);transition:all 0.15s">
+        recurring every month
+      </button>
+    </div>
+    <div style="padding:12px 16px">
+      <div id="bill-type-note" style="font-size:12px;color:#6D28D9;font-family:&#39;DM Mono&#39;,monospace;margin-bottom:10px">this bill will appear in the current pay period only</div>
+      <button onclick="addNewBill()" style="padding:10px 16px;background:var(--gray-900);color:white;border:none;border-radius:var(--radius-sm);font-size:13px;font-weight:500;cursor:pointer;width:100%">Add Bill</button>
+    </div>
+  </div>
+
+  <p class="section-title">custom bills (deletable)</p>
+  <div class="card" id="custom-bills-card"><div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--gray-100)">
+      <div>
+        <div style="font-size:14px;font-weight:500;display:flex;align-items:center;gap:6px">Hamilton County Title <span style="font-size:10px;padding:2px 6px;border-radius:20px;background:#EDE9FE;color:#6D28D9;font-weight:500">one-time</span></div>
+        <div style="font-size:11px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;margin-top:2px">day 5 · $59.74</div>
+      </div>
+      <button onclick="deleteCustomBill(&#39;one1780584237810&#39;,&#39;oneoff&#39;)" style="background:var(--red-light);color:var(--red);border:none;border-radius:var(--radius-sm);padding:6px 12px;font-size:13px;font-weight:500;cursor:pointer">
+        Delete
+      </button>
+    </div><div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--gray-100)">
+      <div>
+        <div style="font-size:14px;font-weight:500;display:flex;align-items:center;gap:6px">Ohio BMV <span style="font-size:10px;padding:2px 6px;border-radius:20px;background:#EDE9FE;color:#6D28D9;font-weight:500">one-time</span></div>
+        <div style="font-size:11px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;margin-top:2px">day 5 · $136.13</div>
+      </div>
+      <button onclick="deleteCustomBill(&#39;one1780584320823&#39;,&#39;oneoff&#39;)" style="background:var(--red-light);color:var(--red);border:none;border-radius:var(--radius-sm);padding:6px 12px;font-size:13px;font-weight:500;cursor:pointer">
+        Delete
+      </button>
+    </div><div style="height:1px"></div></div>
 
   <p class="section-title">bill due dates</p>
-  <div class="card" id="planner-dates"></div>
+  <div class="card" id="planner-dates">
+    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
+      <div style="font-size:13px;font-weight:500">Progressive Auto (1st)</div>
+      <input type="number" min="1" max="31" value="1" class="amt-input" style="width:56px;text-align:center" oninput="state.bills[0].day=parseInt(this.value)||1;" onblur="state.bills[0].day=parseInt(this.value)||1;recalc();renderBillsTab();save();">
+    </div>
+  
+    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
+      <div style="font-size:13px;font-weight:500">Progressive Auto (15th)</div>
+      <input type="number" min="1" max="31" value="15" class="amt-input" style="width:56px;text-align:center" oninput="state.bills[1].day=parseInt(this.value)||15;" onblur="state.bills[1].day=parseInt(this.value)||15;recalc();renderBillsTab();save();">
+    </div>
+  
+    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
+      <div style="font-size:13px;font-weight:500">CSAA Home Insurance</div>
+      <input type="number" min="1" max="31" value="2" class="amt-input" style="width:56px;text-align:center" oninput="state.bills[2].day=parseInt(this.value)||2;" onblur="state.bills[2].day=parseInt(this.value)||2;recalc();renderBillsTab();save();">
+    </div>
+  
+    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
+      <div style="font-size:13px;font-weight:500">Real Estate Taxes</div>
+      <input type="number" min="1" max="31" value="10" class="amt-input" style="width:56px;text-align:center" oninput="state.bills[3].day=parseInt(this.value)||10;" onblur="state.bills[3].day=parseInt(this.value)||10;recalc();renderBillsTab();save();">
+    </div>
+  
+    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
+      <div style="font-size:13px;font-weight:500">Duke Energy</div>
+      <input type="number" min="1" max="31" value="11" class="amt-input" style="width:56px;text-align:center" oninput="state.bills[4].day=parseInt(this.value)||11;" onblur="state.bills[4].day=parseInt(this.value)||11;recalc();renderBillsTab();save();">
+    </div>
+  
+    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
+      <div style="font-size:13px;font-weight:500">GCWW Water</div>
+      <input type="number" min="1" max="31" value="8" class="amt-input" style="width:56px;text-align:center" oninput="state.bills[5].day=parseInt(this.value)||8;" onblur="state.bills[5].day=parseInt(this.value)||8;recalc();renderBillsTab();save();">
+    </div>
+  
+    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
+      <div style="font-size:13px;font-weight:500">Spectrum</div>
+      <input type="number" min="1" max="31" value="17" class="amt-input" style="width:56px;text-align:center" oninput="state.bills[6].day=parseInt(this.value)||17;" onblur="state.bills[6].day=parseInt(this.value)||17;recalc();renderBillsTab();save();">
+    </div>
+  
+    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
+      <div style="font-size:13px;font-weight:500">Cell Phone</div>
+      <input type="number" min="1" max="31" value="20" class="amt-input" style="width:56px;text-align:center" oninput="state.bills[7].day=parseInt(this.value)||20;" onblur="state.bills[7].day=parseInt(this.value)||20;recalc();renderBillsTab();save();">
+    </div>
+  
+    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
+      <div style="font-size:13px;font-weight:500">Rumpke Trash</div>
+      <input type="number" min="1" max="31" value="25" class="amt-input" style="width:56px;text-align:center" oninput="state.bills[8].day=parseInt(this.value)||25;" onblur="state.bills[8].day=parseInt(this.value)||25;recalc();renderBillsTab();save();">
+    </div>
+  <div style="height:1px"></div></div>
 
   <p class="section-title">settings</p>
   <div class="card">
@@ -353,24 +649,7 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
   <button class="action-btn green" onclick="forceSave()" id="save-btn" style="margin-bottom:4px">✓ Save All Changes</button>
   <p id="save-confirm" style="text-align:center;font-size:12px;font-family:&#39;DM Mono&#39;,monospace;color:var(--green);height:18px;margin-bottom:8px;opacity:0;transition:opacity 0.4s"></p>
 
-  <p class="section-title">zelle / payment log</p>
-  <div class="card">
-    <div class="card-row">
-      <div><div class="row-label">total zelled to dad (YTD)</div></div>
-      <div class="row-val amber" id="ytd-zelle">$0</div>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 80px;align-items:center;padding:12px 16px;border-top:1px solid var(--gray-100);gap:8px">
-      <select id="zelle-to" style="font-size:14px;border:none;background:transparent;color:var(--gray-900);outline:none">
-        <option value="dad">Zelle → Dad</option>
-        <option value="kristen">Zelle → Kristen (debt)</option>
-      </select>
-      <div style="display:flex;align-items:center;gap:4px;justify-content:flex-end">
-        <span style="font-size:13px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace">$</span>
-        <input type="number" id="zelle-amt" class="amt-input" style="width:70px" inputmode="decimal">
-      </div>
-    </div>
-    <div style="padding:0 16px 12px"><button onclick="logZelle()" style="padding:8px 16px;background:var(--gray-900);color:white;border:none;border-radius:var(--radius-sm);font-size:13px;font-weight:500;cursor:pointer;width:100%">Log Zelle payment</button></div>
-  </div>
+
 
   <button class="reset-btn" onclick="resetAll()">reset all data</button>
   <button class="reset-btn" onclick="lockPlanner()" style="color:var(--blue);margin-top:6px">lock planner</button>
@@ -639,6 +918,7 @@ function recalc() {
     countdownDate.textContent = nextPD.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'}) + (isBonus ? ' · bonus payday 🎉' : '');
   }
 
+  resetPaidBillsForNewPeriod();
   dSave();
 }
 
@@ -654,18 +934,34 @@ function renderBillsTab() {
     const urgency = context === 'next' ? 'next-period' : daysAway <= 0 ? 'urgent' : daysAway <= 2 ? 'soon' : '';
     const payerClass = b.payer === 'you' ? 'payer-you' : b.payer === 'trans' ? 'payer-trans' : 'payer-him';
     const payerLabel = b.payer === 'you' ? 'Zelle Dad' : b.payer === 'trans' ? 'Transitioning' : 'Direct Pay';
-    return `<div class="bill-item" style="${isPast?'opacity:0.45':''}">
-      <div class="bill-day-badge ${urgency}">
-        <div class="bday">${b.dueDate.getDate()}</div>
+    const isTempAmount = b.id === 'june15prog';
+    const isOneTime = !isTempAmount && (b.type === 'oneoff' || (b.id && String(b.id).startsWith('one')));
+    const typeTag = isTempAmount
+      ? '<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--amber-light);color:var(--amber);font-weight:500;margin-left:4px">temp amount</span>'
+      : isOneTime
+        ? '<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:#EDE9FE;color:#6D28D9;font-weight:500;margin-left:4px">one-time</span>'
+        : '<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--gray-100);color:var(--gray-600);font-weight:500;margin-left:4px">recurring</span>';
+
+    const paidKey = getBillPaidKey(b);
+    const isPaid = (state.paidBills || {})[paidKey];
+    const showToggle = context !== 'next' && (b.payer === 'you' || b.payer === 'trans');
+
+    return `<div class="bill-item" style="${isPaid?'background:var(--green-light);':''}${isPast&&!isPaid?'opacity:0.45':''}">
+      <div class="bill-day-badge ${isPaid?'':''+urgency}">
+        <div class="bday" style="${isPaid?'color:var(--green-dark)':''}">${b.dueDate.getDate()}</div>
         <div class="bmo">${MONTHS_SHORT[b.dueDate.getMonth()]}</div>
       </div>
       <div class="bill-info">
-        <div class="bill-name">${b.name}</div>
-        <div class="bill-sub">${b.payMethod || ''}${context==='next' ? ' · next period' : daysAway === 0 ? ' · due today' : daysAway > 0 ? ' · '+daysAway+'d away' : ' · paid'}</div>
+        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;${isPaid?'color:var(--green-dark);text-decoration:line-through;':''}">${b.name}${typeTag}</div>
+        <div class="bill-sub">${b.payMethod || ''}${isPaid?' · ✓ zelled':context==='next' ? ' · next period' : daysAway === 0 ? ' · due today' : daysAway > 0 ? ' · '+daysAway+'d away' : ' · overdue'}</div>
       </div>
-      <div class="bill-right">
-        <div class="bill-amount">$${b.amount.toFixed(2)}</div>
-        <span class="bill-payer ${payerClass}">${payerLabel}</span>
+      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <div class="bill-amount" style="${isPaid?'color:var(--green-dark)':''}">$${b.amount.toFixed(2)}</div>
+        ${showToggle ? `<button onclick="toggleBillPaid('${paidKey}')"
+          style="font-size:11px;padding:3px 10px;border-radius:20px;border:none;cursor:pointer;font-weight:500;
+          background:${isPaid?'var(--green)':'var(--gray-100)'};color:${isPaid?'white':'var(--gray-600)'}">
+          ${isPaid?'✓ zelled':'mark zelled'}
+        </button>` : `<span class="bill-payer ${b.payer==='him'?'payer-him':''}">${b.payer==='him'?'Direct Pay':''}</span>`}
       </div>
     </div>`;
   }
@@ -691,18 +987,57 @@ function renderBillsTab() {
   }
 }
 
-function addOneBill() {
+let newBillType = 'once';
+
+function setBillType(type) {
+  newBillType = type;
+  const onceBtn = document.getElementById('bill-type-once');
+  const recurBtn = document.getElementById('bill-type-recurring');
+  const note = document.getElementById('bill-type-note');
+  if (type === 'once') {
+    onceBtn.style.background = '#EDE9FE'; onceBtn.style.color = '#6D28D9';
+    recurBtn.style.background = 'var(--gray-50)'; recurBtn.style.color = 'var(--gray-400)';
+    note.textContent = 'this bill will appear in the current pay period only';
+    note.style.color = '#6D28D9';
+  } else {
+    recurBtn.style.background = 'var(--green-light)'; recurBtn.style.color = 'var(--green-dark)';
+    onceBtn.style.background = 'var(--gray-50)'; onceBtn.style.color = 'var(--gray-400)';
+    note.textContent = 'this bill will appear every month going forward';
+    note.style.color = 'var(--green-dark)';
+  }
+}
+
+function addNewBill() {
   const name = document.getElementById('new-bill-name').value.trim();
   const amount = parseFloat(document.getElementById('new-bill-amount').value) || 0;
   const day = parseInt(document.getElementById('new-bill-day').value) || 1;
-  if (!name || !amount) { alert('Enter name and amount.'); return; }
+  if (!name || !amount || !day) { alert('Enter name, amount and day of month.'); return; }
   const today = new Date();
-  state.oneBills = state.oneBills || [];
-  state.oneBills.push({id:Date.now(),name,amount,day,month:today.getMonth(),year:today.getFullYear(),payer:'you',payMethod:'Checking'});
-  document.getElementById('new-bill-name').value='';
-  document.getElementById('new-bill-amount').value='';
-  document.getElementById('new-bill-day').value='';
-  renderBillsTab(); recalc(); save();
+
+  if (newBillType === 'once') {
+    // Add as one-time bill for current period
+    state.oneBills = state.oneBills || [];
+    state.oneBills.push({
+      id: 'one' + Date.now(), name, amount, day,
+      month: today.getMonth(), year: today.getFullYear(),
+      payer: 'you', payMethod: 'Checking', type: 'oneoff'
+    });
+  } else {
+    // Add as recurring bill
+    state.bills.push({
+      id: 'custom' + Date.now(), name, amount, day,
+      skipMonths: [], quarterly: false, quarterMonths: [],
+      payer: 'you', payMethod: 'Checking', type: 'recurring'
+    });
+  }
+
+  document.getElementById('new-bill-name').value = '';
+  document.getElementById('new-bill-amount').value = '';
+  document.getElementById('new-bill-day').value = '';
+  renderBillsTab();
+  renderPlannerBills();
+  recalc();
+  save();
 }
 
 // ── PAYDAY CALC ──
@@ -866,18 +1201,79 @@ function renderPlannerBills() {
   `).join('') + '<div style="height:1px"></div>';
 }
 
-function logZelle() {
-  const to = document.getElementById('zelle-to').value;
-  const amount = parseFloat(document.getElementById('zelle-amt').value) || 0;
-  if (!amount) { alert('Enter amount.'); return; }
-  state.zelleLog = state.zelleLog || [];
-  state.zelleLog.push({id:Date.now(),to,amount,date:new Date().toLocaleDateString(),ts:new Date().toISOString()});
-  document.getElementById('zelle-amt').value = '';
-  const dad = state.zelleLog.filter(z=>z.to==='dad').reduce((s,z)=>s+z.amount,0);
-  document.getElementById('ytd-zelle').textContent = '$' + dad.toFixed(2);
-  save();
-  alert('Logged $'+amount.toFixed(2)+' Zelle to '+to+'.');
+function getBillPaidKey(b) {
+  const d = b.dueDate || new Date();
+  return String(b.id) + '-' + d.getMonth() + '-' + d.getFullYear();
 }
+
+function toggleBillPaid(key) {
+  state.paidBills = state.paidBills || {};
+  state.paidBills[key] = !state.paidBills[key];
+  save();
+  renderBillsTab();
+}
+
+function resetPaidBillsForNewPeriod() {
+  // Clear paid status for bills not in the current period
+  const current = getCurrentPeriodBills();
+  const validKeys = new Set(current.map(b => getBillPaidKey(b)));
+  if (state.paidBills) {
+    Object.keys(state.paidBills).forEach(k => {
+      if (!validKeys.has(k)) delete state.paidBills[k];
+    });
+  }
+}
+
+function renderCustomBills() {
+  const card = document.getElementById('custom-bills-card');
+  const empty = document.getElementById('custom-bills-empty');
+  // Custom recurring bills (id starts with 'custom')
+  const customRecurring = state.bills.filter(b => String(b.id).startsWith('custom'));
+  // Custom one-time bills (excluding the pre-seeded june15prog)
+  const customOneTime = (state.oneBills || []).filter(b => b.id !== 'june15prog');
+
+  const allCustom = [
+    ...customRecurring.map(b => ({...b, listType: 'recurring'})),
+    ...customOneTime.map(b => ({...b, listType: 'oneoff'}))
+  ];
+
+  if (allCustom.length === 0) {
+    card.innerHTML = '<div class="empty-state" id="custom-bills-empty">no custom bills added</div>';
+    return;
+  }
+
+  card.innerHTML = allCustom.map(b => {
+    const tag = b.listType === 'oneoff'
+      ? '<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:#EDE9FE;color:#6D28D9;font-weight:500">one-time</span>'
+      : '<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--green-light);color:var(--green-dark);font-weight:500">recurring</span>';
+    return `<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--gray-100)">
+      <div>
+        <div style="font-size:14px;font-weight:500;display:flex;align-items:center;gap:6px">${b.name} ${tag}</div>
+        <div style="font-size:11px;color:var(--gray-400);font-family:'DM Mono',monospace;margin-top:2px">day ${b.day} · $${b.amount.toFixed(2)}</div>
+      </div>
+      <button onclick="deleteCustomBill('${b.id}','${b.listType}')"
+        style="background:var(--red-light);color:var(--red);border:none;border-radius:var(--radius-sm);padding:6px 12px;font-size:13px;font-weight:500;cursor:pointer">
+        Delete
+      </button>
+    </div>`;
+  }).join('') + '<div style="height:1px"></div>';
+}
+
+function deleteCustomBill(id, listType) {
+  if (!confirm('Delete this bill?')) return;
+  if (listType === 'oneoff') {
+    state.oneBills = (state.oneBills || []).filter(b => String(b.id) !== String(id));
+  } else {
+    state.bills = state.bills.filter(b => String(b.id) !== String(id));
+  }
+  renderCustomBills();
+  renderPlannerBills();
+  renderBillsTab();
+  recalc();
+  save();
+}
+
+
 
 function resetAll() {
   if (!confirm('Reset ALL data? Cannot be undone.')) return;
@@ -903,13 +1299,10 @@ function switchTab(tab, btn) {
   if (btn) btn.classList.add('active');
   if (tab === 'bills') renderBillsTab();
   if (tab === 'payday') renderPaydayTab();
-  if (tab === 'planner') { renderPlannerBills(); renderZelleTotals(); }
+  if (tab === 'planner') { renderPlannerBills(); renderCustomBills(); renderZelleTotals(); }
 }
 
-function renderZelleTotals() {
-  const dad = (state.zelleLog||[]).filter(z=>z.to==='dad').reduce((s,z)=>s+z.amount,0);
-  document.getElementById('ytd-zelle').textContent = '$' + dad.toFixed(2);
-}
+function renderZelleTotals() {} // removed — using bill toggle instead
 
 function checkPassword() {
   if (document.getElementById('lock-input').value === PASSWORD) {
@@ -919,7 +1312,7 @@ function checkPassword() {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('view-planner').classList.add('active');
     document.getElementById('planner-tab').classList.add('active');
-    renderPlannerBills(); renderZelleTotals();
+    renderPlannerBills(); renderCustomBills(); renderZelleTotals();
   } else {
     document.getElementById('lock-error').style.display = 'block';
     document.getElementById('lock-input').value = '';
