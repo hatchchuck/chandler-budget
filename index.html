@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_28.html -->
+<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_30.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -156,7 +156,7 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
   <div class="container">
     <div class="header-top">
       <h1>Chandler's budget</h1>
-      <div class="saved-badge" id="saved-badge">✓ saved</div>
+      <div class="saved-badge" id="saved-badge" style="color: var(--green);">✓ saved</div>
     </div>
     <div class="header-period" id="header-period">May 21 – Jun 4</div>
   </div>
@@ -433,68 +433,154 @@ let state = {
 let plannerUnlocked = false;
 let saveTimer = null;
 
-const JSONBIN_KEY = '$2a$10$DCEl5Hn8OffMUye/W8o58eFkwTKCAMQkPs/R8dU2X/u7eD4azmh0O';
-const JSONBIN_BIN = '6a219e5bf5f4af5e29b8ddee';
-const JSONBIN_URL = 'https://api.jsonbin.io/v3/b/' + JSONBIN_BIN;
 
+const GIST_TOKEN = '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';
+const GIST_ID = '48758aa825cd9479d71a5f0742fd10e4';
+const GIST_FILE = 'chandler-budget.json';
+const GIST_URL = 'https://api.github.com/gists/' + GIST_ID;
 let isSyncing = false;
 
-async function load() {
+async function loadFromCloud() {
   try {
-    // Show loading state
-    document.getElementById('header-period').textContent = 'loading...';
-    const resp = await fetch(JSONBIN_URL + '/latest', {
-      headers: { 'X-Master-Key': JSONBIN_KEY }
+    const resp = await fetch(GIST_URL, {
+      headers: {
+        'Authorization': 'token ' + GIST_TOKEN,
+        'Accept': 'application/vnd.github.v3+json'
+      }
     });
     if (resp.ok) {
       const data = await resp.json();
-      const d = data.record;
-      if (d && d.version) {
-        state = {...state, ...d};
-        if (!state.bills?.length) state.bills = JSON.parse(JSON.stringify(DEFAULT_BILLS));
-      }
+      const content = data.files[GIST_FILE]?.content;
+      if (content) return JSON.parse(content);
     }
-  } catch(e) {
-    // Fall back to localStorage if offline
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const d = JSON.parse(raw);
-        state = {...state, ...d};
-        if (!state.bills?.length) state.bills = JSON.parse(JSON.stringify(DEFAULT_BILLS));
-      }
-    } catch(e2) {}
-  }
+  } catch(e) {}
+  return null;
 }
 
-async function save() {
+async function saveToCloud(data) {
   if (isSyncing) return;
   isSyncing = true;
-  // Always save to localStorage as backup
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
   try {
-    const resp = await fetch(JSONBIN_URL, {
-      method: 'PUT',
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  } catch(e) {}
+  try {
+    const body = { files: {} };
+    body.files[GIST_FILE] = { content: JSON.stringify(data) };
+    const resp = await fetch(GIST_URL, {
+      method: 'PATCH',
       headers: {
+        'Authorization': 'token ' + GIST_TOKEN,
         'Content-Type': 'application/json',
-        'X-Master-Key': JSONBIN_KEY
+        'Accept': 'application/vnd.github.v3+json'
       },
-      body: JSON.stringify(state)
+      body: JSON.stringify(body)
     });
     if (resp.ok) {
       const b = document.getElementById('saved-badge');
-      b.classList.add('show');
-      clearTimeout(saveTimer);
-      saveTimer = setTimeout(() => b.classList.remove('show'), 2000);
+      if (b) {
+        b.textContent = '✓ saved';
+        b.style.color = 'var(--green, #1D9E75)';
+        b.classList.add('show');
+        clearTimeout(saveTimer);
+        saveTimer = setTimeout(() => b.classList.remove('show'), 2000);
+      }
     }
   } catch(e) {
-    // Show offline indicator
     const b = document.getElementById('saved-badge');
-    b.textContent = '⚠ offline';
-    b.style.color = 'var(--amber)';
-    b.classList.add('show');
-    clearTimeout(saveTimer);
-    saveTimer = setTimeout(() => { b.classList.remove('show'); b.textContent = '✓ saved'; b.style.color = 'var(--green)'; }, 3000);
+    if (b) {
+      b.textContent = '⚠ offline';
+      b.style.color = '#BA7517';
+      b.classList.add('show');
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(() => { b.classList.remove('show'); b.textContent = '✓ saved'; }, 3000);
+    }
+  }
+  isSyncing = false;
+}
+
+async function load() {
+  document.getElementById('header-period').textContent = 'loading...';
+  try {
+    const resp = await fetch(GIST_URL, {
+      headers: {
+        'Authorization': 'token ' + GIST_TOKEN,
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    });
+    if (resp.ok) {
+      const data = await resp.json();
+      const content = data.files[GIST_FILE]?.content;
+      if (content) {
+        const d = JSON.parse(content);
+        if (d && d.version) {
+          state = {...state, ...d};
+          if (!state.bills?.length) state.bills = JSON.parse(JSON.stringify(DEFAULT_BILLS));
+          console.log('Loaded from Gist OK');
+          return;
+        }
+      }
+    } else {
+      console.error('Gist load failed:', resp.status);
+    }
+  } catch(e) {
+    console.error('Gist load error:', e);
+  }
+  // Fall back to localStorage
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const d = JSON.parse(raw);
+      state = {...state, ...d};
+      if (!state.bills?.length) state.bills = JSON.parse(JSON.stringify(DEFAULT_BILLS));
+      console.log('Loaded from localStorage fallback');
+    }
+  } catch(e) {}
+}
+
+function save() {
+  // Always save to localStorage immediately
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+  // Then sync to Gist
+  syncToGist();
+}
+
+async function syncToGist() {
+  if (isSyncing) return;
+  isSyncing = true;
+  try {
+    const body = { files: {} };
+    body.files[GIST_FILE] = { content: JSON.stringify(state) };
+    const resp = await fetch(GIST_URL, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': 'token ' + GIST_TOKEN,
+        'Content-Type': 'application/json',
+        'Accept': 'application/vnd.github.v3+json'
+      },
+      body: JSON.stringify(body)
+    });
+    if (resp.ok) {
+      const b = document.getElementById('saved-badge');
+      if (b) {
+        b.textContent = '✓ saved';
+        b.style.color = 'var(--green)';
+        b.classList.add('show');
+        clearTimeout(saveTimer);
+        saveTimer = setTimeout(() => b.classList.remove('show'), 2000);
+      }
+    } else {
+      console.error('Gist save failed:', resp.status, await resp.text());
+    }
+  } catch(e) {
+    console.error('Gist save error:', e);
+    const b = document.getElementById('saved-badge');
+    if (b) {
+      b.textContent = '⚠ offline';
+      b.style.color = 'var(--amber)';
+      b.classList.add('show');
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(() => { b.classList.remove('show'); b.textContent = '✓ saved'; }, 3000);
+    }
   }
   isSyncing = false;
 }
