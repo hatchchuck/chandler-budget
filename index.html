@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_27.html -->
+<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_28.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -144,7 +144,7 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
 <body>
 
 <!-- LOCK SCREEN -->
-<div class="lock-screen" id="lock-screen" style="display: none;">
+<div class="lock-screen" id="lock-screen" style="display:none">
   <h2>planner access</h2>
   <h3>Chandler's Budget</h3>
   <input type="password" class="lock-input" id="lock-input" placeholder="••••••••">
@@ -202,7 +202,7 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
   <!-- Breakdown -->
   <p class="section-title">this period breakdown</p>
   <div class="card" id="breakdown-card">
-    <div class="card-row"><div class="row-label">current balance</div><div class="row-val">$375.00</div></div>
+    <div class="card-row"><div class="row-label">current balance</div><div class="row-val">$317.00</div></div>
     <div class="card-row"><div><div class="row-label">bills remaining this period</div><div class="row-sub">0 bills still due</div></div><div class="row-val red">-$0.00</div></div>
     <div class="card-row"><div><div class="row-label">floor reserve</div><div class="row-sub">$300 minimum balance</div></div><div class="row-val amber">-$300.00</div></div>
     <div class="card-row"><div><div class="row-label">spending allowance</div><div class="row-sub">14 day period · $200 payday + $20/day</div></div><div class="row-val amber">-$460</div></div>
@@ -247,152 +247,14 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
 <div class="container">
 
   <p class="section-title">current period bills</p>
-  <div class="card" id="current-period-bills"><div class="bill-item" style="opacity:0.45">
-      <div class="bill-day-badge urgent">
-        <div class="bday" style="">25</div>
-        <div class="bmo">May</div>
-      </div>
-      <div class="bill-info">
-        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">Rumpke Trash<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--gray-100);color:var(--gray-600);font-weight:500;margin-left:4px">recurring</span></div>
-        <div class="bill-sub">Checking · overdue</div>
-      </div>
-      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
-        <div class="bill-amount" style="">$0.00</div>
-        <button onclick="toggleBillPaid(&#39;rumpke-4-2026&#39;)" style="font-size:11px;padding:3px 10px;border-radius:20px;border:none;cursor:pointer;font-weight:500;
-          background:var(--gray-100);color:var(--gray-600)">
-          mark zelled
-        </button>
-      </div>
-    </div><div class="bill-item" style="opacity:0.45">
-      <div class="bill-day-badge urgent">
-        <div class="bday" style="">1</div>
-        <div class="bmo">Jun</div>
-      </div>
-      <div class="bill-info">
-        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">Progressive Auto (1st)<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--gray-100);color:var(--gray-600);font-weight:500;margin-left:4px">recurring</span></div>
-        <div class="bill-sub">Discover · overdue</div>
-      </div>
-      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
-        <div class="bill-amount" style="">$142.17</div>
-        <button onclick="toggleBillPaid(&#39;auto1-5-2026&#39;)" style="font-size:11px;padding:3px 10px;border-radius:20px;border:none;cursor:pointer;font-weight:500;
-          background:var(--gray-100);color:var(--gray-600)">
-          mark zelled
-        </button>
-      </div>
-    </div><div class="bill-item" style="opacity:0.45">
-      <div class="bill-day-badge urgent">
-        <div class="bday" style="">2</div>
-        <div class="bmo">Jun</div>
-      </div>
-      <div class="bill-info">
-        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">CSAA Home Insurance<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--gray-100);color:var(--gray-600);font-weight:500;margin-left:4px">recurring</span></div>
-        <div class="bill-sub">Discover · overdue</div>
-      </div>
-      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
-        <div class="bill-amount" style="">$68.93</div>
-        <button onclick="toggleBillPaid(&#39;csaa-5-2026&#39;)" style="font-size:11px;padding:3px 10px;border-radius:20px;border:none;cursor:pointer;font-weight:500;
-          background:var(--gray-100);color:var(--gray-600)">
-          mark zelled
-        </button>
-      </div>
-    </div><div class="card-row" style="background:var(--gray-50)"><div class="row-label" style="font-weight:500">period total</div><div class="row-val">$211.10</div></div></div>
+  <div class="card" id="current-period-bills">
+    <div class="empty-state">loading...</div>
+  </div>
 
   <p class="section-title">next period bills <span style="font-size:10px;color:var(--blue);font-family:&#39;DM Mono&#39;,monospace;background:var(--blue-light);padding:2px 8px;border-radius:20px;margin-left:6px">lookahead</span></p>
-  <div class="card" id="next-period-bills"><div class="bill-item" style="">
-      <div class="bill-day-badge next-period">
-        <div class="bday" style="">5</div>
-        <div class="bmo">Jun</div>
-      </div>
-      <div class="bill-info">
-        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">Hamilton County Title<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:#EDE9FE;color:#6D28D9;font-weight:500;margin-left:4px">one-time</span></div>
-        <div class="bill-sub">Checking · next period</div>
-      </div>
-      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
-        <div class="bill-amount" style="">$59.74</div>
-        <span class="bill-payer "></span>
-      </div>
-    </div><div class="bill-item" style="">
-      <div class="bill-day-badge next-period">
-        <div class="bday" style="">5</div>
-        <div class="bmo">Jun</div>
-      </div>
-      <div class="bill-info">
-        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">Ohio BMV<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:#EDE9FE;color:#6D28D9;font-weight:500;margin-left:4px">one-time</span></div>
-        <div class="bill-sub">Checking · next period</div>
-      </div>
-      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
-        <div class="bill-amount" style="">$136.13</div>
-        <span class="bill-payer "></span>
-      </div>
-    </div><div class="bill-item" style="">
-      <div class="bill-day-badge next-period">
-        <div class="bday" style="">8</div>
-        <div class="bmo">Jun</div>
-      </div>
-      <div class="bill-info">
-        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">GCWW Water<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--gray-100);color:var(--gray-600);font-weight:500;margin-left:4px">recurring</span></div>
-        <div class="bill-sub">Checking · next period</div>
-      </div>
-      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
-        <div class="bill-amount" style="">$75.74</div>
-        <span class="bill-payer "></span>
-      </div>
-    </div><div class="bill-item" style="">
-      <div class="bill-day-badge next-period">
-        <div class="bday" style="">10</div>
-        <div class="bmo">Jun</div>
-      </div>
-      <div class="bill-info">
-        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">Real Estate Taxes<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--gray-100);color:var(--gray-600);font-weight:500;margin-left:4px">recurring</span></div>
-        <div class="bill-sub">Checking · next period</div>
-      </div>
-      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
-        <div class="bill-amount" style="">$472.48</div>
-        <span class="bill-payer "></span>
-      </div>
-    </div><div class="bill-item" style="">
-      <div class="bill-day-badge next-period">
-        <div class="bday" style="">11</div>
-        <div class="bmo">Jun</div>
-      </div>
-      <div class="bill-info">
-        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">Duke Energy<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--gray-100);color:var(--gray-600);font-weight:500;margin-left:4px">recurring</span></div>
-        <div class="bill-sub">Checking · next period</div>
-      </div>
-      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
-        <div class="bill-amount" style="">$298.00</div>
-        <span class="bill-payer "></span>
-      </div>
-    </div><div class="bill-item" style="">
-      <div class="bill-day-badge next-period">
-        <div class="bday" style="">15</div>
-        <div class="bmo">Jun</div>
-      </div>
-      <div class="bill-info">
-        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">Progressive Auto (15th) — June<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--amber-light);color:var(--amber);font-weight:500;margin-left:4px">temp amount</span></div>
-        <div class="bill-sub">Discover · next period</div>
-      </div>
-      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
-        <div class="bill-amount" style="">$172.92</div>
-        <span class="bill-payer "></span>
-      </div>
-    </div><div class="bill-item" style="">
-      <div class="bill-day-badge next-period">
-        <div class="bday" style="">17</div>
-        <div class="bmo">Jun</div>
-      </div>
-      <div class="bill-info">
-        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;">Spectrum<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--gray-100);color:var(--gray-600);font-weight:500;margin-left:4px">recurring</span></div>
-        <div class="bill-sub">Citi · next period</div>
-      </div>
-      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
-        <div class="bill-amount" style="">$108.51</div>
-        <span class="bill-payer "></span>
-      </div>
-    </div><div class="card-row" style="background:var(--blue-light)">
-        <div><div class="row-label" style="font-weight:500;color:#1E40AF">next period total</div></div>
-        <div class="row-val" style="color:#1E40AF">$1323.52</div>
-      </div></div>
+  <div class="card" id="next-period-bills">
+    <div class="empty-state">loading...</div>
+  </div>
 
   <div class="tip-box" style="margin-top:8px">To add or remove bills, use the <strong>Planner tab</strong> (password protected).</div>
 
@@ -451,88 +313,7 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
   <div class="tip-box">Manage bill amounts, handoff status, and settings. Flip bills from "Dad Pays" to "Chandler Pays" as he takes over each one.</div>
 
   <p class="section-title">recurring bills</p>
-  <div class="card" id="planner-bills"><div class="planner-row">
-      <div class="day-badge">1</div>
-      <div><div class="planner-name">Progressive Auto (1st)</div><div class="planner-sub">Discover</div></div>
-      <input type="number" class="amt-input" value="142.17" oninput="state.bills[0].amount=parseFloat(this.value)||0;" onblur="state.bills[0].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" inputmode="decimal">
-      <select class="payer-select" style="background:#FEF3C7" onchange="state.bills[0].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
-        <option value="you" selected="">Dad Pays</option>
-        <option value="trans">Transitioning</option>
-        <option value="him">Chandler Pays</option>
-      </select>
-    </div><div class="planner-row">
-      <div class="day-badge">15</div>
-      <div><div class="planner-name">Progressive Auto (15th)</div><div class="planner-sub">Discover</div></div>
-      <input type="number" class="amt-input" value="142.17" oninput="state.bills[1].amount=parseFloat(this.value)||0;" onblur="state.bills[1].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" inputmode="decimal">
-      <select class="payer-select" style="background:#FEF3C7" onchange="state.bills[1].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
-        <option value="you" selected="">Dad Pays</option>
-        <option value="trans">Transitioning</option>
-        <option value="him">Chandler Pays</option>
-      </select>
-    </div><div class="planner-row">
-      <div class="day-badge">2</div>
-      <div><div class="planner-name">CSAA Home Insurance</div><div class="planner-sub">Discover</div></div>
-      <input type="number" class="amt-input" value="68.93" oninput="state.bills[2].amount=parseFloat(this.value)||0;" onblur="state.bills[2].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" inputmode="decimal">
-      <select class="payer-select" style="background:#FEF3C7" onchange="state.bills[2].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
-        <option value="you" selected="">Dad Pays</option>
-        <option value="trans">Transitioning</option>
-        <option value="him">Chandler Pays</option>
-      </select>
-    </div><div class="planner-row">
-      <div class="day-badge">10</div>
-      <div><div class="planner-name">Real Estate Taxes</div><div class="planner-sub">Checking · skips Jul/Aug</div></div>
-      <input type="number" class="amt-input" value="472.48" oninput="state.bills[3].amount=parseFloat(this.value)||0;" onblur="state.bills[3].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" inputmode="decimal">
-      <select class="payer-select" style="background:#FEF3C7" onchange="state.bills[3].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
-        <option value="you" selected="">Dad Pays</option>
-        <option value="trans">Transitioning</option>
-        <option value="him">Chandler Pays</option>
-      </select>
-    </div><div class="planner-row">
-      <div class="day-badge">11</div>
-      <div><div class="planner-name">Duke Energy</div><div class="planner-sub">Checking</div></div>
-      <input type="number" class="amt-input" value="298" oninput="state.bills[4].amount=parseFloat(this.value)||0;" onblur="state.bills[4].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" inputmode="decimal">
-      <select class="payer-select" style="background:#FEF3C7" onchange="state.bills[4].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
-        <option value="you" selected="">Dad Pays</option>
-        <option value="trans">Transitioning</option>
-        <option value="him">Chandler Pays</option>
-      </select>
-    </div><div class="planner-row">
-      <div class="day-badge">8</div>
-      <div><div class="planner-name">GCWW Water</div><div class="planner-sub">Checking</div></div>
-      <input type="number" class="amt-input" value="75.74" oninput="state.bills[5].amount=parseFloat(this.value)||0;" onblur="state.bills[5].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" inputmode="decimal">
-      <select class="payer-select" style="background:#FEF3C7" onchange="state.bills[5].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
-        <option value="you" selected="">Dad Pays</option>
-        <option value="trans">Transitioning</option>
-        <option value="him">Chandler Pays</option>
-      </select>
-    </div><div class="planner-row">
-      <div class="day-badge">17</div>
-      <div><div class="planner-name">Spectrum</div><div class="planner-sub">Citi</div></div>
-      <input type="number" class="amt-input" value="108.51" oninput="state.bills[6].amount=parseFloat(this.value)||0;" onblur="state.bills[6].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" inputmode="decimal">
-      <select class="payer-select" style="background:#FEF3C7" onchange="state.bills[6].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
-        <option value="you" selected="">Dad Pays</option>
-        <option value="trans">Transitioning</option>
-        <option value="him">Chandler Pays</option>
-      </select>
-    </div><div class="planner-row">
-      <div class="day-badge">20</div>
-      <div><div class="planner-name">Cell Phone</div><div class="planner-sub">Citi</div></div>
-      <input type="number" class="amt-input" value="60" oninput="state.bills[7].amount=parseFloat(this.value)||0;" onblur="state.bills[7].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" inputmode="decimal">
-      <select class="payer-select" style="background:#FEF3C7" onchange="state.bills[7].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
-        <option value="you" selected="">Dad Pays</option>
-        <option value="trans">Transitioning</option>
-        <option value="him">Chandler Pays</option>
-      </select>
-    </div><div class="planner-row">
-      <div class="day-badge">25</div>
-      <div><div class="planner-name">Rumpke Trash</div><div class="planner-sub">Checking · quarterly</div></div>
-      <input type="number" class="amt-input" value="0" oninput="state.bills[8].amount=parseFloat(this.value)||0;" onblur="state.bills[8].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" inputmode="decimal">
-      <select class="payer-select" style="background:#FEF3C7" onchange="state.bills[8].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
-        <option value="you" selected="">Dad Pays</option>
-        <option value="trans">Transitioning</option>
-        <option value="him">Chandler Pays</option>
-      </select>
-    </div></div>
+  <div class="card" id="planner-bills"></div>
 
   <p class="section-title">add a bill</p>
   <div class="card">
@@ -562,71 +343,12 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
   </div>
 
   <p class="section-title">custom bills (deletable)</p>
-  <div class="card" id="custom-bills-card"><div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--gray-100)">
-      <div>
-        <div style="font-size:14px;font-weight:500;display:flex;align-items:center;gap:6px">Hamilton County Title <span style="font-size:10px;padding:2px 6px;border-radius:20px;background:#EDE9FE;color:#6D28D9;font-weight:500">one-time</span></div>
-        <div style="font-size:11px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;margin-top:2px">day 5 · $59.74</div>
-      </div>
-      <button onclick="deleteCustomBill(&#39;one1780584237810&#39;,&#39;oneoff&#39;)" style="background:var(--red-light);color:var(--red);border:none;border-radius:var(--radius-sm);padding:6px 12px;font-size:13px;font-weight:500;cursor:pointer">
-        Delete
-      </button>
-    </div><div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--gray-100)">
-      <div>
-        <div style="font-size:14px;font-weight:500;display:flex;align-items:center;gap:6px">Ohio BMV <span style="font-size:10px;padding:2px 6px;border-radius:20px;background:#EDE9FE;color:#6D28D9;font-weight:500">one-time</span></div>
-        <div style="font-size:11px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;margin-top:2px">day 5 · $136.13</div>
-      </div>
-      <button onclick="deleteCustomBill(&#39;one1780584320823&#39;,&#39;oneoff&#39;)" style="background:var(--red-light);color:var(--red);border:none;border-radius:var(--radius-sm);padding:6px 12px;font-size:13px;font-weight:500;cursor:pointer">
-        Delete
-      </button>
-    </div><div style="height:1px"></div></div>
+  <div class="card" id="custom-bills-card">
+    <div class="empty-state" id="custom-bills-empty">no custom bills added</div>
+  </div>
 
   <p class="section-title">bill due dates</p>
-  <div class="card" id="planner-dates">
-    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
-      <div style="font-size:13px;font-weight:500">Progressive Auto (1st)</div>
-      <input type="number" min="1" max="31" value="1" class="amt-input" style="width:56px;text-align:center" oninput="state.bills[0].day=parseInt(this.value)||1;" onblur="state.bills[0].day=parseInt(this.value)||1;recalc();renderBillsTab();save();">
-    </div>
-  
-    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
-      <div style="font-size:13px;font-weight:500">Progressive Auto (15th)</div>
-      <input type="number" min="1" max="31" value="15" class="amt-input" style="width:56px;text-align:center" oninput="state.bills[1].day=parseInt(this.value)||15;" onblur="state.bills[1].day=parseInt(this.value)||15;recalc();renderBillsTab();save();">
-    </div>
-  
-    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
-      <div style="font-size:13px;font-weight:500">CSAA Home Insurance</div>
-      <input type="number" min="1" max="31" value="2" class="amt-input" style="width:56px;text-align:center" oninput="state.bills[2].day=parseInt(this.value)||2;" onblur="state.bills[2].day=parseInt(this.value)||2;recalc();renderBillsTab();save();">
-    </div>
-  
-    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
-      <div style="font-size:13px;font-weight:500">Real Estate Taxes</div>
-      <input type="number" min="1" max="31" value="10" class="amt-input" style="width:56px;text-align:center" oninput="state.bills[3].day=parseInt(this.value)||10;" onblur="state.bills[3].day=parseInt(this.value)||10;recalc();renderBillsTab();save();">
-    </div>
-  
-    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
-      <div style="font-size:13px;font-weight:500">Duke Energy</div>
-      <input type="number" min="1" max="31" value="11" class="amt-input" style="width:56px;text-align:center" oninput="state.bills[4].day=parseInt(this.value)||11;" onblur="state.bills[4].day=parseInt(this.value)||11;recalc();renderBillsTab();save();">
-    </div>
-  
-    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
-      <div style="font-size:13px;font-weight:500">GCWW Water</div>
-      <input type="number" min="1" max="31" value="8" class="amt-input" style="width:56px;text-align:center" oninput="state.bills[5].day=parseInt(this.value)||8;" onblur="state.bills[5].day=parseInt(this.value)||8;recalc();renderBillsTab();save();">
-    </div>
-  
-    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
-      <div style="font-size:13px;font-weight:500">Spectrum</div>
-      <input type="number" min="1" max="31" value="17" class="amt-input" style="width:56px;text-align:center" oninput="state.bills[6].day=parseInt(this.value)||17;" onblur="state.bills[6].day=parseInt(this.value)||17;recalc();renderBillsTab();save();">
-    </div>
-  
-    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
-      <div style="font-size:13px;font-weight:500">Cell Phone</div>
-      <input type="number" min="1" max="31" value="20" class="amt-input" style="width:56px;text-align:center" oninput="state.bills[7].day=parseInt(this.value)||20;" onblur="state.bills[7].day=parseInt(this.value)||20;recalc();renderBillsTab();save();">
-    </div>
-  
-    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
-      <div style="font-size:13px;font-weight:500">Rumpke Trash</div>
-      <input type="number" min="1" max="31" value="25" class="amt-input" style="width:56px;text-align:center" oninput="state.bills[8].day=parseInt(this.value)||25;" onblur="state.bills[8].day=parseInt(this.value)||25;recalc();renderBillsTab();save();">
-    </div>
-  <div style="height:1px"></div></div>
+  <div class="card" id="planner-dates"></div>
 
   <p class="section-title">settings</p>
   <div class="card">
@@ -711,25 +433,70 @@ let state = {
 let plannerUnlocked = false;
 let saveTimer = null;
 
-function load() {
+const JSONBIN_KEY = '$2a$10$DCEl5Hn8OffMUye/W8o58eFkwTKCAMQkPs/R8dU2X/u7eD4azmh0O';
+const JSONBIN_BIN = '6a219e5bf5f4af5e29b8ddee';
+const JSONBIN_URL = 'https://api.jsonbin.io/v3/b/' + JSONBIN_BIN;
+
+let isSyncing = false;
+
+async function load() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) {
-      const d = JSON.parse(raw);
-      state = {...state, ...d};
-      if (!state.bills?.length) state.bills = JSON.parse(JSON.stringify(DEFAULT_BILLS));
+    // Show loading state
+    document.getElementById('header-period').textContent = 'loading...';
+    const resp = await fetch(JSONBIN_URL + '/latest', {
+      headers: { 'X-Master-Key': JSONBIN_KEY }
+    });
+    if (resp.ok) {
+      const data = await resp.json();
+      const d = data.record;
+      if (d && d.version) {
+        state = {...state, ...d};
+        if (!state.bills?.length) state.bills = JSON.parse(JSON.stringify(DEFAULT_BILLS));
+      }
     }
-  } catch(e) {}
+  } catch(e) {
+    // Fall back to localStorage if offline
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const d = JSON.parse(raw);
+        state = {...state, ...d};
+        if (!state.bills?.length) state.bills = JSON.parse(JSON.stringify(DEFAULT_BILLS));
+      }
+    } catch(e2) {}
+  }
 }
 
-function save() {
+async function save() {
+  if (isSyncing) return;
+  isSyncing = true;
+  // Always save to localStorage as backup
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    const resp = await fetch(JSONBIN_URL, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Master-Key': JSONBIN_KEY
+      },
+      body: JSON.stringify(state)
+    });
+    if (resp.ok) {
+      const b = document.getElementById('saved-badge');
+      b.classList.add('show');
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(() => b.classList.remove('show'), 2000);
+    }
+  } catch(e) {
+    // Show offline indicator
     const b = document.getElementById('saved-badge');
+    b.textContent = '⚠ offline';
+    b.style.color = 'var(--amber)';
     b.classList.add('show');
     clearTimeout(saveTimer);
-    saveTimer = setTimeout(() => b.classList.remove('show'), 2000);
-  } catch(e) {}
+    saveTimer = setTimeout(() => { b.classList.remove('show'); b.textContent = '✓ saved'; b.style.color = 'var(--green)'; }, 3000);
+  }
+  isSyncing = false;
 }
 
 function dSave() { clearTimeout(saveTimer); saveTimer = setTimeout(save, 700); }
@@ -1360,8 +1127,12 @@ function init() {
   recalc();
 }
 
-load();
-init();
+// Load from JSONBin then init
+load().then(() => {
+  init();
+}).catch(() => {
+  init();
+});
 </script>
 
 
