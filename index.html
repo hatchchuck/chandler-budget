@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_15.html -->
+<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_17.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -203,10 +203,14 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
   <p class="section-title">this period breakdown</p>
   <div class="card" id="breakdown-card">
     <div class="card-row"><div class="row-label">current balance</div><div class="row-val">$375.00</div></div>
-    <div class="card-row"><div><div class="row-label">bills remaining this period</div><div class="row-sub">0 bills left</div></div><div class="row-val red">-$0.00</div></div>
-    <div class="card-row"><div><div class="row-label">floor reserve</div><div class="row-sub">minimum balance</div></div><div class="row-val amber">-$300.00</div></div>
-    <div class="card-row"><div><div class="row-label">spending allowance</div><div class="row-sub">14 day period</div></div><div class="row-val amber">-$460</div></div>
-    <div class="card-row" style="background:var(--gray-50)"><div class="row-label" style="font-weight:500">available for Fidelity</div><div class="row-val red">$0.00</div></div>
+    <div class="card-row"><div><div class="row-label">bills remaining this period</div><div class="row-sub">0 bills still due</div></div><div class="row-val red">-$0.00</div></div>
+    <div class="card-row"><div><div class="row-label">floor reserve</div><div class="row-sub">$300 minimum balance</div></div><div class="row-val amber">-$300.00</div></div>
+    <div class="card-row"><div><div class="row-label">spending allowance</div><div class="row-sub">14 day period · $200 payday + $20/day</div></div><div class="row-val amber">-$460</div></div>
+    <div class="card-row" style="background:var(--gray-50)">
+      <div><div class="row-label" style="font-weight:500">nothing to transfer yet</div>
+      <div class="row-sub" style="color:var(--gray-400)">use Payday tab on payday for full calculation</div></div>
+      <div class="row-val red">$0.00</div>
+    </div>
   </div>
 
   <!-- Spending allowance -->
@@ -542,8 +546,13 @@ function recalc() {
   // Smart floor
   const { floor, shortfall, nextBillsTotal } = calcSmartFloor();
 
-  // Transfer = balance - bills remaining - floor - spending
+  // Dashboard shows current balance picture only — no paycheck added here
+  // Bills still due in this period (from today forward)
   const billsRemaining = currentBills.filter(b => b.dueDate >= today).reduce((s,b) => s + b.amount, 0);
+  // How much is available above floor and remaining bills
+  const aboveFloor = Math.max(0, balance - floor);
+  const availableAfterBills = Math.max(0, aboveFloor - billsRemaining);
+  // Transfer is what's left after bills, floor, and spending allowance
   const transfer = Math.max(0, balance - billsRemaining - floor - PERIOD_ALLOWANCE);
   const isNegative = balance < (billsRemaining + floor);
 
@@ -593,12 +602,17 @@ function recalc() {
 
   // Breakdown card
   const bc = document.getElementById('breakdown-card');
+  const billsRemainingCount = currentBills.filter(b=>b.dueDate>=today).length;
   bc.innerHTML = `
     <div class="card-row"><div class="row-label">current balance</div><div class="row-val">$${balance.toFixed(2)}</div></div>
-    <div class="card-row"><div><div class="row-label">bills remaining this period</div><div class="row-sub">${currentBills.filter(b=>b.dueDate>=today).length} bills left</div></div><div class="row-val red">-$${billsRemaining.toFixed(2)}</div></div>
-    <div class="card-row"><div><div class="row-label">floor reserve</div><div class="row-sub">${shortfall > 0 ? '$300 base + $'+shortfall.toFixed(0)+' next period buffer' : 'minimum balance'}</div></div><div class="row-val amber">-$${floor.toFixed(2)}</div></div>
-    <div class="card-row"><div><div class="row-label">spending allowance</div><div class="row-sub">14 day period</div></div><div class="row-val amber">-$${PERIOD_ALLOWANCE}</div></div>
-    <div class="card-row" style="background:var(--gray-50)"><div class="row-label" style="font-weight:500">available for Fidelity</div><div class="row-val ${transfer > 0 ? 'green' : 'red'}">$${transfer.toFixed(2)}</div></div>
+    <div class="card-row"><div><div class="row-label">bills remaining this period</div><div class="row-sub">${billsRemainingCount} bill${billsRemainingCount!==1?'s':''} still due</div></div><div class="row-val red">-$${billsRemaining.toFixed(2)}</div></div>
+    <div class="card-row"><div><div class="row-label">floor reserve</div><div class="row-sub">${shortfall > 0 ? '$300 base + $'+shortfall.toFixed(0)+' next period buffer' : '$300 minimum balance'}</div></div><div class="row-val amber">-$${floor.toFixed(2)}</div></div>
+    <div class="card-row"><div><div class="row-label">spending allowance</div><div class="row-sub">14 day period · $200 payday + $20/day</div></div><div class="row-val amber">-$${PERIOD_ALLOWANCE}</div></div>
+    <div class="card-row" style="background:var(--gray-50)">
+      <div><div class="row-label" style="font-weight:500">${transfer > 0 ? 'available for Fidelity' : balance < floor ? 'below floor — do not transfer' : 'nothing to transfer yet'}</div>
+      <div class="row-sub" style="color:var(--gray-400)">use Payday tab on payday for full calculation</div></div>
+      <div class="row-val ${transfer > 0 ? 'green' : 'red'}">$${transfer.toFixed(2)}</div>
+    </div>
   `;
 
   // Spending allowance
