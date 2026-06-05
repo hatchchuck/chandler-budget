@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_31.html -->
+<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_32.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,130 +12,136 @@
   --blue:#378ADD;--blue-light:#E6F1FB;
   --red:#E24B4A;--red-light:#FCEBEB;
   --amber:#BA7517;--amber-light:#FAEEDA;
+  --purple:#7C3AED;--purple-light:#EDE9FE;
   --gray-50:#F8F7F4;--gray-100:#EFEDE8;--gray-200:#D8D6CF;
   --gray-400:#9B9990;--gray-600:#5F5E5A;--gray-900:#1C1C1A;
   --radius:12px;--radius-sm:8px;
 }
 body{font-family:'DM Sans',sans-serif;background:var(--gray-50);color:var(--gray-900);min-height:100vh;padding:0 0 80px}
-
-/* Header */
-header{background:var(--gray-900);color:white;padding:24px 20px 16px;position:sticky;top:0;z-index:10}
-.header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+header{background:var(--gray-900);color:white;padding:20px;position:sticky;top:0;z-index:10}
+.header-top{display:flex;align-items:center;justify-content:space-between}
 .header-top h1{font-size:12px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-400);font-family:'DM Mono',monospace}
 .saved-badge{font-family:'DM Mono',monospace;font-size:11px;color:var(--green);opacity:0;transition:opacity 0.4s}
 .saved-badge.show{opacity:1}
-.header-period{font-size:13px;color:var(--gray-400);font-family:'DM Mono',monospace}
+.header-sub{font-size:13px;color:var(--gray-400);font-family:'DM Mono',monospace;margin-top:4px}
 
-/* Tabs */
 .tab-bar{display:flex;background:var(--gray-100);border-bottom:1px solid var(--gray-200)}
-.tab-btn{flex:1;padding:12px 4px;font-size:13px;font-weight:500;color:var(--gray-400);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s}
+.tab-btn{flex:1;padding:12px;font-size:14px;font-weight:500;color:var(--gray-400);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent}
 .tab-btn.active{color:var(--gray-900);border-bottom-color:var(--gray-900);background:white}
+
 .view{display:none}.view.active{display:block}
 .container{max-width:480px;margin:0 auto;padding:0 16px}
 .section-title{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-400);font-family:'DM Mono',monospace;margin:20px 0 8px}
 
 /* Cards */
 .card{background:white;border-radius:var(--radius);border:1px solid var(--gray-200);overflow:hidden;margin-bottom:12px}
-.card-row{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid var(--gray-100)}
+.card-row{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--gray-100)}
 .card-row:last-child{border-bottom:none}
 .row-label{font-size:14px;color:var(--gray-600)}
 .row-sub{font-size:11px;color:var(--gray-400);font-family:'DM Mono',monospace;margin-top:2px}
-.row-val{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--gray-900)}
-.row-val.green{color:var(--green-dark)}
-.row-val.red{color:var(--red)}
-.row-val.amber{color:var(--amber)}
+.row-val{font-family:'DM Mono',monospace;font-size:15px;font-weight:500}
+.green{color:var(--green-dark)}.red{color:var(--red)}.amber{color:var(--amber)}
 
-/* Hero balance */
-.balance-hero{background:var(--gray-900);border-radius:var(--radius);padding:20px;margin-bottom:12px}
-.bal-label{font-size:11px;color:var(--gray-400);font-family:'DM Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px}
-.bal-row{display:flex;align-items:center;gap:6px}
-.bal-dollar{font-size:24px;color:var(--gray-400);font-weight:300}
-.bal-input{font-family:'DM Mono',monospace;font-size:38px;font-weight:500;color:white;border:none;outline:none;background:transparent;width:100%;-moz-appearance:textfield}
-.bal-input::-webkit-outer-spin-button,.bal-input::-webkit-inner-spin-button{-webkit-appearance:none}
-.bal-status{font-size:12px;font-family:'DM Mono',monospace;margin-top:6px}
+/* Hero input */
+.hero{background:var(--gray-900);border-radius:var(--radius);padding:20px;margin-bottom:12px;color:white}
+.hero-label{font-size:11px;color:var(--gray-400);font-family:'DM Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px}
+.hero-row{display:flex;align-items:center;gap:6px;margin-bottom:12px}
+.hero-row:last-child{margin-bottom:0}
+.hero-row label{font-size:13px;color:var(--gray-400);min-width:90px}
+.hero-dollar{font-size:20px;color:var(--gray-400);font-weight:300}
+.hero-input{font-family:'DM Mono',monospace;font-size:28px;font-weight:500;color:white;border:none;outline:none;background:transparent;width:100%;-moz-appearance:textfield}
+.hero-input::-webkit-outer-spin-button,.hero-input::-webkit-inner-spin-button{-webkit-appearance:none}
+.hero-input.sm{font-size:20px}
 
-/* Transfer card */
-.transfer-card{border-radius:var(--radius);padding:20px;margin-bottom:12px;border:1px solid}
-.transfer-card.positive{background:var(--green-light);border-color:#8EDCC0}
-.transfer-card.zero{background:var(--gray-100);border-color:var(--gray-200)}
-.transfer-card.negative{background:var(--red-light);border-color:#F5ACAC}
+/* Transfer result */
+.transfer{border-radius:var(--radius);padding:20px;margin-bottom:12px;border:1px solid}
+.transfer.positive{background:var(--green-light);border-color:#8EDCC0}
+.transfer.zero{background:var(--gray-100);border-color:var(--gray-200)}
+.transfer.negative{background:var(--red-light);border-color:#F5ACAC}
 .transfer-label{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;font-family:'DM Mono',monospace;margin-bottom:4px}
-.transfer-card.positive .transfer-label{color:var(--green-dark)}
-.transfer-card.zero .transfer-label{color:var(--gray-600)}
-.transfer-card.negative .transfer-label{color:var(--red)}
-.transfer-amount{font-family:'DM Mono',monospace;font-size:40px;font-weight:500;line-height:1;margin-bottom:4px}
-.transfer-card.positive .transfer-amount{color:var(--green-dark)}
-.transfer-card.zero .transfer-amount{color:var(--gray-600)}
-.transfer-card.negative .transfer-amount{color:var(--red)}
+.transfer.positive .transfer-label{color:var(--green-dark)}
+.transfer.zero .transfer-label{color:var(--gray-600)}
+.transfer.negative .transfer-label{color:var(--red)}
+.transfer-amount{font-family:'DM Mono',monospace;font-size:44px;font-weight:500;line-height:1;margin-bottom:6px}
+.transfer.positive .transfer-amount{color:var(--green-dark)}
+.transfer.zero .transfer-amount{color:var(--gray-600)}
+.transfer.negative .transfer-amount{color:var(--red)}
 .transfer-sub{font-size:12px;font-family:'DM Mono',monospace}
-.transfer-card.positive .transfer-sub{color:var(--green)}
-.transfer-card.zero .transfer-sub{color:var(--gray-400)}
-.transfer-card.negative .transfer-sub{color:var(--red)}
+.transfer.positive .transfer-sub{color:var(--green)}
+.transfer.zero .transfer-sub{color:var(--gray-400)}
+.transfer.negative .transfer-sub{color:var(--red)}
 
-/* Reserve card */
-.reserve-card{background:var(--amber-light);border-radius:var(--radius);padding:16px 20px;margin-bottom:12px;border:1px solid #E8C77A}
-.reserve-label{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;font-family:'DM Mono',monospace;color:var(--amber);margin-bottom:4px}
-.reserve-amount{font-family:'DM Mono',monospace;font-size:26px;font-weight:500;color:var(--amber);line-height:1;margin-bottom:4px}
-.reserve-sub{font-size:12px;color:#C88A20;font-family:'DM Mono',monospace}
-
-/* Bill rows */
-.bill-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--gray-100)}
+/* Bill items */
+.bill-item{padding:14px 16px;border-bottom:1px solid var(--gray-100)}
 .bill-item:last-child{border-bottom:none}
-.bill-day-badge{min-width:40px;height:40px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--gray-100);flex-shrink:0}
-.bill-day-badge .bday{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;line-height:1;color:var(--gray-900)}
-.bill-day-badge .bmo{font-size:9px;color:var(--gray-400);font-family:'DM Mono',monospace;text-transform:uppercase}
-.bill-day-badge.urgent{background:var(--red-light)}.bill-day-badge.urgent .bday{color:var(--red)}
-.bill-day-badge.soon{background:var(--amber-light)}.bill-day-badge.soon .bday{color:var(--amber)}
-.bill-day-badge.next-period{background:var(--blue-light)}.bill-day-badge.next-period .bday{color:var(--blue)}
-.bill-info{flex:1}
+.bill-item.paid-zelle{background:var(--purple-light)}
+.bill-item.paid-direct{background:var(--green-light)}
+.bill-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
 .bill-name{font-size:14px;font-weight:500;color:var(--gray-900)}
-.bill-sub{font-size:11px;color:var(--gray-400);font-family:'DM Mono',monospace;margin-top:2px}
-.bill-right{text-align:right}
-.bill-amount{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--gray-900)}
-.bill-payer{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:500;margin-top:3px;display:inline-block}
-.payer-you{background:#FEF3C7;color:#92400E}
-.payer-trans{background:var(--blue-light);color:#1E40AF}
-.payer-him{background:var(--green-light);color:var(--green-dark)}
+.bill-name.paid{text-decoration:line-through;color:var(--gray-400)}
+.bill-meta{font-size:11px;color:var(--gray-400);font-family:'DM Mono',monospace;margin-top:2px}
+.bill-amount{font-family:'DM Mono',monospace;font-size:15px;font-weight:500}
+.bill-actions{display:flex;gap:8px}
+.bill-btn{flex:1;padding:8px 12px;border:none;border-radius:var(--radius-sm);font-size:12px;font-weight:500;cursor:pointer;transition:all 0.15s;font-family:'DM Sans',sans-serif}
+.bill-btn.zelle{background:var(--purple-light);color:var(--purple)}
+.bill-btn.zelle.done{background:var(--purple);color:white}
+.bill-btn.direct{background:var(--green-light);color:var(--green-dark)}
+.bill-btn.direct.done{background:var(--green);color:white}
+.bill-tag{font-size:10px;padding:2px 7px;border-radius:20px;font-weight:500;margin-left:6px}
+.tag-recurring{background:var(--gray-100);color:var(--gray-600)}
+.tag-onetime{background:var(--purple-light);color:var(--purple)}
+.tag-temp{background:var(--amber-light);color:var(--amber)}
 
-/* Breakdown lines */
-.breakdown{margin-top:12px;padding-top:12px;border-top:1px solid rgba(0,0,0,0.06)}
-.breakdown-row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;color:var(--gray-600);font-family:'DM Mono',monospace}
-.breakdown-row:last-child{margin-bottom:0;font-weight:500;color:var(--gray-900);font-size:14px;padding-top:6px;border-top:1px solid var(--gray-200)}
-.breakdown-row.highlight{color:var(--amber)}
+/* Next period preview */
+.next-preview{background:var(--blue-light);border-radius:var(--radius);padding:16px;margin-bottom:12px;border:1px solid #90BDE8}
+.next-preview-title{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;font-family:'DM Mono',monospace;color:#185FA5;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.next-preview-content{display:none}
+.next-preview-content.open{display:block}
+.next-bill-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(55,138,221,0.15);font-size:13px}
+.next-bill-row:last-child{border-bottom:none}
 
-/* Paycheck input */
-.paycheck-section{background:white;border-radius:var(--radius);border:2px solid var(--gray-900);padding:18px;margin-bottom:12px}
-.pc-label{font-size:11px;color:var(--gray-400);font-family:'DM Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px}
-.pc-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.pc-row:last-of-type{margin-bottom:0}
-.pc-row label{font-size:14px;color:var(--gray-600)}
-.pc-input-wrap{display:flex;align-items:center;gap:4px}
-.pc-input-wrap span{font-size:14px;color:var(--gray-400);font-family:'DM Mono',monospace}
-.pc-input{font-family:'DM Mono',monospace;font-size:18px;font-weight:500;color:var(--gray-900);border:none;outline:none;background:transparent;text-align:right;width:100px;-moz-appearance:textfield}
-.pc-input::-webkit-outer-spin-button,.pc-input::-webkit-inner-spin-button{-webkit-appearance:none}
+/* Countdown */
+.countdown{background:var(--gray-900);border-radius:var(--radius);padding:16px 20px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+.countdown-left .cd-label{font-size:11px;color:var(--gray-400);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.08em}
+.countdown-left .cd-date{font-size:13px;color:var(--gray-400);margin-top:2px;font-family:'DM Mono',monospace}
+.countdown-days{font-family:'DM Mono',monospace;font-size:48px;font-weight:500;color:white;line-height:1}
+.countdown-unit{font-size:14px;color:var(--gray-400);margin-top:4px;font-family:'DM Mono',monospace}
 
-/* Planner bill editor */
-.planner-row{display:grid;grid-template-columns:36px 1fr 70px 110px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100);gap:8px}
+/* Planner */
+.planner-row{display:grid;grid-template-columns:36px 1fr 70px 36px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100);gap:8px}
 .planner-row:last-child{border-bottom:none}
-.day-badge{font-family:'DM Mono',monospace;font-size:12px;background:var(--gray-100);border-radius:6px;padding:3px 6px;text-align:center;color:var(--gray-600)}
-.planner-name{font-size:13px;font-weight:500;color:var(--gray-900)}
-.planner-sub{font-size:10px;color:var(--gray-400);font-family:'DM Mono',monospace}
+.day-badge{font-family:'DM Mono',monospace;font-size:12px;background:var(--gray-100);border-radius:6px;padding:3px 6px;text-align:center;color:var(--gray-600);min-width:30px}
+.planner-info .pname{font-size:13px;font-weight:500}
+.planner-info .pmeta{font-size:11px;color:var(--gray-400);font-family:'DM Mono',monospace;margin-top:1px}
 .amt-input{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;border:1px solid var(--gray-200);border-radius:6px;padding:4px 8px;text-align:right;width:66px;background:var(--gray-50);-moz-appearance:textfield}
 .amt-input::-webkit-outer-spin-button,.amt-input::-webkit-inner-spin-button{-webkit-appearance:none}
-.payer-select{font-size:11px;padding:4px 6px;border-radius:20px;border:1px solid var(--gray-200);background:var(--gray-50);color:var(--gray-600);cursor:pointer}
+.del-btn{background:none;border:none;cursor:pointer;color:var(--gray-200);font-size:20px;transition:color 0.15s;padding:0;text-align:center}
+.del-btn:hover{color:var(--red)}
 
-/* Lock screen */
+/* Add bill form */
+.add-form{padding:14px 16px}
+.add-form input[type=text]{font-size:14px;border:none;outline:none;background:transparent;color:var(--gray-900);width:100%}
+.add-form input[type=text]::placeholder{color:var(--gray-200)}
+.form-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.form-row label{font-size:13px;color:var(--gray-600);min-width:80px}
+.form-row input{font-family:'DM Mono',monospace;font-size:14px;border:1px solid var(--gray-200);border-radius:6px;padding:6px 10px;background:var(--gray-50);width:80px;-moz-appearance:textfield}
+.form-row input::-webkit-outer-spin-button,.form-row input::-webkit-inner-spin-button{-webkit-appearance:none}
+.type-toggle{display:flex;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--gray-200)}
+.type-btn{flex:1;padding:8px;font-size:12px;font-weight:500;border:none;cursor:pointer;background:var(--gray-50);color:var(--gray-400);transition:all 0.15s}
+.type-btn.active-once{background:var(--purple-light);color:var(--purple)}
+.type-btn.active-recur{background:var(--green-light);color:var(--green-dark)}
+.add-submit{width:100%;padding:11px;background:var(--gray-900);color:white;border:none;border-radius:var(--radius-sm);font-size:14px;font-weight:500;cursor:pointer;margin-top:4px;font-family:'DM Sans',sans-serif}
+
+/* Lock */
 .lock-screen{position:fixed;inset:0;background:var(--gray-900);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:100;padding:24px}
-.lock-screen h2{font-size:13px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-400);font-family:'DM Mono',monospace;margin-bottom:8px}
+.lock-screen h2{font-size:13px;color:var(--gray-400);font-family:'DM Mono',monospace;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
 .lock-screen h3{font-size:24px;font-weight:500;color:white;margin-bottom:32px}
 .lock-input{font-family:'DM Mono',monospace;font-size:28px;color:white;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius);padding:14px 20px;width:100%;max-width:280px;text-align:center;outline:none;-webkit-text-security:disc}
-.lock-btn{margin-top:14px;padding:14px 32px;background:white;color:var(--gray-900);border:none;border-radius:var(--radius);font-size:15px;font-weight:500;cursor:pointer;width:100%;max-width:280px}
+.lock-btn{margin-top:14px;padding:14px;background:white;color:var(--gray-900);border:none;border-radius:var(--radius);font-size:15px;font-weight:500;cursor:pointer;width:100%;max-width:280px}
 .lock-error{font-size:13px;color:var(--red);margin-top:10px;font-family:'DM Mono',monospace;display:none}
 
-.action-btn{padding:14px;background:var(--gray-900);color:white;border:none;border-radius:var(--radius);font-size:15px;font-weight:500;cursor:pointer;width:100%;margin-top:8px;font-family:'DM Sans',sans-serif}
+.action-btn{padding:13px;background:var(--gray-900);color:white;border:none;border-radius:var(--radius);font-size:14px;font-weight:500;cursor:pointer;width:100%;margin-top:0;font-family:'DM Sans',sans-serif}
 .action-btn.green{background:var(--green)}
-.empty-state{padding:24px;text-align:center;font-size:13px;color:var(--gray-400);font-family:'DM Mono',monospace}
-.tip-box{background:var(--blue-light);border-radius:var(--radius-sm);padding:12px 16px;margin-bottom:12px;font-size:13px;color:#185FA5;line-height:1.5}
 .reset-btn{display:block;margin:10px auto 0;background:none;border:none;font-size:12px;color:var(--gray-400);font-family:'DM Mono',monospace;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .reset-btn:hover{color:var(--red)}
 footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400);font-family:'DM Mono',monospace}
@@ -143,7 +149,7 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
 </head>
 <body>
 
-<!-- LOCK SCREEN -->
+<!-- LOCK -->
 <div class="lock-screen" id="lock-screen" style="display:none">
   <h2>planner access</h2>
   <h3>Chandler's Budget</h3>
@@ -158,282 +164,273 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
       <h1>Chandler's budget</h1>
       <div class="saved-badge" id="saved-badge" style="color: var(--green);">✓ saved</div>
     </div>
-    <div class="header-period" id="header-period">May 21 – Jun 4</div>
+    <div class="header-sub" id="header-sub">period: Jun 5 – Jun 18</div>
   </div>
 </header>
 
 <div class="tab-bar">
-  <button class="tab-btn active" onclick="switchTab(&#39;dashboard&#39;,this)">Dashboard</button>
-  <button class="tab-btn" onclick="switchTab(&#39;bills&#39;,this)">Bills</button>
-  <button class="tab-btn" onclick="switchTab(&#39;payday&#39;,this)">Payday</button>
-  <button class="tab-btn" onclick="switchTab(&#39;planner&#39;,this)" id="planner-tab">Planner</button>
+  <button class="tab-btn active" onclick="switchTab(&#39;home&#39;,this)">Home</button>
+  <button class="tab-btn" onclick="switchTab(&#39;planner&#39;,this)">Planner</button>
 </div>
 
-<!-- ══════════════════════════════════════
-     DASHBOARD
-══════════════════════════════════════ -->
-<div class="view active" id="view-dashboard">
+<!-- ══ HOME ══ -->
+<div class="view active" id="view-home">
 <div class="container">
 
-  <p class="section-title">checking balance</p>
-  <div class="balance-hero">
-    <div class="bal-label">enter current balance</div>
-    <div class="bal-row">
-      <span class="bal-dollar">$</span>
-      <input type="number" class="bal-input" id="balance-input" value="317" min="0" inputmode="decimal" oninput="state.balance=parseFloat(this.value)||0;recalc();dSave();">
+  <p class="section-title">this payday</p>
+  <div class="hero">
+    <div class="hero-label">enter amounts</div>
+    <div class="hero-row">
+      <label>balance</label>
+      <span class="hero-dollar">$</span>
+      <input type="number" class="hero-input" id="balance-input" value="0" min="0" inputmode="decimal" oninput="calc()">
     </div>
-    <div class="bal-status" id="bal-status" style="color: rgb(186, 117, 23);">close to floor</div>
-  </div>
-
-  <!-- Smart floor -->
-  <div class="reserve-card" id="reserve-card" style="display:none">
-    <div class="reserve-label">⚠ elevated floor this period</div>
-    <div class="reserve-amount" id="reserve-amount">$300</div>
-    <div class="reserve-sub" id="reserve-sub">base $300 floor</div>
+    <div class="hero-row">
+      <label>paycheck</label>
+      <span class="hero-dollar">$</span>
+      <input type="number" class="hero-input sm" id="paycheck-input" value="0" min="0" inputmode="decimal" oninput="calc()">
+    </div>
   </div>
 
   <!-- Transfer to Fidelity -->
-  <div class="transfer-card zero" id="transfer-card">
-    <div class="transfer-label" id="transfer-label">transfer to fidelity</div>
+  <div class="transfer negative" id="transfer-card">
+    <div class="transfer-label" id="transfer-label">tight period — no transfer</div>
     <div class="transfer-amount" id="transfer-amount">$0</div>
-    <div class="transfer-sub" id="transfer-sub">use Payday tab on payday to calculate transfer</div>
+    <div class="transfer-sub" id="transfer-sub">bills + floor + spending exceed available funds</div>
   </div>
 
-  <!-- Breakdown -->
-  <p class="section-title">this period breakdown</p>
-  <div class="card" id="breakdown-card">
-    <div class="card-row"><div class="row-label">current balance</div><div class="row-val">$317.00</div></div>
-    <div class="card-row"><div><div class="row-label">bills remaining this period</div><div class="row-sub">0 bills still due</div></div><div class="row-val red">-$0.00</div></div>
-    <div class="card-row"><div><div class="row-label">floor reserve</div><div class="row-sub">$300 minimum balance</div></div><div class="row-val amber">-$300.00</div></div>
-    <div class="card-row"><div><div class="row-label">spending allowance</div><div class="row-sub">14 day period · $200 payday + $20/day</div></div><div class="row-val amber">-$460</div></div>
-    <div class="card-row" style="background:var(--gray-50)">
-      <div><div class="row-label" style="font-weight:500">nothing to transfer yet</div>
-      <div class="row-sub" style="color:var(--gray-400)">use Payday tab on payday for full calculation</div></div>
-      <div class="row-val red">$0.00</div>
+  <!-- Math breakdown -->
+  <div class="card" id="breakdown-card" style="display: block;">
+    <div class="card-row" id="br-balance"><div class="row-label">balance + paycheck</div><div class="row-val green" id="br-balance-val">$317.00</div></div>
+    <div class="card-row"><div><div class="row-label">bills this period</div><div class="row-sub" id="br-bills-sub">5 bills due</div></div><div class="row-val red" id="br-bills-val">-$1127.66</div></div>
+    <div class="card-row"><div><div class="row-label">$300 floor</div><div class="row-sub">minimum balance</div></div><div class="row-val amber">-$300</div></div>
+    <div class="card-row"><div><div class="row-label">spending allowance</div><div class="row-sub">$200 today + $20/day × 13</div></div><div class="row-val amber">-$460</div></div>
+  </div>
+
+  <!-- Bills this period -->
+  <p class="section-title">bills this period — <span id="period-label" style="color:var(--gray-600)">Jun 5 – Jun 18</span></p>
+  <div class="card" id="bills-card"><div class="bill-item">
+      <div class="bill-top">
+        <div>
+          <div class="bill-name">GCWW Water<span class="bill-tag tag-recurring">recurring</span></div>
+          <div class="bill-meta">Jun 8 · 3d away</div>
+        </div>
+        <div class="bill-amount" style="">$75.74</div>
+      </div>
+      <div class="bill-actions">
+        <button class="bill-btn zelle" onclick="markBill(&#39;gcww-5-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
+        <button class="bill-btn direct" onclick="markBill(&#39;gcww-5-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
+      </div>
+    </div><div class="bill-item">
+      <div class="bill-top">
+        <div>
+          <div class="bill-name">Real Estate Taxes<span class="bill-tag tag-recurring">recurring</span></div>
+          <div class="bill-meta">Jun 10 · 5d away</div>
+        </div>
+        <div class="bill-amount" style="">$472.48</div>
+      </div>
+      <div class="bill-actions">
+        <button class="bill-btn zelle" onclick="markBill(&#39;realestate-5-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
+        <button class="bill-btn direct" onclick="markBill(&#39;realestate-5-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
+      </div>
+    </div><div class="bill-item">
+      <div class="bill-top">
+        <div>
+          <div class="bill-name">Duke Energy<span class="bill-tag tag-recurring">recurring</span></div>
+          <div class="bill-meta">Jun 11 · 6d away</div>
+        </div>
+        <div class="bill-amount" style="">$298.00</div>
+      </div>
+      <div class="bill-actions">
+        <button class="bill-btn zelle" onclick="markBill(&#39;duke-5-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
+        <button class="bill-btn direct" onclick="markBill(&#39;duke-5-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
+      </div>
+    </div><div class="bill-item">
+      <div class="bill-top">
+        <div>
+          <div class="bill-name">Progressive Auto (15th) — June<span class="bill-tag tag-onetime">one-time</span></div>
+          <div class="bill-meta">Jun 15 · 10d away</div>
+        </div>
+        <div class="bill-amount" style="">$172.92</div>
+      </div>
+      <div class="bill-actions">
+        <button class="bill-btn zelle" onclick="markBill(&#39;june15prog-5-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
+        <button class="bill-btn direct" onclick="markBill(&#39;june15prog-5-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
+      </div>
+    </div><div class="bill-item">
+      <div class="bill-top">
+        <div>
+          <div class="bill-name">Spectrum<span class="bill-tag tag-recurring">recurring</span></div>
+          <div class="bill-meta">Jun 17 · 12d away</div>
+        </div>
+        <div class="bill-amount" style="">$108.52</div>
+      </div>
+      <div class="bill-actions">
+        <button class="bill-btn zelle" onclick="markBill(&#39;spectrum-5-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
+        <button class="bill-btn direct" onclick="markBill(&#39;spectrum-5-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
+      </div>
+    </div></div>
+
+  <!-- Next period preview -->
+  <div class="next-preview">
+    <div class="next-preview-title" onclick="toggleNextPreview()">
+      <span>next period preview</span>
+      <span id="next-toggle-icon">▼</span>
+    </div>
+    <div class="next-preview-content" id="next-preview-content">
+      <div id="next-bills-list">
+    <div class="next-bill-row">
+      <span style="color:#185FA5">Cell Phone</span>
+      <span style="font-family:&#39;DM Mono&#39;,monospace;color:#185FA5;font-weight:500">$72.88</span>
+    </div>
+  
+    <div class="next-bill-row">
+      <span style="color:#185FA5">Progressive Auto (1st)</span>
+      <span style="font-family:&#39;DM Mono&#39;,monospace;color:#185FA5;font-weight:500">$142.17</span>
+    </div>
+  
+    <div class="next-bill-row">
+      <span style="color:#185FA5">CSAA Home Insurance</span>
+      <span style="font-family:&#39;DM Mono&#39;,monospace;color:#185FA5;font-weight:500">$68.93</span>
+    </div>
+  </div>
+      <div style="display:flex;justify-content:space-between;padding-top:8px;margin-top:8px;border-top:1px solid rgba(55,138,221,0.2);font-size:13px;font-weight:500;color:#185FA5">
+        <span>total</span>
+        <span id="next-total">$283.98</span>
+      </div>
     </div>
   </div>
 
-  <!-- Spending allowance -->
-  <p class="section-title">spending allowance</p>
-  <div class="card">
-    <div class="card-row">
-      <div><div class="row-label" id="allowance-label">daily allowance</div><div class="row-sub">$20/day · $200 on payday</div></div>
-      <div class="row-val green" id="allowance-today">$20</div>
+  <!-- Countdown -->
+  <div class="countdown">
+    <div class="countdown-left">
+      <div class="cd-label" id="cd-label">payday today!</div>
+      <div class="cd-date" id="cd-date">enter your paycheck above</div>
     </div>
-    <div class="card-row">
-      <div><div class="row-label">period allowance</div><div class="row-sub">14 days total</div></div>
-      <div class="row-val" id="allowance-period">$460</div>
+    <div style="text-align:right">
+      <div class="countdown-days" id="cd-days">🎉</div>
+      <div class="countdown-unit" id="cd-unit"></div>
     </div>
-  </div>
-
-  <!-- Payday countdown -->
-  <p class="section-title">next payday</p>
-  <div class="balance-hero" style="padding:16px 20px">
-    <div class="bal-label" id="countdown-label">days until payday</div>
-    <div style="display:flex;align-items:baseline;gap:8px;margin-top:4px">
-      <div style="font-family:&#39;DM Mono&#39;,monospace;font-size:52px;font-weight:500;color:white;line-height:1" id="countdown-days">1</div>
-      <div style="font-size:16px;color:var(--gray-400)" id="countdown-unit">day</div>
-    </div>
-    <div style="font-size:12px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;margin-top:6px" id="countdown-date">Friday, June 5</div>
   </div>
 
 </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     BILLS
-══════════════════════════════════════ -->
-<div class="view" id="view-bills">
-<div class="container">
-
-  <p class="section-title">current period bills</p>
-  <div class="card" id="current-period-bills">
-    <div class="empty-state">loading...</div>
-  </div>
-
-  <p class="section-title">next period bills <span style="font-size:10px;color:var(--blue);font-family:&#39;DM Mono&#39;,monospace;background:var(--blue-light);padding:2px 8px;border-radius:20px;margin-left:6px">lookahead</span></p>
-  <div class="card" id="next-period-bills">
-    <div class="empty-state">loading...</div>
-  </div>
-
-  <div class="tip-box" style="margin-top:8px">To add or remove bills, use the <strong>Planner tab</strong> (password protected).</div>
-
-</div>
-</div>
-
-<!-- ══════════════════════════════════════
-     PAYDAY CALCULATOR
-══════════════════════════════════════ -->
-<div class="view" id="view-payday">
-<div class="container">
-
-  <p class="section-title" id="payday-title">payday calculator</p>
-
-  <div class="paycheck-section">
-    <div class="pc-label" id="pc-label">enter paycheck to calculate</div>
-    <div class="pc-row">
-      <label>regular paycheck</label>
-      <div class="pc-input-wrap"><span>$</span><input type="number" class="pc-input" id="pc-regular" value="0" inputmode="decimal" oninput="calcPayday()"></div>
-    </div>
-    <div class="pc-row" id="bonus-row" style="display:none">
-      <label>bonus amount</label>
-      <div class="pc-input-wrap"><span>$</span><input type="number" class="pc-input" id="pc-bonus" value="0" inputmode="decimal" oninput="calcPayday()"></div>
-    </div>
-  </div>
-
-  <div class="card" id="payday-breakdown">
-    <div class="empty-state">enter paycheck amount above</div>
-  </div>
-
-  <div class="transfer-card zero" id="payday-transfer-card">
-    <div class="transfer-label" id="payday-transfer-label">transfer to fidelity</div>
-    <div class="transfer-amount" id="payday-transfer-amount">$0</div>
-    <div class="transfer-sub" id="payday-transfer-sub">enter paycheck to calculate</div>
-  </div>
-
-  <button class="action-btn green" onclick="logPaycheck()" style="margin-top:0">Log this paycheck → update savings</button>
-
-  <p class="section-title" style="margin-top:20px">next payday</p>
-  <div class="card">
-    <div class="card-row">
-      <div><div class="row-label" id="next-payday-label">next payday</div><div class="row-sub" id="next-payday-sub"></div></div>
-      <div class="row-val green" id="next-payday-days"></div>
-    </div>
-  </div>
-
-</div>
-</div>
-
-<!-- ══════════════════════════════════════
-     PLANNER
-══════════════════════════════════════ -->
+<!-- ══ PLANNER ══ -->
 <div class="view" id="view-planner">
 <div class="container">
 
-  <div class="tip-box">Manage bill amounts, handoff status, and settings. Flip bills from "Dad Pays" to "Chandler Pays" as he takes over each one.</div>
-
   <p class="section-title">recurring bills</p>
-  <div class="card" id="planner-bills"></div>
+  <div class="card" id="planner-recurring"></div>
+
+  <p class="section-title">one-time bills</p>
+  <div class="card" id="planner-onetime">
+    <div style="padding:16px;text-align:center;font-size:13px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace" id="onetime-empty">none added</div>
+  </div>
 
   <p class="section-title">add a bill</p>
   <div class="card">
-    <div style="display:grid;grid-template-columns:1fr 80px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--gray-100);gap:8px">
-      <input type="text" id="new-bill-name" placeholder="bill name" style="font-size:14px;border:none;outline:none;background:transparent;color:var(--gray-900);width:100%">
-      <div style="display:flex;align-items:center;gap:4px;justify-content:flex-end">
-        <span style="font-size:13px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace">$</span>
-        <input type="number" id="new-bill-amount" style="font-family:&#39;DM Mono&#39;,monospace;font-size:15px;font-weight:500;border:none;outline:none;background:transparent;text-align:right;width:70px;-moz-appearance:textfield;color:var(--gray-900)" inputmode="decimal">
+    <div class="add-form">
+      <div class="form-row" style="margin-bottom:10px">
+        <input type="text" id="new-name" placeholder="bill name" style="font-size:15px;border:none;outline:none;background:transparent;color:var(--gray-900);width:100%">
       </div>
-    </div>
-    <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--gray-100)">
-      <label style="font-size:13px;color:var(--gray-600)">Day of month:</label>
-      <input type="number" id="new-bill-day" min="1" max="31" style="width:50px;font-family:&#39;DM Mono&#39;,monospace;font-size:14px;border:1px solid var(--gray-200);border-radius:6px;padding:4px 8px;background:var(--gray-50);text-align:center">
-    </div>
-    <div style="display:flex;align-items:center;gap:0;padding:0;border-bottom:1px solid var(--gray-100)">
-      <button id="bill-type-once" onclick="setBillType(&#39;once&#39;)" style="flex:1;padding:10px;font-size:13px;font-weight:500;border:none;cursor:pointer;background:#EDE9FE;color:#6D28D9;transition:all 0.15s">
-        one-time
-      </button>
-      <button id="bill-type-recurring" onclick="setBillType(&#39;recurring&#39;)" style="flex:1;padding:10px;font-size:13px;font-weight:500;border:none;cursor:pointer;background:var(--gray-50);color:var(--gray-400);border-left:1px solid var(--gray-200);transition:all 0.15s">
-        recurring every month
-      </button>
-    </div>
-    <div style="padding:12px 16px">
-      <div id="bill-type-note" style="font-size:12px;color:#6D28D9;font-family:&#39;DM Mono&#39;,monospace;margin-bottom:10px">this bill will appear in the current pay period only</div>
-      <button onclick="addNewBill()" style="padding:10px 16px;background:var(--gray-900);color:white;border:none;border-radius:var(--radius-sm);font-size:13px;font-weight:500;cursor:pointer;width:100%">Add Bill</button>
+      <div class="form-row">
+        <label>amount $</label>
+        <input type="number" id="new-amount" min="0" inputmode="decimal" placeholder="0.00">
+      </div>
+      <div class="form-row">
+        <label>day of month</label>
+        <input type="number" id="new-day" min="1" max="31" inputmode="numeric" placeholder="1">
+      </div>
+      <div class="form-row">
+        <label>type</label>
+        <div class="type-toggle">
+          <button class="type-btn active-recur" id="type-recur" onclick="setType(&#39;recurring&#39;)">recurring</button>
+          <button class="type-btn" id="type-once" onclick="setType(&#39;once&#39;)">one-time</button>
+        </div>
+      </div>
+      <button class="add-submit" onclick="addBill()">Add Bill</button>
     </div>
   </div>
-
-  <p class="section-title">custom bills (deletable)</p>
-  <div class="card" id="custom-bills-card">
-    <div class="empty-state" id="custom-bills-empty">no custom bills added</div>
-  </div>
-
-  <p class="section-title">bill due dates</p>
-  <div class="card" id="planner-dates"></div>
 
   <p class="section-title">settings</p>
   <div class="card">
     <div class="card-row">
-      <div><div class="row-label">checking floor</div><div class="row-sub">minimum always in checking</div></div>
+      <div><div class="row-label">checking floor</div><div class="row-sub">minimum balance</div></div>
       <div style="display:flex;align-items:center;gap:4px">
         <span style="font-size:14px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace">$</span>
-        <input type="number" class="amt-input" id="floor-input" value="300" inputmode="decimal" oninput="state.floor=parseFloat(this.value)||300;" onblur="state.floor=parseFloat(this.value)||300;recalc();save();" style="width:80px">
-      </div>
-    </div>
-    <div class="card-row">
-      <div><div class="row-label">annual savings goal</div></div>
-      <div style="display:flex;align-items:center;gap:4px">
-        <span style="font-size:14px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace">$</span>
-        <input type="number" class="amt-input" id="goal-input" value="10000" inputmode="decimal" oninput="state.savingsGoal=parseFloat(this.value)||10000;document.getElementById(&#39;savings-goal-display&#39;).textContent=&#39;$&#39;+state.savingsGoal.toLocaleString();" onblur="state.savingsGoal=parseFloat(this.value)||10000;save();" style="width:90px">
+        <input type="number" class="amt-input" id="floor-input" value="300" inputmode="decimal" onblur="state.floor=parseFloat(this.value)||300;calc();save()">
       </div>
     </div>
   </div>
 
-  <button class="action-btn green" onclick="forceSave()" id="save-btn" style="margin-bottom:4px">✓ Save All Changes</button>
-  <p id="save-confirm" style="text-align:center;font-size:12px;font-family:&#39;DM Mono&#39;,monospace;color:var(--green);height:18px;margin-bottom:8px;opacity:0;transition:opacity 0.4s"></p>
-
-
-
+  <button class="action-btn" onclick="forceSave()" style="margin-bottom:8px">✓ Save All Changes</button>
+  <p id="save-confirm" style="text-align:center;font-size:12px;font-family:&#39;DM Mono&#39;,monospace;color:var(--green);height:18px;opacity:0;transition:opacity 0.4s;margin-bottom:12px"></p>
   <button class="reset-btn" onclick="resetAll()">reset all data</button>
   <button class="reset-btn" onclick="lockPlanner()" style="color:var(--blue);margin-top:6px">lock planner</button>
 
 </div>
 </div>
 
-<footer><div class="container"><p>chandler's budget · managed with dad</p></div></footer>
+<footer><div class="container"><p>chandler's budget · 2026</p></div></footer>
 
 <script>
-const STORAGE_KEY = 'chandler_v2';
+const STORAGE_KEY = 'chandler_v3';
 const PASSWORD = 'Soccer18';
-const FLOOR_BASE = 300;
-const PERIOD_DAYS = 14;
-const DAILY_ALLOWANCE = 20;
-const PAYDAY_ALLOWANCE = 200;
-const PERIOD_ALLOWANCE = PAYDAY_ALLOWANCE + (PERIOD_DAYS - 1) * DAILY_ALLOWANCE; // $460
-const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const FLOOR = 300;
+const PERIOD_ALLOWANCE = 460; // $200 payday + $20 x 13 days
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-// Fixed 2026 paydays (biweekly from Jun 5)
+// Fixed 2026 paydays
 const PAYDAYS = [
   '1/1/2026','1/15/2026','1/29/2026','2/12/2026','2/26/2026',
   '3/12/2026','3/26/2026','4/9/2026','4/23/2026','5/7/2026',
   '5/21/2026','6/5/2026','6/19/2026','7/3/2026','7/17/2026',
   '7/31/2026','8/14/2026','8/28/2026','9/11/2026','9/25/2026',
   '10/9/2026','10/23/2026','11/6/2026','11/20/2026','12/4/2026','12/18/2026'
-].map(d => { const [m,day,y] = d.split('/'); return new Date(+y,+m-1,+day); });
+].map(d=>{const[m,day,y]=d.split('/');return new Date(+y,+m-1,+day);});
 
-const BONUS_PAYDAYS = PAYDAYS.filter((d,i) => !PAYDAYS[i+1] || PAYDAYS[i+1].getMonth() !== d.getMonth());
+const BONUS_PAYDAYS = PAYDAYS.filter((d,i)=>!PAYDAYS[i+1]||PAYDAYS[i+1].getMonth()!==d.getMonth());
 
-function isPayday(d) { return PAYDAYS.some(p => p.toDateString() === d.toDateString()); }
-function isBonusPayday(d) { return BONUS_PAYDAYS.some(p => p.toDateString() === d.toDateString()); }
-function getPrevPayday(d) { return [...PAYDAYS].reverse().find(p => p <= d) || PAYDAYS[0]; }
-function getNextPayday(d) { return PAYDAYS.find(p => p > d); }
-function getPeriodEnd(d) {
-  const next = getNextPayday(d);
-  if (!next) return new Date(d.getFullYear(), d.getMonth()+1, 0);
-  const end = new Date(next); end.setDate(end.getDate()-1); return end;
+function isPayday(d){return PAYDAYS.some(p=>p.toDateString()===d.toDateString());}
+function isBonusPayday(d){return BONUS_PAYDAYS.some(p=>p.toDateString()===d.toDateString());}
+function getPrevPayday(d){return[...PAYDAYS].reverse().find(p=>p<=d)||PAYDAYS[0];}
+function getNextPayday(d){return PAYDAYS.find(p=>p>d);}
+function getPeriodEnd(start){
+  const next=getNextPayday(start);
+  if(!next)return new Date(start.getFullYear(),start.getMonth()+1,0);
+  const e=new Date(next);e.setDate(e.getDate()-1);return e;
 }
 
 const DEFAULT_BILLS = [
-  {id:'auto1', name:'Progressive Auto (1st)', amount:142.17, day:1,  skipMonths:[],      quarterly:false, quarterMonths:[], payer:'you', payMethod:'Discover'},
-  {id:'auto15',name:'Progressive Auto (15th)',amount:142.17, day:15, skipMonths:[5],     quarterly:false, quarterMonths:[], payer:'you', payMethod:'Discover'},
-  {id:'csaa',  name:'CSAA Home Insurance',  amount:68.93,  day:2,  skipMonths:[],      quarterly:false, quarterMonths:[], payer:'you', payMethod:'Discover'},
-  {id:'realestate', name:'Real Estate Taxes', amount:472.48, day:10, skipMonths:[6,7], quarterly:false, quarterMonths:[], payer:'you', payMethod:'Checking'},
-  {id:'duke',  name:'Duke Energy',           amount:298,    day:12, skipMonths:[],      quarterly:false, quarterMonths:[], payer:'you', payMethod:'Checking'},
-  {id:'gcww',  name:'GCWW Water',            amount:80,     day:8,  skipMonths:[],      quarterly:false, quarterMonths:[], payer:'you', payMethod:'Checking'},
-  {id:'spectrum',name:'Spectrum',            amount:113,    day:17, skipMonths:[],      quarterly:false, quarterMonths:[], payer:'you', payMethod:'Citi'},
-  {id:'cell',  name:'Cell Phone',            amount:82,     day:20, skipMonths:[],      quarterly:false, quarterMonths:[], payer:'you', payMethod:'Citi'},
-  {id:'rumpke',name:'Rumpke Trash',          amount:21,     day:25, skipMonths:[],      quarterly:true,  quarterMonths:[2,4,7,10], payer:'you', payMethod:'Checking'},
+  {id:'auto1', name:'Progressive Auto (1st)', amount:142.17, day:1,  type:'recurring', skipMonths:[], quarterly:false, quarterMonths:[]},
+  {id:'auto15',name:'Progressive Auto (15th)',amount:142.17, day:15, type:'recurring', skipMonths:[5], quarterly:false, quarterMonths:[]},
+  {id:'csaa',  name:'CSAA Home Insurance',   amount:68.93,  day:2,  type:'recurring', skipMonths:[], quarterly:false, quarterMonths:[]},
+  {id:'re',    name:'Real Estate Taxes',      amount:472.48, day:10, type:'recurring', skipMonths:[6,7], quarterly:false, quarterMonths:[]},
+  {id:'duke',  name:'Duke Energy',            amount:298,    day:12, type:'recurring', skipMonths:[], quarterly:false, quarterMonths:[]},
+  {id:'gcww',  name:'GCWW Water',             amount:75.74,  day:8,  type:'recurring', skipMonths:[], quarterly:false, quarterMonths:[]},
+  {id:'spec',  name:'Spectrum',               amount:113,    day:17, type:'recurring', skipMonths:[], quarterly:false, quarterMonths:[]},
+  {id:'cell',  name:'Cell Phone',             amount:82,     day:20, type:'recurring', skipMonths:[], quarterly:false, quarterMonths:[]},
+  {id:'rump',  name:'Rumpke Trash',           amount:21,     day:25, type:'recurring', skipMonths:[], quarterly:true,  quarterMonths:[2,4,7,10]},
+];
+
+const DEFAULT_ONETIME = [
+  {id:'june15prog', name:'Progressive Auto (15th) — June', amount:172.92, day:15, month:5, year:2026, type:'onetime'},
 ];
 
 let state = {
-  balance: 317, savings: 0, savingsGoal: 10000, floor: 300,
+  balance:0, paycheck:0, floor:300,
   bills: JSON.parse(JSON.stringify(DEFAULT_BILLS)),
-  oneBills: [{id:'june15prog',name:'Progressive Auto (15th) — June',amount:172.92,day:15,month:5,year:2026,payer:'you',payMethod:'Discover'}], zelleLog: [], paycheckLog: [],
+  onetime: JSON.parse(JSON.stringify(DEFAULT_ONETIME)),
+  paid: {},
 };
 
 let plannerUnlocked = false;
 let saveTimer = null;
+let newBillType = 'recurring';
+let nextPreviewOpen = false;
 
-
+// ── GIST SYNC ──
 const _t = ['ghp_1n1w','QLMgykBc','vEcyiMBW','uONVyvTo','Jk4Os4EL'].join('');
 const GIST_TOKEN = _t;
 const GIST_ID = '48758aa825cd9479d71a5f0742fd10e4';
@@ -444,782 +441,406 @@ let isSyncing = false;
 async function loadFromCloud() {
   try {
     const resp = await fetch(GIST_URL, {
-      headers: {
-        'Authorization': 'token ' + GIST_TOKEN,
-        'Accept': 'application/vnd.github.v3+json'
-      }
+      headers:{'Authorization':'token '+GIST_TOKEN,'Accept':'application/vnd.github.v3+json'}
     });
-    if (resp.ok) {
+    if(resp.ok){
       const data = await resp.json();
       const content = data.files[GIST_FILE]?.content;
-      if (content) return JSON.parse(content);
+      if(content){const d=JSON.parse(content);if(d&&d.version)return d;}
     }
-  } catch(e) {}
+  } catch(e){}
   return null;
 }
 
-async function saveToCloud(data) {
-  if (isSyncing) return;
-  isSyncing = true;
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  } catch(e) {}
-  try {
-    const body = { files: {} };
-    body.files[GIST_FILE] = { content: JSON.stringify(data) };
-    const resp = await fetch(GIST_URL, {
-      method: 'PATCH',
-      headers: {
-        'Authorization': 'token ' + GIST_TOKEN,
-        'Content-Type': 'application/json',
-        'Accept': 'application/vnd.github.v3+json'
-      },
-      body: JSON.stringify(body)
-    });
-    if (resp.ok) {
-      const b = document.getElementById('saved-badge');
-      if (b) {
-        b.textContent = '✓ saved';
-        b.style.color = 'var(--green, #1D9E75)';
-        b.classList.add('show');
-        clearTimeout(saveTimer);
-        saveTimer = setTimeout(() => b.classList.remove('show'), 2000);
-      }
-    }
-  } catch(e) {
-    const b = document.getElementById('saved-badge');
-    if (b) {
-      b.textContent = '⚠ offline';
-      b.style.color = '#BA7517';
-      b.classList.add('show');
-      clearTimeout(saveTimer);
-      saveTimer = setTimeout(() => { b.classList.remove('show'); b.textContent = '✓ saved'; }, 3000);
-    }
-  }
-  isSyncing = false;
-}
-
-async function load() {
-  document.getElementById('header-period').textContent = 'loading...';
-  try {
-    const resp = await fetch(GIST_URL, {
-      headers: {
-        'Authorization': 'token ' + GIST_TOKEN,
-        'Accept': 'application/vnd.github.v3+json'
-      }
-    });
-    if (resp.ok) {
-      const data = await resp.json();
-      const content = data.files[GIST_FILE]?.content;
-      if (content) {
-        const d = JSON.parse(content);
-        if (d && d.version) {
-          state = {...state, ...d};
-          if (!state.bills?.length) state.bills = JSON.parse(JSON.stringify(DEFAULT_BILLS));
-          console.log('Loaded from Gist OK');
-          return;
-        }
-      }
-    } else {
-      console.error('Gist load failed:', resp.status);
-    }
-  } catch(e) {
-    console.error('Gist load error:', e);
-  }
-  // Fall back to localStorage
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) {
-      const d = JSON.parse(raw);
-      state = {...state, ...d};
-      if (!state.bills?.length) state.bills = JSON.parse(JSON.stringify(DEFAULT_BILLS));
-      console.log('Loaded from localStorage fallback');
-    }
-  } catch(e) {}
-}
-
 function save() {
-  // Always save to localStorage immediately
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
-  // Then sync to Gist
-  syncToGist();
+  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(e){}
+  syncGist();
 }
 
-async function syncToGist() {
-  if (isSyncing) return;
-  isSyncing = true;
-  try {
-    const body = { files: {} };
-    body.files[GIST_FILE] = { content: JSON.stringify(state) };
-    const resp = await fetch(GIST_URL, {
-      method: 'PATCH',
-      headers: {
-        'Authorization': 'token ' + GIST_TOKEN,
-        'Content-Type': 'application/json',
-        'Accept': 'application/vnd.github.v3+json'
-      },
-      body: JSON.stringify(body)
+async function syncGist() {
+  if(isSyncing)return;
+  isSyncing=true;
+  try{
+    const body={files:{}};
+    body.files[GIST_FILE]={content:JSON.stringify({...state,version:1})};
+    const resp=await fetch(GIST_URL,{
+      method:'PATCH',
+      headers:{'Authorization':'token '+GIST_TOKEN,'Content-Type':'application/json','Accept':'application/vnd.github.v3+json'},
+      body:JSON.stringify(body)
     });
-    if (resp.ok) {
-      const b = document.getElementById('saved-badge');
-      if (b) {
-        b.textContent = '✓ saved';
-        b.style.color = 'var(--green)';
-        b.classList.add('show');
-        clearTimeout(saveTimer);
-        saveTimer = setTimeout(() => b.classList.remove('show'), 2000);
-      }
-    } else {
-      console.error('Gist save failed:', resp.status, await resp.text());
-    }
-  } catch(e) {
-    console.error('Gist save error:', e);
-    const b = document.getElementById('saved-badge');
-    if (b) {
-      b.textContent = '⚠ offline';
-      b.style.color = 'var(--amber)';
+    if(resp.ok){
+      const b=document.getElementById('saved-badge');
+      b.textContent='✓ saved';b.style.color='var(--green)';
       b.classList.add('show');
       clearTimeout(saveTimer);
-      saveTimer = setTimeout(() => { b.classList.remove('show'); b.textContent = '✓ saved'; }, 3000);
+      saveTimer=setTimeout(()=>b.classList.remove('show'),2000);
     }
+  }catch(e){
+    const b=document.getElementById('saved-badge');
+    b.textContent='⚠ offline';b.style.color='#BA7517';
+    b.classList.add('show');
+    clearTimeout(saveTimer);
+    saveTimer=setTimeout(()=>{b.classList.remove('show');b.textContent='✓ saved';},3000);
   }
-  isSyncing = false;
+  isSyncing=false;
 }
 
-function dSave() { clearTimeout(saveTimer); saveTimer = setTimeout(save, 700); }
+function dSave(){clearTimeout(saveTimer);saveTimer=setTimeout(save,700);}
 
 // ── BILL HELPERS ──
-function billsForDateRange(startDate, endDate) {
-  const result = [];
-  const seen = new Set();
+function getBillsForPeriod(start, end) {
+  const result=[];
+  const seen=new Set();
 
-  // PRE-PASS: register all one-time bills and their suppress keys FIRST
-  for (const b of (state.oneBills || [])) {
-    const bd = new Date(b.year, b.month, b.day);
-    if (bd >= startDate && bd <= endDate) {
-      const key = 'one-' + b.id;
-      if (!seen.has(key)) {
+  // One-time bills first
+  for(const b of(state.onetime||[])){
+    const bd=new Date(b.year,b.month,b.day);
+    if(bd>=start&&bd<=end){
+      const key='ot-'+b.id;
+      if(!seen.has(key)){
         seen.add(key);
-        seen.add('suppress-' + b.month + '-' + b.day + '-' + b.year);
-        result.push({...b, dueDate: bd});
+        seen.add('suppress-'+b.month+'-'+b.day+'-'+b.year);
+        result.push({...b,dueDate:bd,displayType:'onetime'});
       }
     }
   }
 
-  // MAIN PASS: add recurring bills, skipping any suppressed by one-time bills
-  const tempDate = new Date(startDate);
-  while (tempDate <= endDate) {
-    const month = tempDate.getMonth();
-    const day = tempDate.getDate();
-    const year = tempDate.getFullYear();
-    for (const b of state.bills) {
-      if (b.day !== day) continue;
-      if (b.skipMonths?.includes(month)) continue;
-      if (b.quarterly && !b.quarterMonths?.includes(month)) continue;
-      if (seen.has('suppress-' + month + '-' + day + '-' + year)) continue;
-      const key = b.id + '-' + month + '-' + year;
-      if (!seen.has(key)) {
+  // Recurring bills
+  const temp=new Date(start);
+  while(temp<=end){
+    const month=temp.getMonth(),day=temp.getDate(),year=temp.getFullYear();
+    for(const b of state.bills){
+      if(b.day!==day)continue;
+      if(b.skipMonths?.includes(month))continue;
+      if(b.quarterly&&!b.quarterMonths?.includes(month))continue;
+      if(seen.has('suppress-'+month+'-'+day+'-'+year))continue;
+      const key=b.id+'-'+month+'-'+year;
+      if(!seen.has(key)){
         seen.add(key);
-        result.push({...b, dueDate: new Date(year, month, day)});
+        result.push({...b,dueDate:new Date(year,month,day),displayType:'recurring'});
       }
     }
-    tempDate.setDate(tempDate.getDate() + 1);
+    temp.setDate(temp.getDate()+1);
   }
-
-  result.sort((a,b) => a.dueDate - b.dueDate);
+  result.sort((a,b)=>a.dueDate-b.dueDate);
   return result;
 }
 
-function getCurrentPeriodBills() {
-  const today = new Date(); today.setHours(0,0,0,0);
-  // If next payday is today or in the past (already hit), use it as period start
-  const nextPD = getNextPayday(today);
-  const prevPD = getPrevPayday(today);
-  // Use the payday that most recently occurred or is today
-  const start = isPayday(today) ? today : prevPD;
-  const end = getPeriodEnd(start);
-  return billsForDateRange(start, end);
+function getCurrentPeriod() {
+  const today=new Date();today.setHours(0,0,0,0);
+  const start=isPayday(today)?today:getPrevPayday(today);
+  const end=getPeriodEnd(start);
+  return{start,end};
 }
 
-function getNextPeriodBills() {
-  const today = new Date(); today.setHours(0,0,0,0);
-  const currentStart = isPayday(today) ? today : getPrevPayday(today);
-  const currentEnd = getPeriodEnd(currentStart);
-  const nextPD = getNextPayday(currentEnd);
-  if (!nextPD) return [];
-  const end = getPeriodEnd(nextPD);
-  return billsForDateRange(nextPD, end);
+function getPaidKey(b){
+  const d=b.dueDate||new Date();
+  return String(b.id)+'-'+d.getMonth()+'-'+d.getFullYear();
 }
 
-// Smart floor: if next period bills can't be covered by next paycheck alone, add buffer
-function calcSmartFloor() {
-  const nextBills = getNextPeriodBills();
-  const nextBillsTotal = nextBills.reduce((s,b) => s + b.amount, 0);
-  const estPaycheck = state.paycheckEst || 2100;
-  const nextCapacity = estPaycheck - FLOOR_BASE - PERIOD_ALLOWANCE;
-  const shortfall = Math.max(0, nextBillsTotal - nextCapacity);
-  return { floor: FLOOR_BASE + shortfall, shortfall, nextBillsTotal, nextBills };
-}
+// ── CALC ──
+function calc() {
+  const balance=parseFloat(document.getElementById('balance-input').value)||0;
+  const paycheck=parseFloat(document.getElementById('paycheck-input').value)||0;
+  state.balance=balance;
+  state.paycheck=paycheck;
 
-// ── RECALC (main brain) ──
-function recalc() {
-  const today = new Date(); today.setHours(0,0,0,0);
-  const balance = parseFloat(document.getElementById('balance-input').value) || 0;
-  state.balance = balance;
-
-  // Current period
-  const periodStart = isPayday(today) ? today : getPrevPayday(today);
-  const periodEnd = getPeriodEnd(periodStart);
-  const currentBills = getCurrentPeriodBills();
-  const currentBillsTotal = currentBills.reduce((s,b) => s + b.amount, 0);
-
-  // Smart floor
-  const { floor, shortfall, nextBillsTotal } = calcSmartFloor();
-
-  // Dashboard shows current balance picture only — no paycheck added here
-  // Bills still due in this period (from today forward)
-  const billsRemaining = currentBills.filter(b => b.dueDate >= today).reduce((s,b) => s + b.amount, 0);
-  // How much is available above floor and remaining bills
-  const aboveFloor = Math.max(0, balance - floor);
-  const availableAfterBills = Math.max(0, aboveFloor - billsRemaining);
-  // Transfer is what's left after bills, floor, and spending allowance
-  const transfer = Math.max(0, balance - billsRemaining - floor - PERIOD_ALLOWANCE);
-  const isNegative = balance < (billsRemaining + floor);
-
-  // Update header
-  document.getElementById('header-period').textContent =
-    periodStart.toLocaleDateString('en-US',{month:'short',day:'numeric'}) + ' – ' +
-    periodEnd.toLocaleDateString('en-US',{month:'short',day:'numeric'});
-
-  // Balance status
-  const balStatus = document.getElementById('bal-status');
-  if (balance < floor) { balStatus.textContent = '⚠ below floor — do not transfer'; balStatus.style.color = '#E24B4A'; }
-  else if (balance < floor + 100) { balStatus.textContent = 'close to floor'; balStatus.style.color = '#BA7517'; }
-  else { balStatus.textContent = 'balance looks good'; balStatus.style.color = 'var(--gray-400)'; }
-
-  // Reserve card
-  const reserveCard = document.getElementById('reserve-card');
-  if (shortfall > 0) {
-    reserveCard.style.display = 'block';
-    document.getElementById('reserve-amount').textContent = '$' + floor.toFixed(0);
-    document.getElementById('reserve-sub').textContent =
-      'base $300 + $' + shortfall.toFixed(0) + ' buffer for next period bills ($' + nextBillsTotal.toFixed(0) + ')';
-  } else {
-    reserveCard.style.display = 'none';
-  }
+  const{start,end}=getCurrentPeriod();
+  const bills=getBillsForPeriod(start,end);
+  const billsTotal=bills.reduce((s,b)=>s+b.amount,0);
+  const total=balance+paycheck;
+  const floor=state.floor||300;
+  const transfer=Math.max(0,total-billsTotal-floor-PERIOD_ALLOWANCE);
+  const isTight=total<(billsTotal+floor+PERIOD_ALLOWANCE);
 
   // Transfer card
-  const tc = document.getElementById('transfer-card');
-  const ta = document.getElementById('transfer-amount');
-  const tl = document.getElementById('transfer-label');
-  const ts = document.getElementById('transfer-sub');
-  if (isNegative) {
-    tc.className = 'transfer-card negative';
-    ta.textContent = '$0';
-    tl.textContent = 'cannot transfer';
-    ts.textContent = 'balance below bills + floor';
-  } else if (transfer === 0) {
-    tc.className = 'transfer-card zero';
-    ta.textContent = '$0';
-    tl.textContent = 'transfer to fidelity';
-    ts.textContent = 'use Payday tab on payday to calculate transfer';
-  } else {
-    tc.className = 'transfer-card positive';
-    ta.textContent = '$' + transfer.toFixed(2);
-    tl.textContent = 'transfer to fidelity';
-    ts.textContent = 'transfer this to Fidelity now';
+  const tc=document.getElementById('transfer-card');
+  const ta=document.getElementById('transfer-amount');
+  const tl=document.getElementById('transfer-label');
+  const ts=document.getElementById('transfer-sub');
+
+  if(paycheck===0&&balance===0){
+    tc.className='transfer zero';ta.textContent='$0';
+    tl.textContent='transfer to fidelity';ts.textContent='enter balance and paycheck above';
+  }else if(transfer>0){
+    tc.className='transfer positive';ta.textContent='$'+transfer.toFixed(2);
+    tl.textContent='transfer to fidelity today';
+    ts.textContent='transfer this immediately after paycheck clears';
+  }else if(isTight){
+    tc.className='transfer negative';ta.textContent='$0';
+    tl.textContent='tight period — no transfer';
+    ts.textContent='bills + floor + spending exceed available funds';
+  }else{
+    tc.className='transfer zero';ta.textContent='$0';
+    tl.textContent='transfer to fidelity';ts.textContent='nothing available this period';
   }
 
-  // Breakdown card
-  const bc = document.getElementById('breakdown-card');
-  const billsRemainingCount = currentBills.filter(b=>b.dueDate>=today).length;
-  bc.innerHTML = `
-    <div class="card-row"><div class="row-label">current balance</div><div class="row-val">$${balance.toFixed(2)}</div></div>
-    <div class="card-row"><div><div class="row-label">bills remaining this period</div><div class="row-sub">${billsRemainingCount} bill${billsRemainingCount!==1?'s':''} still due</div></div><div class="row-val red">-$${billsRemaining.toFixed(2)}</div></div>
-    <div class="card-row"><div><div class="row-label">floor reserve</div><div class="row-sub">${shortfall > 0 ? '$300 base + $'+shortfall.toFixed(0)+' next period buffer' : '$300 minimum balance'}</div></div><div class="row-val amber">-$${floor.toFixed(2)}</div></div>
-    <div class="card-row"><div><div class="row-label">spending allowance</div><div class="row-sub">14 day period · $200 payday + $20/day</div></div><div class="row-val amber">-$${PERIOD_ALLOWANCE}</div></div>
-    <div class="card-row" style="background:var(--gray-50)">
-      <div><div class="row-label" style="font-weight:500">${transfer > 0 ? 'available for Fidelity' : balance < floor ? 'below floor — do not transfer' : 'nothing to transfer yet'}</div>
-      <div class="row-sub" style="color:var(--gray-400)">use Payday tab on payday for full calculation</div></div>
-      <div class="row-val ${transfer > 0 ? 'green' : 'red'}">$${transfer.toFixed(2)}</div>
-    </div>
-  `;
-
-  // Spending allowance
-  const isPay = isPayday(today);
-  document.getElementById('allowance-label').textContent = isPay ? '🎉 payday — $200 allowance' : 'daily allowance';
-  document.getElementById('allowance-today').textContent = isPay ? '$200' : '$20';
-
-  // Payday countdown
-  const nextPD = getNextPayday(today);
-  const countdownDays = document.getElementById('countdown-days');
-  const countdownLabel = document.getElementById('countdown-label');
-  const countdownUnit = document.getElementById('countdown-unit');
-  const countdownDate = document.getElementById('countdown-date');
-  if (isPayday(today)) {
-    countdownDays.textContent = '🎉';
-    countdownLabel.textContent = 'payday today!';
-    countdownUnit.textContent = '';
-    countdownDate.textContent = isBonusPayday(today) ? 'bonus payday — enter paycheck in Payday tab' : 'enter your paycheck in the Payday tab';
-    countdownDays.style.fontSize = '40px';
-  } else if (nextPD) {
-    const days = Math.round((nextPD - today) / (1000*60*60*24));
-    countdownDays.textContent = days;
-    countdownDays.style.fontSize = '52px';
-    countdownLabel.textContent = 'days until payday';
-    countdownUnit.textContent = days === 1 ? 'day' : 'days';
-    const isBonus = isBonusPayday(nextPD);
-    countdownDate.textContent = nextPD.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'}) + (isBonus ? ' · bonus payday 🎉' : '');
+  // Breakdown
+  const bc=document.getElementById('breakdown-card');
+  if(paycheck>0||balance>0){
+    bc.style.display='block';
+    document.getElementById('br-balance-val').textContent='$'+total.toFixed(2);
+    document.getElementById('br-bills-val').textContent='-$'+billsTotal.toFixed(2);
+    document.getElementById('br-bills-sub').textContent=bills.length+' bill'+(bills.length!==1?'s':'')+' due';
+  }else{
+    bc.style.display='none';
   }
 
-  resetPaidBillsForNewPeriod();
+  // Period label
+  document.getElementById('period-label').textContent=
+    start.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' – '+
+    end.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+
+  renderBills(bills);
+  renderNextPreview();
+  renderCountdown();
   dSave();
 }
 
-// ── BILLS TAB ──
-function renderBillsTab() {
-  const today = new Date(); today.setHours(0,0,0,0);
-  const current = getCurrentPeriodBills();
-  const next = getNextPeriodBills();
+// ── RENDER BILLS ──
+function renderBills(bills) {
+  const card=document.getElementById('bills-card');
+  if(!bills.length){
+    card.innerHTML='<div style="padding:24px;text-align:center;font-size:13px;color:var(--gray-400);font-family:\'DM Mono\',monospace">no bills this period</div>';
+    return;
+  }
+  const today=new Date();today.setHours(0,0,0,0);
+  card.innerHTML=bills.map(b=>{
+    const paidKey=getPaidKey(b);
+    const paidStatus=(state.paid||{})[paidKey];
+    const isPaidZelle=paidStatus==='zelle';
+    const isPaidDirect=paidStatus==='direct';
+    const isPaid=isPaidZelle||isPaidDirect;
+    const daysAway=Math.round((b.dueDate-today)/(1000*60*60*24));
+    const dueMeta=daysAway===0?'due today':daysAway<0?Math.abs(daysAway)+'d ago':daysAway+'d away';
+    const tag=b.displayType==='onetime'?'<span class="bill-tag tag-onetime">one-time</span>':
+               b.id==='june15prog'?'<span class="bill-tag tag-temp">temp amount</span>':
+               '<span class="bill-tag tag-recurring">recurring</span>';
+    const itemClass=isPaidZelle?'bill-item paid-zelle':isPaidDirect?'bill-item paid-direct':'bill-item';
 
-  function billRow(b, context) {
-    const isPast = b.dueDate < today;
-    const daysAway = Math.round((b.dueDate - today) / (1000*60*60*24));
-    const urgency = context === 'next' ? 'next-period' : daysAway <= 0 ? 'urgent' : daysAway <= 2 ? 'soon' : '';
-    const payerClass = b.payer === 'you' ? 'payer-you' : b.payer === 'trans' ? 'payer-trans' : 'payer-him';
-    const payerLabel = b.payer === 'you' ? 'Zelle Dad' : b.payer === 'trans' ? 'Transitioning' : 'Direct Pay';
-    const isTempAmount = b.id === 'june15prog';
-    const isOneTime = !isTempAmount && (b.type === 'oneoff' || (b.id && String(b.id).startsWith('one')));
-    const typeTag = isTempAmount
-      ? '<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--amber-light);color:var(--amber);font-weight:500;margin-left:4px">temp amount</span>'
-      : isOneTime
-        ? '<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:#EDE9FE;color:#6D28D9;font-weight:500;margin-left:4px">one-time</span>'
-        : '<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--gray-100);color:var(--gray-600);font-weight:500;margin-left:4px">recurring</span>';
-
-    const paidKey = getBillPaidKey(b);
-    const isPaid = (state.paidBills || {})[paidKey];
-    const showToggle = context !== 'next' && (b.payer === 'you' || b.payer === 'trans');
-
-    return `<div class="bill-item" style="${isPaid?'background:var(--green-light);':''}${isPast&&!isPaid?'opacity:0.45':''}">
-      <div class="bill-day-badge ${isPaid?'':''+urgency}">
-        <div class="bday" style="${isPaid?'color:var(--green-dark)':''}">${b.dueDate.getDate()}</div>
-        <div class="bmo">${MONTHS_SHORT[b.dueDate.getMonth()]}</div>
+    return `<div class="${itemClass}">
+      <div class="bill-top">
+        <div>
+          <div class="bill-name${isPaid?' paid':''}">${b.name}${tag}</div>
+          <div class="bill-meta">${MONTHS[b.dueDate.getMonth()]} ${b.dueDate.getDate()} · ${dueMeta}</div>
+        </div>
+        <div class="bill-amount" style="${isPaid?'color:var(--gray-400)':''}">$${b.amount.toFixed(2)}</div>
       </div>
-      <div class="bill-info">
-        <div class="bill-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px;${isPaid?'color:var(--green-dark);text-decoration:line-through;':''}">${b.name}${typeTag}</div>
-        <div class="bill-sub">${b.payMethod || ''}${isPaid?' · ✓ zelled':context==='next' ? ' · next period' : daysAway === 0 ? ' · due today' : daysAway > 0 ? ' · '+daysAway+'d away' : ' · overdue'}</div>
-      </div>
-      <div class="bill-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
-        <div class="bill-amount" style="${isPaid?'color:var(--green-dark)':''}">$${b.amount.toFixed(2)}</div>
-        ${showToggle ? `<button onclick="toggleBillPaid('${paidKey}')"
-          style="font-size:11px;padding:3px 10px;border-radius:20px;border:none;cursor:pointer;font-weight:500;
-          background:${isPaid?'var(--green)':'var(--gray-100)'};color:${isPaid?'white':'var(--gray-600)'}">
-          ${isPaid?'✓ zelled':'mark zelled'}
-        </button>` : `<span class="bill-payer ${b.payer==='him'?'payer-him':''}">${b.payer==='him'?'Direct Pay':''}</span>`}
-      </div>
+      ${!isPaid?`<div class="bill-actions">
+        <button class="bill-btn zelle" onclick="markBill('${paidKey}','zelle')">Zelle Dad</button>
+        <button class="bill-btn direct" onclick="markBill('${paidKey}','direct')">Pay Direct</button>
+      </div>`:`<div style="font-size:12px;font-family:'DM Mono',monospace;color:${isPaidZelle?'var(--purple)':'var(--green)'};display:flex;justify-content:space-between;align-items:center">
+        <span>${isPaidZelle?'✓ zelled to dad':'✓ paid direct'}</span>
+        <button onclick="markBill('${paidKey}',null)" style="background:none;border:none;cursor:pointer;font-size:12px;color:var(--gray-400);font-family:'DM Mono',monospace;text-decoration:underline">undo</button>
+      </div>`}
     </div>`;
-  }
-
-  const cc = document.getElementById('current-period-bills');
-  if (!current.length) cc.innerHTML = '<div class="empty-state">no bills this period</div>';
-  else {
-    const total = current.reduce((s,b)=>s+b.amount,0);
-    cc.innerHTML = current.map(b => billRow(b,'current')).join('') +
-      `<div class="card-row" style="background:var(--gray-50)"><div class="row-label" style="font-weight:500">period total</div><div class="row-val">$${total.toFixed(2)}</div></div>`;
-  }
-
-  const nc = document.getElementById('next-period-bills');
-  if (!next.length) nc.innerHTML = '<div class="empty-state">no bills next period</div>';
-  else {
-    const total = next.reduce((s,b)=>s+b.amount,0);
-    const {shortfall} = calcSmartFloor();
-    nc.innerHTML = next.map(b => billRow(b,'next')).join('') +
-      `<div class="card-row" style="background:var(--blue-light)">
-        <div><div class="row-label" style="font-weight:500;color:#1E40AF">next period total</div>${shortfall>0?'<div class="row-sub" style="color:var(--blue)">building $'+shortfall.toFixed(0)+' buffer in floor</div>':''}</div>
-        <div class="row-val" style="color:#1E40AF">$${total.toFixed(2)}</div>
-      </div>`;
-  }
+  }).join('');
 }
 
-let newBillType = 'once';
-
-function setBillType(type) {
-  newBillType = type;
-  const onceBtn = document.getElementById('bill-type-once');
-  const recurBtn = document.getElementById('bill-type-recurring');
-  const note = document.getElementById('bill-type-note');
-  if (type === 'once') {
-    onceBtn.style.background = '#EDE9FE'; onceBtn.style.color = '#6D28D9';
-    recurBtn.style.background = 'var(--gray-50)'; recurBtn.style.color = 'var(--gray-400)';
-    note.textContent = 'this bill will appear in the current pay period only';
-    note.style.color = '#6D28D9';
-  } else {
-    recurBtn.style.background = 'var(--green-light)'; recurBtn.style.color = 'var(--green-dark)';
-    onceBtn.style.background = 'var(--gray-50)'; onceBtn.style.color = 'var(--gray-400)';
-    note.textContent = 'this bill will appear every month going forward';
-    note.style.color = 'var(--green-dark)';
-  }
+function markBill(key, status) {
+  state.paid=state.paid||{};
+  if(status===null)delete state.paid[key];
+  else state.paid[key]=status;
+  calc();
 }
 
-function addNewBill() {
-  const name = document.getElementById('new-bill-name').value.trim();
-  const amount = parseFloat(document.getElementById('new-bill-amount').value) || 0;
-  const day = parseInt(document.getElementById('new-bill-day').value) || 1;
-  if (!name || !amount || !day) { alert('Enter name, amount and day of month.'); return; }
-  const today = new Date();
-
-  if (newBillType === 'once') {
-    // Add as one-time bill for current period
-    state.oneBills = state.oneBills || [];
-    state.oneBills.push({
-      id: 'one' + Date.now(), name, amount, day,
-      month: today.getMonth(), year: today.getFullYear(),
-      payer: 'you', payMethod: 'Checking', type: 'oneoff'
-    });
-  } else {
-    // Add as recurring bill
-    state.bills.push({
-      id: 'custom' + Date.now(), name, amount, day,
-      skipMonths: [], quarterly: false, quarterMonths: [],
-      payer: 'you', payMethod: 'Checking', type: 'recurring'
-    });
-  }
-
-  document.getElementById('new-bill-name').value = '';
-  document.getElementById('new-bill-amount').value = '';
-  document.getElementById('new-bill-day').value = '';
-  renderBillsTab();
-  renderPlannerBills();
-  recalc();
-  save();
+// ── NEXT PERIOD PREVIEW ──
+function renderNextPreview() {
+  const{start,end}=getCurrentPeriod();
+  const nextStart=getNextPayday(end);
+  if(!nextStart)return;
+  const nextEnd=getPeriodEnd(nextStart);
+  const bills=getBillsForPeriod(nextStart,nextEnd);
+  const total=bills.reduce((s,b)=>s+b.amount,0);
+  document.getElementById('next-total').textContent='$'+total.toFixed(2);
+  document.getElementById('next-bills-list').innerHTML=bills.map(b=>`
+    <div class="next-bill-row">
+      <span style="color:#185FA5">${b.name}</span>
+      <span style="font-family:'DM Mono',monospace;color:#185FA5;font-weight:500">$${b.amount.toFixed(2)}</span>
+    </div>
+  `).join('');
 }
 
-// ── PAYDAY CALC ──
-function getPaydayPeriodBills() {
-  // Get bills for the period that starts on the next/current payday
-  // This is what the payday calculator should use — bills coming due THIS period
-  const today = new Date(); today.setHours(0,0,0,0);
-  const periodStart = isPayday(today) ? today : getNextPayday(today);
-  if (!periodStart) return [];
-  const periodEnd = getPeriodEnd(periodStart);
-  return billsForDateRange(periodStart, periodEnd);
+function toggleNextPreview() {
+  nextPreviewOpen=!nextPreviewOpen;
+  document.getElementById('next-preview-content').className='next-preview-content'+(nextPreviewOpen?' open':'');
+  document.getElementById('next-toggle-icon').textContent=nextPreviewOpen?'▲':'▼';
 }
 
-function calcPayday() {
-  const reg = parseFloat(document.getElementById('pc-regular').value) || 0;
-  const bonus = parseFloat(document.getElementById('pc-bonus').value) || 0;
-  const paycheck = reg + bonus;
-  const currentBalance = parseFloat(document.getElementById('balance-input').value) || 0;
-
-  // Use bills due in the pay period that starts on payday
-  const periodBills = getPaydayPeriodBills();
-  const billsTotal = periodBills.reduce((s,b) => s + b.amount, 0);
-
-  const floor = state.floor || FLOOR_BASE;
-
-  // Floor restoration: if current balance is below floor, restore it first
-  const floorRestoration = Math.max(0, floor - currentBalance);
-
-  // Surplus above floor from last period — sweep to Fidelity
-  const prevSurplus = Math.max(0, currentBalance - floor);
-
-  // Total available = paycheck + prev surplus
-  const totalAvailable = paycheck + prevSurplus;
-
-  // Transfer = total available - floor restoration - bills this period - floor - spending
-  const transfer = Math.max(0, totalAvailable - floorRestoration - billsTotal - floor - PERIOD_ALLOWANCE);
-  const isTight = totalAvailable < (billsTotal + floor + PERIOD_ALLOWANCE + floorRestoration);
-
-  // Build breakdown display
-  const today = new Date(); today.setHours(0,0,0,0);
-  const periodStart = isPayday(today) ? today : getNextPayday(today);
-  const periodEnd = periodStart ? getPeriodEnd(periodStart) : null;
-  const periodLabel = periodStart && periodEnd ?
-    periodStart.toLocaleDateString('en-US',{month:'short',day:'numeric'}) + ' – ' +
-    periodEnd.toLocaleDateString('en-US',{month:'short',day:'numeric'}) : 'this period';
-
-  const pc = document.getElementById('payday-breakdown');
-  let rows = '';
-  rows += `<div class="card-row"><div><div class="row-label">paycheck${bonus>0?' + bonus':''}</div></div><div class="row-val green">+$${paycheck.toFixed(2)}</div></div>`;
-  if (prevSurplus > 0) {
-    rows += `<div class="card-row"><div><div class="row-label">unspent from last period</div><div class="row-sub">balance $${currentBalance.toFixed(0)} − floor $${floor.toFixed(0)} → swept to Fidelity</div></div><div class="row-val green">+$${prevSurplus.toFixed(2)}</div></div>`;
+// ── COUNTDOWN ──
+function renderCountdown() {
+  const today=new Date();today.setHours(0,0,0,0);
+  const next=getNextPayday(today);
+  const isBonus=isBonusPayday(today);
+  const isPay=isPayday(today);
+  if(isPay){
+    document.getElementById('cd-days').textContent='🎉';
+    document.getElementById('cd-label').textContent=isBonus?'bonus payday!':'payday today!';
+    document.getElementById('cd-unit').textContent='';
+    document.getElementById('cd-date').textContent='enter your paycheck above';
+  }else if(next){
+    const days=Math.round((next-today)/(1000*60*60*24));
+    document.getElementById('cd-days').textContent=days;
+    document.getElementById('cd-label').textContent='days until payday';
+    document.getElementById('cd-unit').textContent=days===1?'day':'days';
+    document.getElementById('cd-date').textContent=next.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})+(isBonusPayday(next)?' · bonus':'');
   }
-  if (floorRestoration > 0) {
-    rows += `<div class="card-row"><div><div class="row-label">floor restoration</div><div class="row-sub">balance was below $${floor.toFixed(0)} — restoring first</div></div><div class="row-val red">-$${floorRestoration.toFixed(2)}</div></div>`;
-  }
-  rows += `<div class="card-row"><div><div class="row-label">bills — ${periodLabel}</div><div class="row-sub">${periodBills.map(b=>b.name+' $'+b.amount.toFixed(2)).join(' · ')}</div></div><div class="row-val red">-$${billsTotal.toFixed(2)}</div></div>`;
-  rows += `<div class="card-row"><div><div class="row-label">floor reserve</div><div class="row-sub">minimum checking balance</div></div><div class="row-val amber">-$${floor.toFixed(2)}</div></div>`;
-  rows += `<div class="card-row"><div><div class="row-label">spending allowance</div><div class="row-sub">14 days · $200 today + $20/day</div></div><div class="row-val amber">-$${PERIOD_ALLOWANCE}</div></div>`;
-  rows += `<div class="card-row" style="background:var(--gray-50)"><div class="row-label" style="font-weight:500">available for Fidelity</div><div class="row-val ${transfer>0?'green':''}">$${transfer.toFixed(2)}</div></div>`;
-  pc.innerHTML = rows;
-
-  const tc = document.getElementById('payday-transfer-card');
-  const ta = document.getElementById('payday-transfer-amount');
-  const tl = document.getElementById('payday-transfer-label');
-  const ts = document.getElementById('payday-transfer-sub');
-
-  if (transfer > 0) {
-    tc.className = 'transfer-card positive';
-    ta.textContent = '$' + transfer.toFixed(2);
-    tl.textContent = 'transfer to fidelity today';
-    const parts = [];
-    if (bonus > 0) parts.push('includes $'+bonus.toFixed(2)+' bonus');
-    if (prevSurplus > 0) parts.push('$'+prevSurplus.toFixed(2)+' swept from last period');
-    ts.textContent = parts.length > 0 ? parts.join(' · ') : 'transfer immediately after paycheck clears';
-  } else if (floorRestoration > 0 && transfer === 0) {
-    tc.className = 'transfer-card zero';
-    ta.textContent = '$0';
-    tl.textContent = 'floor being restored this period';
-    ts.textContent = 'balance was below $'+floor.toFixed(0)+' — no transfer until floor is back';
-  } else {
-    tc.className = 'transfer-card zero';
-    ta.textContent = '$0';
-    tl.textContent = isTight ? 'tight period — no transfer' : 'transfer to fidelity';
-    ts.textContent = isTight ? 'bills + floor + spending exceed paycheck this period' : 'nothing available this period';
-  }
-}
-
-function logPaycheck() {
-  const reg = parseFloat(document.getElementById('pc-regular').value) || 0;
-  const bonus = parseFloat(document.getElementById('pc-bonus').value) || 0;
-  if (!reg) { alert('Enter paycheck amount.'); return; }
-  const {floor} = calcSmartFloor();
-  const currentBills = getCurrentPeriodBills();
-  const billsTotal = currentBills.reduce((s,b)=>s+b.amount,0);
-  const transfer = Math.max(0, reg + bonus - billsTotal - floor - PERIOD_ALLOWANCE);
-  state.savings = (state.savings || 0) + transfer;
-  state.paycheckLog = state.paycheckLog || [];
-  state.paycheckLog.push({id:Date.now(),reg,bonus,transfer,date:new Date().toLocaleDateString(),ts:new Date().toISOString()});
-  document.getElementById('pc-regular').value = 0;
-  document.getElementById('pc-bonus').value = 0;
-  save();
-  calcPayday();
-  alert('Logged! $'+transfer.toFixed(2)+' added to Fidelity savings. YTD: $'+state.savings.toFixed(2));
-}
-
-function renderPaydayTab() {
-  const today = new Date();
-  const isBonus = isBonusPayday(today);
-  const isPay = isPayday(today);
-  const bonusRow = document.getElementById('bonus-row');
-  bonusRow.style.display = isBonus ? 'flex' : 'none';
-  const label = document.getElementById('pc-label');
-  if (isBonus) label.textContent = '🎉 Bonus payday! Enter paycheck + bonus';
-  else if (isPay) label.textContent = '🎉 Payday! Enter your paycheck';
-  else {
-    const next = getNextPayday(today);
-    if (next) {
-      const days = Math.round((next - today)/(1000*60*60*24));
-      label.textContent = 'Next payday in ' + days + ' day' + (days!==1?'s':'');
-    }
-  }
-  const next = getNextPayday(today);
-  if (next) {
-    const days = Math.round((next - today)/(1000*60*60*24));
-    const isNextBonus = isBonusPayday(next);
-    document.getElementById('next-payday-label').textContent = next.toLocaleDateString('en-US',{month:'long',day:'numeric'}) + (isNextBonus?' 🎉 bonus':'');
-    document.getElementById('next-payday-sub').textContent = isNextBonus ? 'last paycheck of month — bonus included' : 'regular paycheck';
-    document.getElementById('next-payday-days').textContent = days + ' day' + (days!==1?'s':'') + ' away';
-  }
-  calcPayday();
+  document.getElementById('header-sub').textContent=
+    'period: '+getCurrentPeriod().start.toLocaleDateString('en-US',{month:'short',day:'numeric'})+
+    ' – '+getCurrentPeriod().end.toLocaleDateString('en-US',{month:'short',day:'numeric'});
 }
 
 // ── PLANNER ──
-function renderPlannerBills() {
-  const pb = document.getElementById('planner-bills');
-  pb.innerHTML = state.bills.map((b,i) => {
-    const pc = b.payer==='you'?'#FEF3C7':b.payer==='trans'?'#DBEAFE':'#D1FAE5';
-    return `<div class="planner-row">
+function renderPlanner() {
+  // Recurring
+  const rc=document.getElementById('planner-recurring');
+  rc.innerHTML=state.bills.map((b,i)=>`
+    <div class="planner-row">
       <div class="day-badge">${b.day}</div>
-      <div><div class="planner-name">${b.name}</div><div class="planner-sub">${b.payMethod}${b.quarterly?' · quarterly':b.skipMonths?.length?' · skips Jul/Aug':''}</div></div>
-      <input type="number" class="amt-input" value="${b.amount}" 
-        oninput="state.bills[${i}].amount=parseFloat(this.value)||0;" 
-        onblur="state.bills[${i}].amount=parseFloat(this.value)||0;recalc();renderBillsTab();save();" 
-        inputmode="decimal" />
-      <select class="payer-select" style="background:${pc}" onchange="state.bills[${i}].payer=this.value;recalc();renderBillsTab();renderPlannerBills();save();">
-        <option value="you" ${b.payer==='you'?'selected':''}>Dad Pays</option>
-        <option value="trans" ${b.payer==='trans'?'selected':''}>Transitioning</option>
-        <option value="him" ${b.payer==='him'?'selected':''}>Chandler Pays</option>
-      </select>
-    </div>`;
-  }).join('');
-
-  const pd = document.getElementById('planner-dates');
-  pd.innerHTML = state.bills.map((b,i) => `
-    <div style="display:grid;grid-template-columns:1fr 60px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100)">
-      <div style="font-size:13px;font-weight:500">${b.name}</div>
-      <input type="number" min="1" max="31" value="${b.day}" class="amt-input" style="width:56px;text-align:center"
-        oninput="state.bills[${i}].day=parseInt(this.value)||${b.day};"
-        onblur="state.bills[${i}].day=parseInt(this.value)||${b.day};recalc();renderBillsTab();save();" />
-    </div>
-  `).join('') + '<div style="height:1px"></div>';
-}
-
-function getBillPaidKey(b) {
-  const d = b.dueDate || new Date();
-  return String(b.id) + '-' + d.getMonth() + '-' + d.getFullYear();
-}
-
-function toggleBillPaid(key) {
-  state.paidBills = state.paidBills || {};
-  state.paidBills[key] = !state.paidBills[key];
-  save();
-  renderBillsTab();
-}
-
-function resetPaidBillsForNewPeriod() {
-  // Clear paid status for bills not in the current period
-  const current = getCurrentPeriodBills();
-  const validKeys = new Set(current.map(b => getBillPaidKey(b)));
-  if (state.paidBills) {
-    Object.keys(state.paidBills).forEach(k => {
-      if (!validKeys.has(k)) delete state.paidBills[k];
-    });
-  }
-}
-
-function renderCustomBills() {
-  const card = document.getElementById('custom-bills-card');
-  const empty = document.getElementById('custom-bills-empty');
-  // Custom recurring bills (id starts with 'custom')
-  const customRecurring = state.bills.filter(b => String(b.id).startsWith('custom'));
-  // Custom one-time bills (excluding the pre-seeded june15prog)
-  const customOneTime = (state.oneBills || []).filter(b => b.id !== 'june15prog');
-
-  const allCustom = [
-    ...customRecurring.map(b => ({...b, listType: 'recurring'})),
-    ...customOneTime.map(b => ({...b, listType: 'oneoff'}))
-  ];
-
-  if (allCustom.length === 0) {
-    card.innerHTML = '<div class="empty-state" id="custom-bills-empty">no custom bills added</div>';
-    return;
-  }
-
-  card.innerHTML = allCustom.map(b => {
-    const tag = b.listType === 'oneoff'
-      ? '<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:#EDE9FE;color:#6D28D9;font-weight:500">one-time</span>'
-      : '<span style="font-size:10px;padding:2px 6px;border-radius:20px;background:var(--green-light);color:var(--green-dark);font-weight:500">recurring</span>';
-    return `<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--gray-100)">
-      <div>
-        <div style="font-size:14px;font-weight:500;display:flex;align-items:center;gap:6px">${b.name} ${tag}</div>
-        <div style="font-size:11px;color:var(--gray-400);font-family:'DM Mono',monospace;margin-top:2px">day ${b.day} · $${b.amount.toFixed(2)}</div>
+      <div class="planner-info">
+        <div class="pname">${b.name}</div>
+        <div class="pmeta">${b.quarterly?'quarterly':b.skipMonths?.length?'skips '+b.skipMonths.map(m=>MONTHS[m]).join('/'):'monthly'}</div>
       </div>
-      <button onclick="deleteCustomBill('${b.id}','${b.listType}')"
-        style="background:var(--red-light);color:var(--red);border:none;border-radius:var(--radius-sm);padding:6px 12px;font-size:13px;font-weight:500;cursor:pointer">
-        Delete
-      </button>
-    </div>`;
-  }).join('') + '<div style="height:1px"></div>';
-}
+      <input type="number" class="amt-input" value="${b.amount}"
+        oninput="state.bills[${i}].amount=parseFloat(this.value)||0;"
+        onblur="state.bills[${i}].amount=parseFloat(this.value)||0;calc();save();"
+        inputmode="decimal" />
+      <button class="del-btn" onclick="delBill('recurring',${i})">×</button>
+    </div>
+  `).join('');
 
-function deleteCustomBill(id, listType) {
-  if (!confirm('Delete this bill?')) return;
-  if (listType === 'oneoff') {
-    state.oneBills = (state.oneBills || []).filter(b => String(b.id) !== String(id));
-  } else {
-    state.bills = state.bills.filter(b => String(b.id) !== String(id));
-  }
-  renderCustomBills();
-  renderPlannerBills();
-  renderBillsTab();
-  recalc();
-  save();
-}
-
-
-
-function resetAll() {
-  if (!confirm('Reset ALL data? Cannot be undone.')) return;
-  state = {balance:317,savings:0,savingsGoal:10000,floor:300,
-    bills:JSON.parse(JSON.stringify(DEFAULT_BILLS)),
-    oneBills:[{id:'june15prog',name:'Progressive Auto (15th) — June',amount:172.92,day:15,month:5,year:2026,payer:'you',payMethod:'Discover'}],
-    zelleLog:[],paycheckLog:[]};
-  document.getElementById('balance-input').value = 317;
-  document.getElementById('floor-input').value = 300;
-  document.getElementById('goal-input').value = 10000;
-  init(); save();
-}
-
-// ── TABS ──
-function switchTab(tab, btn) {
-  if (tab === 'planner' && !plannerUnlocked) {
-    document.getElementById('lock-screen').style.display = 'flex';
-    return;
-  }
-  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('view-'+tab).classList.add('active');
-  if (btn) btn.classList.add('active');
-  if (tab === 'bills') renderBillsTab();
-  if (tab === 'payday') renderPaydayTab();
-  if (tab === 'planner') { renderPlannerBills(); renderCustomBills(); renderZelleTotals(); }
-}
-
-function renderZelleTotals() {} // removed — using bill toggle instead
-
-function checkPassword() {
-  if (document.getElementById('lock-input').value === PASSWORD) {
-    plannerUnlocked = true;
-    document.getElementById('lock-screen').style.display = 'none';
-    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('view-planner').classList.add('active');
-    document.getElementById('planner-tab').classList.add('active');
-    renderPlannerBills(); renderCustomBills(); renderZelleTotals();
-  } else {
-    document.getElementById('lock-error').style.display = 'block';
-    document.getElementById('lock-input').value = '';
+  // One-time
+  const oc=document.getElementById('planner-onetime');
+  const empty=document.getElementById('onetime-empty');
+  const otBills=(state.onetime||[]);
+  if(!otBills.length){
+    oc.innerHTML='<div style="padding:16px;text-align:center;font-size:13px;color:var(--gray-400);font-family:\'DM Mono\',monospace">none added</div>';
+  }else{
+    oc.innerHTML=otBills.map((b,i)=>`
+      <div class="planner-row">
+        <div class="day-badge">${b.day}</div>
+        <div class="planner-info">
+          <div class="pname">${b.name}</div>
+          <div class="pmeta">${MONTHS[b.month]} ${b.year}</div>
+        </div>
+        <div style="font-family:'DM Mono',monospace;font-size:13px;font-weight:500">$${b.amount.toFixed(2)}</div>
+        <button class="del-btn" onclick="delBill('onetime',${i})">×</button>
+      </div>
+    `).join('');
   }
 }
 
-document.getElementById('lock-input').addEventListener('keydown', e => { if(e.key==='Enter') checkPassword(); });
+function delBill(type, idx) {
+  if(!confirm('Delete this bill?'))return;
+  if(type==='recurring')state.bills.splice(idx,1);
+  else state.onetime.splice(idx,1);
+  renderPlanner();calc();save();
+}
+
+function setType(t) {
+  newBillType=t;
+  document.getElementById('type-recur').className='type-btn'+(t==='recurring'?' active-recur':'');
+  document.getElementById('type-once').className='type-btn'+(t==='once'?' active-once':'');
+}
+
+function addBill() {
+  const name=document.getElementById('new-name').value.trim();
+  const amount=parseFloat(document.getElementById('new-amount').value)||0;
+  const day=parseInt(document.getElementById('new-day').value)||1;
+  if(!name||!amount){alert('Enter name and amount.');return;}
+  if(newBillType==='recurring'){
+    state.bills.push({id:'custom'+Date.now(),name,amount,day,type:'recurring',skipMonths:[],quarterly:false,quarterMonths:[]});
+  }else{
+    const today=new Date();
+    state.onetime.push({id:'one'+Date.now(),name,amount,day,month:today.getMonth(),year:today.getFullYear(),type:'onetime'});
+  }
+  document.getElementById('new-name').value='';
+  document.getElementById('new-amount').value='';
+  document.getElementById('new-day').value='';
+  renderPlanner();calc();save();
+}
 
 function forceSave() {
-  // Read all current planner input values before saving
-  const amtInputs = document.querySelectorAll('#planner-bills .amt-input');
-  amtInputs.forEach((inp, i) => {
-    if (state.bills[i]) state.bills[i].amount = parseFloat(inp.value) || state.bills[i].amount;
-  });
-  const dateInputs = document.querySelectorAll('#planner-dates input');
-  dateInputs.forEach((inp, i) => {
-    if (state.bills[i]) state.bills[i].day = parseInt(inp.value) || state.bills[i].day;
-  });
-  const floorVal = document.getElementById('floor-input');
-  if (floorVal) state.floor = parseFloat(floorVal.value) || 300;
-  const goalVal = document.getElementById('goal-input');
-  if (goalVal) state.savingsGoal = parseFloat(goalVal.value) || 10000;
+  const floorVal=parseFloat(document.getElementById('floor-input').value)||300;
+  state.floor=floorVal;
   save();
-  recalc();
-  renderBillsTab();
-  const confirm = document.getElementById('save-confirm');
-  confirm.textContent = '✓ all changes saved — ' + new Date().toLocaleTimeString();
-  confirm.style.opacity = '1';
-  setTimeout(() => confirm.style.opacity = '0', 3000);
+  calc();
+  renderPlanner();
+  const c=document.getElementById('save-confirm');
+  c.textContent='✓ saved at '+new Date().toLocaleTimeString();
+  c.style.opacity='1';
+  setTimeout(()=>c.style.opacity='0',3000);
 }
+
+// ── TABS & LOCK ──
+function switchTab(tab,btn) {
+  if(tab==='planner'&&!plannerUnlocked){
+    document.getElementById('lock-screen').style.display='flex';
+    return;
+  }
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('view-'+tab).classList.add('active');
+  if(btn)btn.classList.add('active');
+  if(tab==='planner')renderPlanner();
+}
+
+function checkPassword() {
+  if(document.getElementById('lock-input').value===PASSWORD){
+    plannerUnlocked=true;
+    document.getElementById('lock-screen').style.display='none';
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById('view-planner').classList.add('active');
+    document.querySelectorAll('.tab-btn')[1].classList.add('active');
+    renderPlanner();
+  }else{
+    document.getElementById('lock-error').style.display='block';
+    document.getElementById('lock-input').value='';
+  }
+}
+document.getElementById('lock-input').addEventListener('keydown',e=>{if(e.key==='Enter')checkPassword();});
 
 function lockPlanner() {
-  plannerUnlocked = false;
-  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('view-dashboard').classList.add('active');
-  document.querySelector('.tab-btn').classList.add('active');
+  plannerUnlocked=false;
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('view-home').classList.add('active');
+  document.querySelectorAll('.tab-btn')[0].classList.add('active');
 }
 
-function init() {
-  document.getElementById('balance-input').value = state.balance || 317;
-  // savings-ytd is in payday tab only
-  document.getElementById('floor-input').value = state.floor || 300;
-  document.getElementById('goal-input').value = state.savingsGoal || 10000;
-  recalc();
+function resetAll() {
+  if(!confirm('Reset ALL data?'))return;
+  state={balance:0,paycheck:0,floor:300,
+    bills:JSON.parse(JSON.stringify(DEFAULT_BILLS)),
+    onetime:JSON.parse(JSON.stringify(DEFAULT_ONETIME)),
+    paid:{}};
+  document.getElementById('balance-input').value=0;
+  document.getElementById('paycheck-input').value=0;
+  document.getElementById('floor-input').value=300;
+  calc();save();
 }
 
-// Load from JSONBin then init
-load().then(() => {
-  init();
-}).catch(() => {
-  init();
-});
+// ── INIT ──
+async function init() {
+  const d=await loadFromCloud();
+  if(d&&d.version){
+    state={...state,...d};
+    if(!state.bills?.length)state.bills=JSON.parse(JSON.stringify(DEFAULT_BILLS));
+    if(!state.onetime)state.onetime=JSON.parse(JSON.stringify(DEFAULT_ONETIME));
+  }else{
+    try{
+      const raw=localStorage.getItem(STORAGE_KEY);
+      if(raw){const d2=JSON.parse(raw);state={...state,...d2};}
+    }catch(e){}
+  }
+  document.getElementById('balance-input').value=state.balance||0;
+  document.getElementById('paycheck-input').value=state.paycheck||0;
+  document.getElementById('floor-input').value=state.floor||300;
+  calc();
+}
+
+init();
 </script>
 
 
