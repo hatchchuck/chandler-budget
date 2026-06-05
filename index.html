@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_32.html -->
+<!-- saved from url=(0055)file:///C:/Users/hatch/Downloads/chandler_index_33.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -150,7 +150,7 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
 <body>
 
 <!-- LOCK -->
-<div class="lock-screen" id="lock-screen" style="display:none">
+<div class="lock-screen" id="lock-screen" style="display: none;">
   <h2>planner access</h2>
   <h3>Chandler's Budget</h3>
   <input type="password" class="lock-input" id="lock-input" placeholder="••••••••">
@@ -190,19 +190,24 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
       <span class="hero-dollar">$</span>
       <input type="number" class="hero-input sm" id="paycheck-input" value="0" min="0" inputmode="decimal" oninput="calc()">
     </div>
+    <div class="hero-row">
+      <label>other deposit</label>
+      <span class="hero-dollar">$</span>
+      <input type="number" class="hero-input sm" id="deposit-input" value="0" min="0" inputmode="decimal" oninput="calc()" placeholder="0">
+    </div>
   </div>
 
   <!-- Transfer to Fidelity -->
-  <div class="transfer negative" id="transfer-card">
-    <div class="transfer-label" id="transfer-label">tight period — no transfer</div>
-    <div class="transfer-amount" id="transfer-amount">$0</div>
-    <div class="transfer-sub" id="transfer-sub">bills + floor + spending exceed available funds</div>
+  <div class="transfer positive" id="transfer-card">
+    <div class="transfer-label" id="transfer-label">transfer to fidelity today</div>
+    <div class="transfer-amount" id="transfer-amount">$230.30</div>
+    <div class="transfer-sub" id="transfer-sub">transfer this immediately after paycheck clears</div>
   </div>
 
   <!-- Math breakdown -->
   <div class="card" id="breakdown-card" style="display: block;">
-    <div class="card-row" id="br-balance"><div class="row-label">balance + paycheck</div><div class="row-val green" id="br-balance-val">$317.00</div></div>
-    <div class="card-row"><div><div class="row-label">bills this period</div><div class="row-sub" id="br-bills-sub">5 bills due</div></div><div class="row-val red" id="br-bills-val">-$1127.66</div></div>
+    <div class="card-row" id="br-balance"><div class="row-label">balance + paycheck</div><div class="row-val green" id="br-balance-val">$2473.83</div></div>
+    <div class="card-row"><div><div class="row-label">bills this period</div><div class="row-sub" id="br-bills-sub">8 bills due</div></div><div class="row-val red" id="br-bills-val">-$1483.53</div></div>
     <div class="card-row"><div><div class="row-label">$300 floor</div><div class="row-sub">minimum balance</div></div><div class="row-val amber">-$300</div></div>
     <div class="card-row"><div><div class="row-label">spending allowance</div><div class="row-sub">$200 today + $20/day × 13</div></div><div class="row-val amber">-$460</div></div>
   </div>
@@ -210,6 +215,30 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
   <!-- Bills this period -->
   <p class="section-title">bills this period — <span id="period-label" style="color:var(--gray-600)">Jun 5 – Jun 18</span></p>
   <div class="card" id="bills-card"><div class="bill-item">
+      <div class="bill-top">
+        <div>
+          <div class="bill-name">BMV<span class="bill-tag tag-onetime">one-time</span></div>
+          <div class="bill-meta">Jun 5 · due today</div>
+        </div>
+        <div class="bill-amount" style="">$136.13</div>
+      </div>
+      <div class="bill-actions">
+        <button class="bill-btn zelle" onclick="markBill(&#39;one1780665012276-5-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
+        <button class="bill-btn direct" onclick="markBill(&#39;one1780665012276-5-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
+      </div>
+    </div><div class="bill-item">
+      <div class="bill-top">
+        <div>
+          <div class="bill-name">Registrar<span class="bill-tag tag-onetime">one-time</span></div>
+          <div class="bill-meta">Jun 5 · due today</div>
+        </div>
+        <div class="bill-amount" style="">$59.74</div>
+      </div>
+      <div class="bill-actions">
+        <button class="bill-btn zelle" onclick="markBill(&#39;one1780665048325-5-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
+        <button class="bill-btn direct" onclick="markBill(&#39;one1780665048325-5-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
+      </div>
+    </div><div class="bill-item">
       <div class="bill-top">
         <div>
           <div class="bill-name">GCWW Water<span class="bill-tag tag-recurring">recurring</span></div>
@@ -248,6 +277,18 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
     </div><div class="bill-item">
       <div class="bill-top">
         <div>
+          <div class="bill-name">Carsen football<span class="bill-tag tag-onetime">one-time</span></div>
+          <div class="bill-meta">Jun 12 · 7d away</div>
+        </div>
+        <div class="bill-amount" style="">$160.00</div>
+      </div>
+      <div class="bill-actions">
+        <button class="bill-btn zelle" onclick="markBill(&#39;one1780665085540-5-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
+        <button class="bill-btn direct" onclick="markBill(&#39;one1780665085540-5-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
+      </div>
+    </div><div class="bill-item">
+      <div class="bill-top">
+        <div>
           <div class="bill-name">Progressive Auto (15th) — June<span class="bill-tag tag-onetime">one-time</span></div>
           <div class="bill-meta">Jun 15 · 10d away</div>
         </div>
@@ -275,9 +316,9 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
   <div class="next-preview">
     <div class="next-preview-title" onclick="toggleNextPreview()">
       <span>next period preview</span>
-      <span id="next-toggle-icon">▼</span>
+      <span id="next-toggle-icon">▲</span>
     </div>
-    <div class="next-preview-content" id="next-preview-content">
+    <div class="next-preview-content open" id="next-preview-content">
       <div id="next-bills-list">
     <div class="next-bill-row">
       <span style="color:#185FA5">Cell Phone</span>
@@ -321,12 +362,140 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
 <div class="container">
 
   <p class="section-title">recurring bills</p>
-  <div class="card" id="planner-recurring"></div>
+  <div class="card" id="planner-recurring">
+    <div class="planner-row">
+      <div class="day-badge">1</div>
+      <div class="planner-info">
+        <div class="pname">Progressive Auto (1st)</div>
+        <div class="pmeta">monthly</div>
+      </div>
+      <input type="number" class="amt-input" value="142.17" oninput="state.bills[0].amount=parseFloat(this.value)||0;" onblur="state.bills[0].amount=parseFloat(this.value)||0;calc();save();" inputmode="decimal">
+      <button class="del-btn" onclick="delBill(&#39;recurring&#39;,0)">×</button>
+    </div>
+  
+    <div class="planner-row">
+      <div class="day-badge">15</div>
+      <div class="planner-info">
+        <div class="pname">Progressive Auto (15th)</div>
+        <div class="pmeta">skips Jun</div>
+      </div>
+      <input type="number" class="amt-input" value="172.92" oninput="state.bills[1].amount=parseFloat(this.value)||0;" onblur="state.bills[1].amount=parseFloat(this.value)||0;calc();save();" inputmode="decimal">
+      <button class="del-btn" onclick="delBill(&#39;recurring&#39;,1)">×</button>
+    </div>
+  
+    <div class="planner-row">
+      <div class="day-badge">2</div>
+      <div class="planner-info">
+        <div class="pname">CSAA Home Insurance</div>
+        <div class="pmeta">monthly</div>
+      </div>
+      <input type="number" class="amt-input" value="68.93" oninput="state.bills[2].amount=parseFloat(this.value)||0;" onblur="state.bills[2].amount=parseFloat(this.value)||0;calc();save();" inputmode="decimal">
+      <button class="del-btn" onclick="delBill(&#39;recurring&#39;,2)">×</button>
+    </div>
+  
+    <div class="planner-row">
+      <div class="day-badge">10</div>
+      <div class="planner-info">
+        <div class="pname">Real Estate Taxes</div>
+        <div class="pmeta">skips Jul/Aug</div>
+      </div>
+      <input type="number" class="amt-input" value="472.48" oninput="state.bills[3].amount=parseFloat(this.value)||0;" onblur="state.bills[3].amount=parseFloat(this.value)||0;calc();save();" inputmode="decimal">
+      <button class="del-btn" onclick="delBill(&#39;recurring&#39;,3)">×</button>
+    </div>
+  
+    <div class="planner-row">
+      <div class="day-badge">11</div>
+      <div class="planner-info">
+        <div class="pname">Duke Energy</div>
+        <div class="pmeta">monthly</div>
+      </div>
+      <input type="number" class="amt-input" value="298" oninput="state.bills[4].amount=parseFloat(this.value)||0;" onblur="state.bills[4].amount=parseFloat(this.value)||0;calc();save();" inputmode="decimal">
+      <button class="del-btn" onclick="delBill(&#39;recurring&#39;,4)">×</button>
+    </div>
+  
+    <div class="planner-row">
+      <div class="day-badge">8</div>
+      <div class="planner-info">
+        <div class="pname">GCWW Water</div>
+        <div class="pmeta">monthly</div>
+      </div>
+      <input type="number" class="amt-input" value="75.74" oninput="state.bills[5].amount=parseFloat(this.value)||0;" onblur="state.bills[5].amount=parseFloat(this.value)||0;calc();save();" inputmode="decimal">
+      <button class="del-btn" onclick="delBill(&#39;recurring&#39;,5)">×</button>
+    </div>
+  
+    <div class="planner-row">
+      <div class="day-badge">17</div>
+      <div class="planner-info">
+        <div class="pname">Spectrum</div>
+        <div class="pmeta">monthly</div>
+      </div>
+      <input type="number" class="amt-input" value="108.52" oninput="state.bills[6].amount=parseFloat(this.value)||0;" onblur="state.bills[6].amount=parseFloat(this.value)||0;calc();save();" inputmode="decimal">
+      <button class="del-btn" onclick="delBill(&#39;recurring&#39;,6)">×</button>
+    </div>
+  
+    <div class="planner-row">
+      <div class="day-badge">23</div>
+      <div class="planner-info">
+        <div class="pname">Cell Phone</div>
+        <div class="pmeta">monthly</div>
+      </div>
+      <input type="number" class="amt-input" value="72.88" oninput="state.bills[7].amount=parseFloat(this.value)||0;" onblur="state.bills[7].amount=parseFloat(this.value)||0;calc();save();" inputmode="decimal">
+      <button class="del-btn" onclick="delBill(&#39;recurring&#39;,7)">×</button>
+    </div>
+  
+    <div class="planner-row">
+      <div class="day-badge">25</div>
+      <div class="planner-info">
+        <div class="pname">Rumpke Trash</div>
+        <div class="pmeta">quarterly</div>
+      </div>
+      <input type="number" class="amt-input" value="21" oninput="state.bills[8].amount=parseFloat(this.value)||0;" onblur="state.bills[8].amount=parseFloat(this.value)||0;calc();save();" inputmode="decimal">
+      <button class="del-btn" onclick="delBill(&#39;recurring&#39;,8)">×</button>
+    </div>
+  </div>
 
   <p class="section-title">one-time bills</p>
   <div class="card" id="planner-onetime">
-    <div style="padding:16px;text-align:center;font-size:13px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace" id="onetime-empty">none added</div>
-  </div>
+      <div class="planner-row">
+        <div class="day-badge">15</div>
+        <div class="planner-info">
+          <div class="pname">Progressive Auto (15th) — June</div>
+          <div class="pmeta">Jun 2026</div>
+        </div>
+        <div style="font-family:&#39;DM Mono&#39;,monospace;font-size:13px;font-weight:500">$172.92</div>
+        <button class="del-btn" onclick="delBill(&#39;onetime&#39;,0)">×</button>
+      </div>
+    
+      <div class="planner-row">
+        <div class="day-badge">5</div>
+        <div class="planner-info">
+          <div class="pname">BMV</div>
+          <div class="pmeta">Jun 2026</div>
+        </div>
+        <div style="font-family:&#39;DM Mono&#39;,monospace;font-size:13px;font-weight:500">$136.13</div>
+        <button class="del-btn" onclick="delBill(&#39;onetime&#39;,1)">×</button>
+      </div>
+    
+      <div class="planner-row">
+        <div class="day-badge">5</div>
+        <div class="planner-info">
+          <div class="pname">Registrar</div>
+          <div class="pmeta">Jun 2026</div>
+        </div>
+        <div style="font-family:&#39;DM Mono&#39;,monospace;font-size:13px;font-weight:500">$59.74</div>
+        <button class="del-btn" onclick="delBill(&#39;onetime&#39;,2)">×</button>
+      </div>
+    
+      <div class="planner-row">
+        <div class="day-badge">12</div>
+        <div class="planner-info">
+          <div class="pname">Carsen football</div>
+          <div class="pmeta">Jun 2026</div>
+        </div>
+        <div style="font-family:&#39;DM Mono&#39;,monospace;font-size:13px;font-weight:500">$160.00</div>
+        <button class="del-btn" onclick="delBill(&#39;onetime&#39;,3)">×</button>
+      </div>
+    </div>
 
   <p class="section-title">add a bill</p>
   <div class="card">
@@ -341,6 +510,17 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
       <div class="form-row">
         <label>day of month</label>
         <input type="number" id="new-day" min="1" max="31" inputmode="numeric" placeholder="1">
+      </div>
+      <div class="form-row" id="onetime-month-row" style="display:none">
+        <label>month</label>
+        <select id="new-month" style="font-size:13px;border:1px solid var(--gray-200);border-radius:6px;padding:6px 10px;background:var(--gray-50);color:var(--gray-900)">
+          <option value="0">January</option><option value="1">February</option>
+          <option value="2">March</option><option value="3">April</option>
+          <option value="4">May</option><option value="5" selected="">June</option>
+          <option value="6">July</option><option value="7">August</option>
+          <option value="8">September</option><option value="9">October</option>
+          <option value="10">November</option><option value="11">December</option>
+        </select>
       </div>
       <div class="form-row">
         <label>type</label>
@@ -399,7 +579,10 @@ function getNextPayday(d){return PAYDAYS.find(p=>p>d);}
 function getPeriodEnd(start){
   const next=getNextPayday(start);
   if(!next)return new Date(start.getFullYear(),start.getMonth()+1,0);
-  const e=new Date(next);e.setDate(e.getDate()-1);return e;
+  const e=new Date(next);
+  e.setDate(e.getDate()-1);
+  e.setHours(23,59,59,999); // inclusive of the full last day
+  return e;
 }
 
 const DEFAULT_BILLS = [
@@ -542,13 +725,15 @@ function getPaidKey(b){
 function calc() {
   const balance=parseFloat(document.getElementById('balance-input').value)||0;
   const paycheck=parseFloat(document.getElementById('paycheck-input').value)||0;
+  const deposit=parseFloat(document.getElementById('deposit-input').value)||0;
   state.balance=balance;
   state.paycheck=paycheck;
+  state.deposit=deposit;
 
   const{start,end}=getCurrentPeriod();
   const bills=getBillsForPeriod(start,end);
   const billsTotal=bills.reduce((s,b)=>s+b.amount,0);
-  const total=balance+paycheck;
+  const total=balance+paycheck+deposit;
   const floor=state.floor||300;
   const transfer=Math.max(0,total-billsTotal-floor-PERIOD_ALLOWANCE);
   const isTight=total<(billsTotal+floor+PERIOD_ALLOWANCE);
@@ -577,9 +762,11 @@ function calc() {
 
   // Breakdown
   const bc=document.getElementById('breakdown-card');
-  if(paycheck>0||balance>0){
+  if(paycheck>0||balance>0||deposit>0){
     bc.style.display='block';
+    const balLabel=deposit>0?'balance + paycheck + deposit':'balance + paycheck';
     document.getElementById('br-balance-val').textContent='$'+total.toFixed(2);
+    document.getElementById('br-balance-val').previousElementSibling.textContent=balLabel;
     document.getElementById('br-bills-val').textContent='-$'+billsTotal.toFixed(2);
     document.getElementById('br-bills-sub').textContent=bills.length+' bill'+(bills.length!==1?'s':'')+' due';
   }else{
@@ -741,6 +928,7 @@ function setType(t) {
   newBillType=t;
   document.getElementById('type-recur').className='type-btn'+(t==='recurring'?' active-recur':'');
   document.getElementById('type-once').className='type-btn'+(t==='once'?' active-once':'');
+  document.getElementById('onetime-month-row').style.display=t==='once'?'flex':'none';
 }
 
 function addBill() {
@@ -751,8 +939,9 @@ function addBill() {
   if(newBillType==='recurring'){
     state.bills.push({id:'custom'+Date.now(),name,amount,day,type:'recurring',skipMonths:[],quarterly:false,quarterMonths:[]});
   }else{
+    const month=parseInt(document.getElementById('new-month').value);
     const today=new Date();
-    state.onetime.push({id:'one'+Date.now(),name,amount,day,month:today.getMonth(),year:today.getFullYear(),type:'onetime'});
+    state.onetime.push({id:'one'+Date.now(),name,amount,day,month,year:today.getFullYear(),type:'onetime'});
   }
   document.getElementById('new-name').value='';
   document.getElementById('new-amount').value='';
@@ -811,7 +1000,7 @@ function lockPlanner() {
 
 function resetAll() {
   if(!confirm('Reset ALL data?'))return;
-  state={balance:0,paycheck:0,floor:300,
+  state={balance:0,paycheck:0,deposit:0,floor:300,
     bills:JSON.parse(JSON.stringify(DEFAULT_BILLS)),
     onetime:JSON.parse(JSON.stringify(DEFAULT_ONETIME)),
     paid:{}};
@@ -836,6 +1025,7 @@ async function init() {
   }
   document.getElementById('balance-input').value=state.balance||0;
   document.getElementById('paycheck-input').value=state.paycheck||0;
+  document.getElementById('deposit-input').value=state.deposit||0;
   document.getElementById('floor-input').value=state.floor||300;
   calc();
 }
