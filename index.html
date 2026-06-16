@@ -223,6 +223,7 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
   </div>
 
   <p class="section-title">bills this period — <span id="period-label" style="color:var(--gray-600)"></span></p>
+  <div id="debug-panel" style="background:#1C1C1A;color:#1D9E75;font-family:'DM Mono',monospace;font-size:11px;padding:10px 14px;border-radius:8px;margin-bottom:10px;display:block;word-break:break-all;min-height:20px"></div>
   <div class="card" id="bills-card"></div>
 
   <div class="next-preview">
@@ -444,44 +445,46 @@ function setOverrideDayForMonth(billId, year, month, day) {
 
 // Called from Apply button — looks up the bill's month/year internally
 function applyDayOverride(billId, newDay, originalDay) {
-  // Find the bill to get its month/year for the key
+  const debugEl = document.getElementById('debug-panel');
+
+  // Find the bill
   const recurBill = state.bills.find(b => b.id === billId);
   const otBill = (state.onetime||[]).find(b => b.id === billId);
 
-  let year, month;
-  if(otBill){
-    year = otBill.year;
-    month = otBill.month;
-  } else if(recurBill){
-    // For recurring bills, use the current period's month
-    const {start} = getCurrentPeriod();
-    year = start.getFullYear();
-    month = start.getMonth();
-    // If the bill's original day is before the period start, it falls in the next month
-    const today = new Date();
-    const bd = new Date(year, month, recurBill.day);
-    if(bd < start){
-      // Bill's month is actually the next month
-      const nextMonth = new Date(year, month + 1, 1);
-      year = nextMonth.getFullYear();
-      month = nextMonth.getMonth();
-    }
-  } else {
-    console.error('applyDayOverride: bill not found', billId);
+  if(!recurBill && !otBill){
+    const msg = 'ERROR: bill not found. ID=' + billId + ' Available IDs: ' + state.bills.map(b=>b.id).join(', ');
+    if(debugEl) debugEl.innerHTML = msg;
+    alert(msg);
     return;
   }
 
+  let year, month;
+  if(otBill){
+    year = otBill.year; month = otBill.month;
+  } else {
+    const {start} = getCurrentPeriod();
+    year = start.getFullYear();
+    month = start.getMonth();
+    const bd = new Date(year, month, recurBill.day);
+    if(bd < start){ month++; if(month>11){month=0;year++;} }
+  }
+
   if(newDay === null) {
-    console.log('Resetting override for', billId, year, month);
     setOverrideDayForMonth(billId, year, month, null);
+    if(debugEl) debugEl.innerHTML = 'Reset override for ' + billId;
     return;
   }
+
   const day = Math.min(31, Math.max(1, parseInt(newDay) || 1));
-  console.log('Setting override', billId, year, month, '->', day, '(orig:', originalDay, ')');
+  const key = overrideKey(billId, year, month);
+  const msg = 'Applied: ' + billId + ' key=' + key + ' day=' + day + ' (was ' + originalDay + ')<br>overrides: ' + JSON.stringify(state.overrides);
+
   if(day === parseInt(originalDay)) {
     setOverrideDayForMonth(billId, year, month, null);
+    if(debugEl) debugEl.innerHTML = 'Removed override (same as original): ' + billId;
   } else {
     setOverrideDayForMonth(billId, year, month, day);
+    if(debugEl) debugEl.innerHTML = msg;
   }
 }
 
