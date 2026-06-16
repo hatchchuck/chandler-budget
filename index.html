@@ -434,10 +434,12 @@ function setOverrideDayForMonth(billId, year, month, day) {
   const key = overrideKey(billId, year, month);
   if (day === null) delete state.overrides[key];
   else state.overrides[key] = day;
-  // Save immediately to localStorage first, then cloud
+  // Always save to localStorage immediately — this is the source of truth
   try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e){}
+  // Recalculate and show result right away
   calc();
-  syncGist(); // fire and forget — don't block on isSyncing
+  // Then sync to cloud in background (slight delay to avoid race)
+  setTimeout(syncGist, 500);
 }
 
 // Called from Apply button — looks up the bill's month/year internally
@@ -841,29 +843,43 @@ function resetAll() {
 }
 
 async function init() {
-  // Load from localStorage first for instant display
+  // Step 1: Load localStorage immediately for instant display
+  let localState = null;
   try{
-    const raw=localStorage.getItem(STORAGE_KEY);
-    if(raw){ const d2=JSON.parse(raw); state={...state,...d2}; if(!state.overrides)state.overrides={}; }
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw) localState = JSON.parse(raw);
   }catch(e){}
-  
-  // Then try cloud (more authoritative)
-  const d=await loadFromCloud();
-  if(d&&d.version){
-    const localOverrides = state.overrides || {};
-    state={...state,...d};
-    // Merge overrides: cloud wins, but keep any local ones not in cloud
-    state.overrides = {...localOverrides, ...(d.overrides||{})};
-    if(!state.bills?.length)state.bills=JSON.parse(JSON.stringify(DEFAULT_BILLS));
-    if(!state.onetime)state.onetime=JSON.parse(JSON.stringify(DEFAULT_ONETIME));
+
+  if(localState){
+    state = {...state, ...localState};
+    if(!state.overrides) state.overrides = {};
   }
-  if(!state.overrides)state.overrides={};
-  
-  document.getElementById('balance-input').value=state.balance||0;
-  document.getElementById('paycheck-input').value=state.paycheck||0;
-  document.getElementById('deposit-input').value=state.deposit||0;
-  document.getElementById('floor-input').value=state.floor||300;
+
+  // Render immediately from localStorage so page feels instant
+  document.getElementById('balance-input').value = state.balance||0;
+  document.getElementById('paycheck-input').value = state.paycheck||0;
+  document.getElementById('deposit-input').value = state.deposit||0;
+  document.getElementById('floor-input').value = state.floor||300;
   calc();
+
+  // Step 2: Load cloud data — but NEVER overwrite overrides from cloud
+  // (overrides are always localStorage-first since they're per-device/session)
+  const d = await loadFromCloud();
+  if(d && d.version){
+    const savedOverrides = state.overrides || {}; // preserve local overrides
+    state = {...state, ...d};
+    // Merge: local overrides take priority over cloud (in case cloud is stale)
+    state.overrides = {...(d.overrides||{}), ...savedOverrides};
+    if(!state.bills?.length) state.bills = JSON.parse(JSON.stringify(DEFAULT_BILLS));
+    if(!state.onetime) state.onetime = JSON.parse(JSON.stringify(DEFAULT_ONETIME));
+
+    // Update inputs if cloud has newer balance data
+    document.getElementById('balance-input').value = state.balance||0;
+    document.getElementById('paycheck-input').value = state.paycheck||0;
+    document.getElementById('deposit-input').value = state.deposit||0;
+    document.getElementById('floor-input').value = state.floor||300;
+    calc();
+  }
 }
 
 init();
