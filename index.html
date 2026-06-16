@@ -224,6 +224,7 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
 
   <p class="section-title">bills this period — <span id="period-label" style="color:var(--gray-600)"></span></p>
   <div class="card" id="bills-card"></div>
+  <div id="moved-bills-card" style="display:none;"></div>
 
   <div class="next-preview">
     <div class="next-preview-title" onclick="toggleNextPreview()">
@@ -596,7 +597,7 @@ function calc() {
     start.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' – '+
     end.toLocaleDateString('en-US',{month:'short',day:'numeric'});
 
-  renderBills(bills);renderNextPreview();renderCountdown();dSave();
+  renderBills(bills);renderMovedBills(start,end);renderNextPreview();renderCountdown();dSave();
 }
 
 function renderBills(bills) {
@@ -656,6 +657,71 @@ function markBill(key, status) {
   state.paid=state.paid||{};
   if(status===null)delete state.paid[key];else state.paid[key]=status;
   calc();
+}
+
+// Show bills that were pushed OUT of this period by an override, so they can be reset
+function renderMovedBills(start, end) {
+  const el = document.getElementById('moved-bills-card');
+  if(!el) return;
+
+  const moved = [];
+
+  // Check recurring bills
+  for(const b of state.bills){
+    const {yr, mo} = (() => {
+      // Find what month this bill would normally fall in during this period
+      const monthsToCheck = [];
+      const tmp = new Date(start.getFullYear(), start.getMonth(), 1);
+      while(tmp <= end){ monthsToCheck.push({yr:tmp.getFullYear(),mo:tmp.getMonth()}); tmp.setMonth(tmp.getMonth()+1); }
+      return monthsToCheck.find(({yr,mo}) => {
+        if(b.skipMonths?.includes(mo)) return false;
+        if(b.quarterly && !b.quarterMonths?.includes(mo)) return false;
+        const normalDate = new Date(yr, mo, b.day);
+        return normalDate >= start && normalDate <= end;
+      }) || {};
+    })();
+
+    if(yr === undefined) continue; // bill doesn't normally fall in this period
+    const ovDay = getOverrideDayForMonth(b.id, yr, mo);
+    if(ovDay === null) continue; // not overridden
+    const overriddenDate = new Date(yr, mo, ovDay);
+    if(overriddenDate >= start && overriddenDate <= end) continue; // still in period
+    // Bill was moved OUT
+    moved.push({...b, originalDay: b.day, overriddenDay: ovDay, overrideYear: yr, overrideMonth: mo});
+  }
+
+  // Check one-time bills
+  for(const b of (state.onetime||[])){
+    const ovDay = getOverrideDayForMonth(b.id, b.year, b.month);
+    if(ovDay === null) continue;
+    const normalDate = new Date(b.year, b.month, b.day);
+    if(normalDate < start || normalDate > end) continue; // didn't normally fall here
+    const overriddenDate = new Date(b.year, b.month, ovDay);
+    if(overriddenDate >= start && overriddenDate <= end) continue; // still in period
+    moved.push({...b, originalDay: b.day, overriddenDay: ovDay, overrideYear: b.year, overrideMonth: b.month});
+  }
+
+  if(!moved.length){
+    el.style.display='none';
+    return;
+  }
+
+  el.style.display='block';
+  el.innerHTML = `
+    <div style="padding:10px 16px;background:var(--amber-light);border-radius:var(--radius);border:1px solid #E8C77A;margin-bottom:12px;">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;font-family:'DM Mono',monospace;color:var(--amber);margin-bottom:8px;">moved to next period</div>
+      ${moved.map(b=>`
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(186,117,23,0.2);">
+          <div>
+            <div style="font-size:13px;font-weight:500;color:var(--gray-900)">${b.name}</div>
+            <div style="font-size:11px;color:var(--amber);font-family:'DM Mono',monospace;">moved from day ${b.originalDay} → day ${b.overriddenDay}</div>
+          </div>
+          <button onclick="applyDayOverride('${b.id}',null,null)"
+            style="font-size:11px;font-family:'DM Mono',monospace;color:var(--amber);background:none;border:1px solid var(--amber);border-radius:4px;padding:3px 10px;cursor:pointer;">
+            move back
+          </button>
+        </div>`).join('')}
+    </div>`;
 }
 
 function renderNextPreview() {
