@@ -2,7 +2,7 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chandler's Budget v2</title>
+<title>Chandler's Budget</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -611,7 +611,7 @@ function renderBills(bills) {
   const today=new Date();today.setHours(0,0,0,0);
   const {start} = getCurrentPeriod();
 
-  card.innerHTML=bills.map(b=>{
+  card.innerHTML=bills.map((b,i)=>{
     const paidKey=getPaidKey(b);
     const paidStatus=(state.paid||{})[paidKey];
     const isPaidZelle=paidStatus==='zelle',isPaidDirect=paidStatus==='direct',isPaid=isPaidZelle||isPaidDirect;
@@ -640,10 +640,11 @@ function renderBills(bills) {
         <span class="bill-date-label">due day:</span>
         <input type="number" class="${dayInputClass}" value="${b.day}" min="1" max="31" inputmode="numeric"
           title="Change due date for this period only"
-          onkeydown="if(event.key==='Enter'){applyDayOverride(${billIdJs},this.value,${origDay});this.blur();}" />
-        <button onclick="applyDayOverride(${billIdJs},this.previousElementSibling.value,${origDay})"
+          id="ddi-${i}"
+          onkeydown="if(event.key==='Enter'){applyDayOverride('${b.id}',document.getElementById('ddi-${i}').value,${origDay});this.blur();}" />
+        <button onclick="applyDayOverride('${b.id}',document.getElementById('ddi-${i}').value,${origDay})"
           style="font-size:11px;font-family:'DM Mono',monospace;color:white;background:var(--amber);border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">apply</button>
-        ${isOverridden ? `<button onclick="applyDayOverride(${billIdJs},null,null)" style="font-size:10px;font-family:'DM Mono',monospace;color:var(--gray-400);background:none;border:none;cursor:pointer;text-decoration:underline">reset</button>` : ''}
+        ${isOverridden ? `<button onclick="applyDayOverride('${b.id}',null,null)" style="font-size:10px;font-family:'DM Mono',monospace;color:var(--gray-400);background:none;border:none;cursor:pointer;text-decoration:underline">reset</button>` : ''}
         <span style="font-size:10px;color:var(--gray-400);font-family:'DM Mono',monospace;">this period only</span>
       </div>
       ${!isPaid?`<div class="bill-actions">
