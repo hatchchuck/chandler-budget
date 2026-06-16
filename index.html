@@ -440,15 +440,44 @@ function setOverrideDayForMonth(billId, year, month, day) {
   syncGist(); // fire and forget — don't block on isSyncing
 }
 
-// Called from the Apply button — takes billId, the bill's original month/year, newDay, originalDay
-function applyDayOverride(billId, year, month, newDay, originalDay) {
-  if (newDay === null) {
+// Called from Apply button — looks up the bill's month/year internally
+function applyDayOverride(billId, newDay, originalDay) {
+  // Find the bill to get its month/year for the key
+  const recurBill = state.bills.find(b => b.id === billId);
+  const otBill = (state.onetime||[]).find(b => b.id === billId);
+
+  let year, month;
+  if(otBill){
+    year = otBill.year;
+    month = otBill.month;
+  } else if(recurBill){
+    // For recurring bills, use the current period's month
+    const {start} = getCurrentPeriod();
+    year = start.getFullYear();
+    month = start.getMonth();
+    // If the bill's original day is before the period start, it falls in the next month
+    const today = new Date();
+    const bd = new Date(year, month, recurBill.day);
+    if(bd < start){
+      // Bill's month is actually the next month
+      const nextMonth = new Date(year, month + 1, 1);
+      year = nextMonth.getFullYear();
+      month = nextMonth.getMonth();
+    }
+  } else {
+    console.error('applyDayOverride: bill not found', billId);
+    return;
+  }
+
+  if(newDay === null) {
+    console.log('Resetting override for', billId, year, month);
     setOverrideDayForMonth(billId, year, month, null);
     return;
   }
   const day = Math.min(31, Math.max(1, parseInt(newDay) || 1));
-  if (day === parseInt(originalDay)) {
-    setOverrideDayForMonth(billId, year, month, null); // remove override if same as original
+  console.log('Setting override', billId, year, month, '->', day, '(orig:', originalDay, ')');
+  if(day === parseInt(originalDay)) {
+    setOverrideDayForMonth(billId, year, month, null);
   } else {
     setOverrideDayForMonth(billId, year, month, day);
   }
@@ -586,8 +615,6 @@ function renderBills(bills) {
     const itemClass=isPaidZelle?'bill-item paid-zelle':isPaidDirect?'bill-item paid-direct':'bill-item';
     const dayInputClass = 'bill-day-input' + (isOverridden ? ' overridden' : '');
     const origDay = b.originalDay || b.day;
-    const ovYear = b.overrideYear ?? b.dueDate.getFullYear();
-    const ovMonth = b.overrideMonth ?? b.dueDate.getMonth();
     const billIdJs = JSON.stringify(b.id);
 
     return `<div class="${itemClass}">
@@ -602,10 +629,10 @@ function renderBills(bills) {
         <span class="bill-date-label">due day:</span>
         <input type="number" id="dayinput-${b.id}" class="${dayInputClass}" value="${b.day}" min="1" max="31" inputmode="numeric"
           title="Change due date for this period only"
-          onkeydown="if(event.key==='Enter'){applyDayOverride(${billIdJs},${ovYear},${ovMonth},this.value,${origDay});this.blur();}" />
-        <button onclick="applyDayOverride(${billIdJs},${ovYear},${ovMonth},document.getElementById('dayinput-${b.id}').value,${origDay})"
+          onkeydown="if(event.key==='Enter'){applyDayOverride(${billIdJs},this.value,${origDay});this.blur();}" />
+        <button onclick="applyDayOverride(${billIdJs},document.getElementById('dayinput-${b.id}').value,${origDay})"
           style="font-size:11px;font-family:'DM Mono',monospace;color:white;background:var(--amber);border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">apply</button>
-        ${isOverridden ? `<button onclick="applyDayOverride(${billIdJs},${ovYear},${ovMonth},null,null)" style="font-size:10px;font-family:'DM Mono',monospace;color:var(--gray-400);background:none;border:none;cursor:pointer;text-decoration:underline">reset</button>` : ''}
+        ${isOverridden ? `<button onclick="applyDayOverride(${billIdJs},null,null)" style="font-size:10px;font-family:'DM Mono',monospace;color:var(--gray-400);background:none;border:none;cursor:pointer;text-decoration:underline">reset</button>` : ''}
         <span style="font-size:10px;color:var(--gray-400);font-family:'DM Mono',monospace;">this period only</span>
       </div>
       ${!isPaid?`<div class="bill-actions">
