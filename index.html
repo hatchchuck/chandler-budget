@@ -619,16 +619,16 @@ function renderBills(bills) {
   }).join('');
 }
 
-function applyDayOverride(billId, periodStartISO, newDay, originalDay) {
+function applyDayOverride(billId, year, month, newDay, originalDay) {
   if(newDay === null) {
-    setOverrideDay(billId, periodStartISO, null);
+    setOverrideDayForMonth(billId, year, month, null);
     return;
   }
   const day = Math.min(31, Math.max(1, parseInt(newDay) || 1));
   if(day === parseInt(originalDay)) {
-    setOverrideDay(billId, periodStartISO, null);
+    setOverrideDayForMonth(billId, year, month, null);
   } else {
-    setOverrideDay(billId, periodStartISO, day);
+    setOverrideDayForMonth(billId, year, month, day);
   }
 }
 
