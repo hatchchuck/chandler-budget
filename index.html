@@ -657,19 +657,6 @@ function renderBills(bills) {
   }).join('');
 }
 
-function applyDayOverride(billId, year, month, newDay, originalDay) {
-  if(newDay === null) {
-    setOverrideDayForMonth(billId, year, month, null);
-    return;
-  }
-  const day = Math.min(31, Math.max(1, parseInt(newDay) || 1));
-  if(day === parseInt(originalDay)) {
-    setOverrideDayForMonth(billId, year, month, null);
-  } else {
-    setOverrideDayForMonth(billId, year, month, day);
-  }
-}
-
 function markBill(key, status) {
   state.paid=state.paid||{};
   if(status===null)delete state.paid[key];else state.paid[key]=status;
