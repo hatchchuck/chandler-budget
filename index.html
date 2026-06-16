@@ -446,6 +446,12 @@ function setOverrideDayForMonth(billId, year, month, day) {
 // Called from Apply button — looks up the bill's month/year internally
 function applyDayOverride(billId, newDay, originalDay) {
   const debugEl = document.getElementById('debug-panel');
+  if(debugEl) debugEl.style.display='block';
+
+  // Show immediately so we know the function fired
+  const fireMsg = 'applyDayOverride called: id=' + billId + ' newDay=' + newDay + ' orig=' + originalDay;
+  if(debugEl) debugEl.innerHTML = fireMsg;
+  alert(fireMsg); // temporary - remove after debugging
 
   // Find the bill
   const recurBill = state.bills.find(b => b.id === billId);
@@ -632,10 +638,10 @@ function renderBills(bills) {
       </div>
       <div class="bill-date-row">
         <span class="bill-date-label">due day:</span>
-        <input type="number" id="dayinput-${b.id}" class="${dayInputClass}" value="${b.day}" min="1" max="31" inputmode="numeric"
+        <input type="number" class="${dayInputClass}" value="${b.day}" min="1" max="31" inputmode="numeric"
           title="Change due date for this period only"
           onkeydown="if(event.key==='Enter'){applyDayOverride(${billIdJs},this.value,${origDay});this.blur();}" />
-        <button onclick="applyDayOverride(${billIdJs},document.getElementById('dayinput-${b.id}').value,${origDay})"
+        <button onclick="applyDayOverride(${billIdJs},this.previousElementSibling.value,${origDay})"
           style="font-size:11px;font-family:'DM Mono',monospace;color:white;background:var(--amber);border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">apply</button>
         ${isOverridden ? `<button onclick="applyDayOverride(${billIdJs},null,null)" style="font-size:10px;font-family:'DM Mono',monospace;color:var(--gray-400);background:none;border:none;cursor:pointer;text-decoration:underline">reset</button>` : ''}
         <span style="font-size:10px;color:var(--gray-400);font-family:'DM Mono',monospace;">this period only</span>
