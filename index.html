@@ -424,16 +424,21 @@ async function syncGist() {
 function dSave(){clearTimeout(saveTimer);saveTimer=setTimeout(save,700);}
 
 // ── OVERRIDE HELPERS ──
-function overrideKey(billId, periodStart) {
-  return billId + '|' + periodStart.toISOString().split('T')[0];
+function overrideKey(billId, periodStartISO) {
+  // Always work with ISO string directly to avoid Date timezone issues
+  const iso = (periodStartISO instanceof Date)
+    ? periodStartISO.toISOString().split('T')[0]
+    : String(periodStartISO).split('T')[0];
+  return billId + '|' + iso;
 }
 function getOverrideDay(billId, periodStart) {
-  return (state.overrides || {})[overrideKey(billId, periodStart)] || null;
+  return (state.overrides || {})[overrideKey(billId, periodStart)] ?? null;
 }
-function setOverrideDay(billId, periodStart, day) {
+function setOverrideDay(billId, periodStartISO, day) {
   if (!state.overrides) state.overrides = {};
-  if (day === null) delete state.overrides[overrideKey(billId, periodStart)];
-  else state.overrides[overrideKey(billId, periodStart)] = day;
+  const key = overrideKey(billId, periodStartISO);
+  if (day === null) delete state.overrides[key];
+  else state.overrides[key] = day;
   calc(); save();
 }
 
@@ -444,8 +449,8 @@ function getBillsForPeriod(start, end) {
 
   // One-time bills
   for(const b of(state.onetime||[])){
-    // Check for override day for this period
-    const ovDay = getOverrideDay(b.id, start);
+    const periodStartISO = start.toISOString().split('T')[0];
+    const ovDay = getOverrideDay(b.id, periodStartISO);
     const effectiveDay = ovDay !== null ? ovDay : b.day;
     const bd=new Date(b.year, b.month, effectiveDay);
     if(bd>=start&&bd<=end){
@@ -459,28 +464,33 @@ function getBillsForPeriod(start, end) {
     }
   }
 
-  // Recurring bills — apply override days then re-check which period they fall in
+  // Recurring bills — apply override day then find due date within period
   for(const b of state.bills){
-    const ovDay = getOverrideDay(b.id, start);
+    const periodStartISO = start.toISOString().split('T')[0];
+    const ovDay = getOverrideDay(b.id, periodStartISO);
     const effectiveDay = ovDay !== null ? ovDay : b.day;
 
-    // Scan all months that overlap with the period for this bill
-    const temp2 = new Date(start);
-    while(temp2 <= end){
-      const month=temp2.getMonth(), year=temp2.getFullYear();
-      if(b.skipMonths?.includes(month)){ temp2.setMonth(temp2.getMonth()+1,1); continue; }
-      if(b.quarterly&&!b.quarterMonths?.includes(month)){ temp2.setMonth(temp2.getMonth()+1,1); continue; }
-      const bd = new Date(year, month, effectiveDay);
-      if(bd>=start&&bd<=end){
-        if(seen.has('suppress-'+month+'-'+effectiveDay+'-'+year)){ temp2.setMonth(temp2.getMonth()+1,1); continue; }
-        const key=b.id+'-'+month+'-'+year;
-        if(!seen.has(key)){
-          seen.add(key);
-          result.push({...b, day: effectiveDay, dueDate:bd, displayType:'recurring',
-            overridden: ovDay !== null, originalDay: b.day, periodStart: start});
-        }
+    // Check each month that the period touches
+    const monthsToCheck = new Set();
+    const tmp = new Date(start.getFullYear(), start.getMonth(), 1);
+    while(tmp <= end){
+      monthsToCheck.add(tmp.getFullYear() + '-' + tmp.getMonth());
+      tmp.setMonth(tmp.getMonth() + 1);
+    }
+
+    for(const mk of monthsToCheck){
+      const [yr, mo] = mk.split('-').map(Number);
+      if(b.skipMonths?.includes(mo)) continue;
+      if(b.quarterly && !b.quarterMonths?.includes(mo)) continue;
+      const bd = new Date(yr, mo, effectiveDay);
+      if(bd < start || bd > end) continue;
+      if(seen.has('suppress-'+mo+'-'+effectiveDay+'-'+yr)) continue;
+      const key = b.id+'-'+mo+'-'+yr;
+      if(!seen.has(key)){
+        seen.add(key);
+        result.push({...b, day: effectiveDay, dueDate: bd, displayType:'recurring',
+          overridden: ovDay !== null, originalDay: b.day, periodStart: start});
       }
-      temp2.setMonth(temp2.getMonth()+1,1);
     }
   }
 
@@ -564,8 +574,10 @@ function renderBills(bills) {
       ? `<span class="bill-tag tag-moved">moved from ${b.originalDay}</span>` : '';
     const itemClass=isPaidZelle?'bill-item paid-zelle':isPaidDirect?'bill-item paid-direct':'bill-item';
     const dayInputClass = 'bill-day-input' + (isOverridden ? ' overridden' : '');
+    const periodStartISO = start.toISOString().split('T')[0];
     const billIdJs = JSON.stringify(b.id);
-    const periodStartJs = JSON.stringify(start.toISOString().split('T')[0]);
+    const periodISO = JSON.stringify(periodStartISO);
+    const origDay = b.originalDay || b.day;
 
     return `<div class="${itemClass}">
       <div class="bill-top">
@@ -577,11 +589,12 @@ function renderBills(bills) {
       </div>
       <div class="bill-date-row">
         <span class="bill-date-label">due day:</span>
-        <input type="number" class="${dayInputClass}" value="${b.day}" min="1" max="31" inputmode="numeric"
-          title="Change due date for this period only — resets next period"
-          onchange="applyDayOverride(${billIdJs}, ${periodStartJs}, this.value, ${b.originalDay || b.day})"
-          onblur="applyDayOverride(${billIdJs}, ${periodStartJs}, this.value, ${b.originalDay || b.day})" />
-        ${isOverridden ? `<button onclick="applyDayOverride(${billIdJs}, ${periodStartJs}, null, null)" style="font-size:10px;font-family:'DM Mono',monospace;color:var(--gray-400);background:none;border:none;cursor:pointer;text-decoration:underline">reset</button>` : ''}
+        <input type="number" id="dayinput-${b.id}" class="${dayInputClass}" value="${b.day}" min="1" max="31" inputmode="numeric"
+          title="Change due date for this period only"
+          onkeydown="if(event.key==='Enter'){applyDayOverride(${billIdJs},${periodISO},this.value,${origDay});this.blur();}" />
+        <button onclick="applyDayOverride(${billIdJs},${periodISO},document.getElementById('dayinput-${b.id}').value,${origDay})"
+          style="font-size:11px;font-family:'DM Mono',monospace;color:white;background:var(--amber);border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">apply</button>
+        ${isOverridden ? `<button onclick="applyDayOverride(${billIdJs},${periodISO},null,null)" style="font-size:10px;font-family:'DM Mono',monospace;color:var(--gray-400);background:none;border:none;cursor:pointer;text-decoration:underline">reset</button>` : ''}
         <span style="font-size:10px;color:var(--gray-400);font-family:'DM Mono',monospace;">this period only</span>
       </div>
       ${!isPaid?`<div class="bill-actions">
@@ -596,18 +609,15 @@ function renderBills(bills) {
 }
 
 function applyDayOverride(billId, periodStartISO, newDay, originalDay) {
-  const periodStart = new Date(periodStartISO + 'T00:00:00');
   if(newDay === null) {
-    // Reset to original
-    setOverrideDay(billId, periodStart, null);
+    setOverrideDay(billId, periodStartISO, null);
     return;
   }
   const day = Math.min(31, Math.max(1, parseInt(newDay) || 1));
-  if(day === originalDay) {
-    // Same as original — remove override
-    setOverrideDay(billId, periodStart, null);
+  if(day === parseInt(originalDay)) {
+    setOverrideDay(billId, periodStartISO, null);
   } else {
-    setOverrideDay(billId, periodStart, day);
+    setOverrideDay(billId, periodStartISO, day);
   }
 }
 
