@@ -342,10 +342,14 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
 <script>
 const STORAGE_KEY = 'chandler_v3';
 const PASSWORD = 'Soccer18';
-// Spending allowance is calculated dynamically: $200 payday + $20 x (period days - 1)
+// Spending allowance: $200 payday + $20 x number of non-payday days in period
 function getPeriodAllowance(start, end) {
-  const days = Math.round((end - start) / (1000*60*60*24));
-  return 200 + (20 * days);
+  // Count days inclusively: Jun 18 to Jul 2 = 15 days
+  const startDay = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+  const endDay = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+  const totalDays = Math.round((endDay - startDay) / (1000*60*60*24)) + 1;
+  // $200 for payday + $20 for each remaining day
+  return 200 + (20 * (totalDays - 1));
 }
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
@@ -617,6 +621,14 @@ function calc() {
     tc.className='transfer zero';ta.textContent='$0';tl.textContent='transfer to fidelity';ts.textContent='nothing available this period';
   }
 
+  const startDay = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+  const endDay = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+  const totalDays = Math.round((endDay - startDay) / (1000*60*60*24)) + 1;
+  if(document.getElementById('br-allowance-sub'))
+    document.getElementById('br-allowance-sub').textContent='$200 today + $20/day × '+(totalDays-1);
+  if(document.getElementById('br-allowance-val'))
+    document.getElementById('br-allowance-val').textContent='-$'+periodAllowance.toFixed(0);
+
   const bc=document.getElementById('breakdown-card');
   if(paycheck>0||balance>0||deposit>0){
     bc.style.display='block';
@@ -624,11 +636,6 @@ function calc() {
     document.getElementById('br-balance-val').textContent='$'+total.toFixed(2);
     document.getElementById('br-bills-val').textContent='-$'+billsTotal.toFixed(2);
     document.getElementById('br-bills-sub').textContent=bills.length+' bill'+(bills.length!==1?'s':'')+' due';
-    const periodDays = Math.round((end-start)/(1000*60*60*24));
-    if(document.getElementById('br-allowance-sub'))
-      document.getElementById('br-allowance-sub').textContent='$200 today + $20/day × '+periodDays;
-    if(document.getElementById('br-allowance-val'))
-      document.getElementById('br-allowance-val').textContent='-$'+periodAllowance.toFixed(0);
   }else{bc.style.display='none';}
 
   document.getElementById('period-label').textContent=
