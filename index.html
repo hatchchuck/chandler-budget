@@ -219,7 +219,7 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
     <div class="card-row"><div class="row-label" id="br-balance-lbl">balance + paycheck</div><div class="row-val green" id="br-balance-val">$0</div></div>
     <div class="card-row"><div><div class="row-label">bills this period</div><div class="row-sub" id="br-bills-sub">0 bills due</div></div><div class="row-val red" id="br-bills-val">-$0</div></div>
     <div class="card-row"><div><div class="row-label">$300 floor</div><div class="row-sub">minimum balance</div></div><div class="row-val amber">-$300</div></div>
-    <div class="card-row"><div><div class="row-label">spending allowance</div><div class="row-sub">$200 today + $20/day × 13</div></div><div class="row-val amber">-$460</div></div>
+    <div class="card-row"><div><div class="row-label">spending allowance</div><div class="row-sub" id="br-allowance-sub">$200 today + $20/day × 13</div></div><div class="row-val amber" id="br-allowance-val">-$460</div></div>
   </div>
 
   <p class="section-title">bills this period — <span id="period-label" style="color:var(--gray-600)"></span></p>
@@ -342,7 +342,11 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
 <script>
 const STORAGE_KEY = 'chandler_v3';
 const PASSWORD = 'Soccer18';
-const PERIOD_ALLOWANCE = 460;
+// Spending allowance is calculated dynamically: $200 payday + $20 x (period days - 1)
+function getPeriodAllowance(start, end) {
+  const days = Math.round((end - start) / (1000*60*60*24));
+  return 200 + (20 * days);
+}
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
 const DEFAULT_PAYDAYS_STR = [
@@ -595,8 +599,9 @@ function calc() {
   const billsTotal=bills.reduce((s,b)=>s+b.amount,0);
   const total=balance+paycheck+deposit;
   const floor=state.floor||300;
-  const transfer=Math.max(0,total-billsTotal-floor-PERIOD_ALLOWANCE);
-  const isTight=total<(billsTotal+floor+PERIOD_ALLOWANCE);
+  const periodAllowance = getPeriodAllowance(start, end);
+  const transfer=Math.max(0,total-billsTotal-floor-periodAllowance);
+  const isTight=total<(billsTotal+floor+periodAllowance);
 
   const tc=document.getElementById('transfer-card');
   const ta=document.getElementById('transfer-amount');
@@ -619,6 +624,11 @@ function calc() {
     document.getElementById('br-balance-val').textContent='$'+total.toFixed(2);
     document.getElementById('br-bills-val').textContent='-$'+billsTotal.toFixed(2);
     document.getElementById('br-bills-sub').textContent=bills.length+' bill'+(bills.length!==1?'s':'')+' due';
+    const periodDays = Math.round((end-start)/(1000*60*60*24));
+    if(document.getElementById('br-allowance-sub'))
+      document.getElementById('br-allowance-sub').textContent='$200 today + $20/day × '+periodDays;
+    if(document.getElementById('br-allowance-val'))
+      document.getElementById('br-allowance-val').textContent='-$'+periodAllowance.toFixed(0);
   }else{bc.style.display='none';}
 
   document.getElementById('period-label').textContent=
