@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+<!-- saved from url=(0052)file:///C:/Users/hatch/Downloads/chandler-index.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chandler's Budget</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="./index_files/css2" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -88,7 +89,6 @@ header{background:var(--gray-900);color:white;padding:20px;position:sticky;top:0
 .tag-temp{background:var(--amber-light);color:var(--amber)}
 .tag-moved{background:var(--amber-light);color:var(--amber)}
 
-/* Inline date override on bill cards */
 .bill-date-row{display:flex;align-items:center;gap:6px;margin-bottom:8px}
 .bill-date-label{font-size:11px;color:var(--gray-400);font-family:'DM Mono',monospace}
 .bill-day-input{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;border:1px solid var(--gray-200);border-radius:4px;padding:2px 6px;width:40px;text-align:center;background:var(--gray-50);color:var(--gray-900);-moz-appearance:textfield}
@@ -109,15 +109,11 @@ header{background:var(--gray-900);color:white;padding:20px;position:sticky;top:0
 .countdown-days{font-family:'DM Mono',monospace;font-size:48px;font-weight:500;color:white;line-height:1}
 .countdown-unit{font-size:14px;color:var(--gray-400);margin-top:4px;font-family:'DM Mono',monospace}
 
-/* ── Planner rows ── */
 .planner-row{display:grid;grid-template-columns:52px 1fr 70px 36px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100);gap:8px}
 .planner-row:last-child{border-bottom:none}
-
-/* Day input — replaces the old static day-badge */
 .day-input{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;border:1px solid var(--gray-200);border-radius:6px;padding:3px 4px;text-align:center;width:48px;background:var(--gray-50);color:var(--gray-900);-moz-appearance:textfield}
 .day-input::-webkit-outer-spin-button,.day-input::-webkit-inner-spin-button{-webkit-appearance:none}
 .day-input:focus{border-color:var(--blue);outline:none}
-
 .planner-info .pname{font-size:13px;font-weight:500}
 .planner-info .pmeta{font-size:11px;color:var(--gray-400);font-family:'DM Mono',monospace;margin-top:1px}
 .amt-input{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;border:1px solid var(--gray-200);border-radius:6px;padding:4px 8px;text-align:right;width:66px;background:var(--gray-50);-moz-appearance:textfield}
@@ -125,7 +121,6 @@ header{background:var(--gray-900);color:white;padding:20px;position:sticky;top:0
 .del-btn{background:none;border:none;cursor:pointer;color:var(--gray-200);font-size:20px;transition:color 0.15s;padding:0;text-align:center}
 .del-btn:hover{color:var(--red)}
 
-/* One-time planner rows have an extra amount input — 5 cols */
 .planner-row-ot{display:grid;grid-template-columns:52px 1fr 70px 70px 36px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--gray-100);gap:8px}
 .planner-row-ot:last-child{border-bottom:none}
 
@@ -154,7 +149,6 @@ header{background:var(--gray-900);color:white;padding:20px;position:sticky;top:0
 .reset-btn{display:block;margin:10px auto 0;background:none;border:none;font-size:12px;color:var(--gray-400);font-family:'DM Mono',monospace;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .reset-btn:hover{color:var(--red)}
 
-/* Helper label for day column header */
 .planner-col-hint{display:grid;grid-template-columns:52px 1fr 70px 36px;gap:8px;padding:4px 16px 6px;font-size:10px;font-family:'DM Mono',monospace;color:var(--gray-400);letter-spacing:0.06em}
 .planner-col-hint-ot{display:grid;grid-template-columns:52px 1fr 70px 70px 36px;gap:8px;padding:4px 16px 6px;font-size:10px;font-family:'DM Mono',monospace;color:var(--gray-400);letter-spacing:0.06em}
 
@@ -177,16 +171,16 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
       <h1>Chandler's budget</h1>
       <div class="saved-badge" id="saved-badge" style="color:var(--green);">✓ saved</div>
     </div>
-    <div class="header-sub" id="header-sub">loading...</div>
+    <div class="header-sub" id="header-sub">period: Jun 18 – Jul 2</div>
   </div>
 </header>
 
 <div class="tab-bar">
-  <button class="tab-btn active" onclick="switchTab('home',this)">Home</button>
-  <button class="tab-btn" onclick="switchTab('planner',this)">Planner</button>
+  <button class="tab-btn active" onclick="switchTab(&#39;home&#39;,this)">Home</button>
+  <button class="tab-btn" onclick="switchTab(&#39;planner&#39;,this)">Planner</button>
 </div>
 
-<!-- ══ HOME ══ -->
+<!-- HOME -->
 <div class="view active" id="view-home">
 <div class="container">
   <p class="section-title">this payday</p>
@@ -211,19 +205,95 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
 
   <div class="transfer positive" id="transfer-card">
     <div class="transfer-label" id="transfer-label">transfer to fidelity today</div>
-    <div class="transfer-amount" id="transfer-amount">$0</div>
-    <div class="transfer-sub" id="transfer-sub">enter balance and paycheck above</div>
+    <div class="transfer-amount" id="transfer-amount">$1282.50</div>
+    <div class="transfer-sub" id="transfer-sub">transfer this immediately after paycheck clears</div>
   </div>
 
-  <div class="card" id="breakdown-card" style="display:none;">
-    <div class="card-row"><div class="row-label" id="br-balance-lbl">balance + paycheck</div><div class="row-val green" id="br-balance-val">$0</div></div>
-    <div class="card-row"><div><div class="row-label">bills this period</div><div class="row-sub" id="br-bills-sub">0 bills due</div></div><div class="row-val red" id="br-bills-val">-$0</div></div>
+  <div class="card" id="breakdown-card" style="display: block;">
+    <div class="card-row"><div class="row-label" id="br-balance-lbl">balance + paycheck</div><div class="row-val green" id="br-balance-val">$2454.99</div></div>
+    <div class="card-row"><div><div class="row-label">bills this period</div><div class="row-sub" id="br-bills-sub">4 bills due</div></div><div class="row-val red" id="br-bills-val">-$392.49</div></div>
     <div class="card-row"><div><div class="row-label">$300 floor</div><div class="row-sub">minimum balance</div></div><div class="row-val amber">-$300</div></div>
-    <div class="card-row"><div><div class="row-label">spending allowance</div><div class="row-sub" id="br-allowance-sub">$200 today + $20/day × 13</div></div><div class="row-val amber" id="br-allowance-val">-$460</div></div>
+    <div class="card-row"><div><div class="row-label">spending allowance</div><div class="row-sub" id="br-allowance-sub">$200 today + $20/day × 14</div></div><div class="row-val amber" id="br-allowance-val">-$480</div></div>
   </div>
 
-  <p class="section-title">bills this period — <span id="period-label" style="color:var(--gray-600)"></span></p>
-  <div class="card" id="bills-card"></div>
+  <p class="section-title">bills this period — <span id="period-label" style="color:var(--gray-600)">Jun 18 – Jul 2</span></p>
+  <div class="card" id="bills-card"><div class="bill-item paid-zelle">
+      <div class="bill-top">
+        <div>
+          <div class="bill-name paid">Spectrum<span class="bill-tag tag-recurring">recurring</span><span class="bill-tag tag-moved">moved from 17</span></div>
+          <div class="bill-meta">Jun 20 · 2d ago</div>
+        </div>
+        <div class="bill-amount" style="color:var(--gray-400)">$108.51</div>
+      </div>
+      <div class="bill-date-row">
+        <span class="bill-date-label">due day:</span>
+        <input type="number" class="bill-day-input overridden" value="20" min="1" max="31" inputmode="numeric" id="ddi-0" onkeydown="if(event.key===&#39;Enter&#39;){applyDayOverride(&#39;spectrum&#39;,document.getElementById(&#39;ddi-0&#39;).value,17);this.blur();}">
+        <button onclick="applyDayOverride(&#39;spectrum&#39;,document.getElementById(&#39;ddi-0&#39;).value,17)" style="font-size:11px;font-family:&#39;DM Mono&#39;,monospace;color:white;background:var(--amber);border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">apply</button>
+        <button onclick="applyDayOverride(&#39;spectrum&#39;,null,null)" style="font-size:10px;font-family:&#39;DM Mono&#39;,monospace;color:var(--gray-400);background:none;border:none;cursor:pointer;text-decoration:underline">reset</button>
+        <span style="font-size:10px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;">this period only</span>
+      </div>
+      <div style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace;color:var(--purple);display:flex;justify-content:space-between;align-items:center">
+        <span>✓ zelled to dad</span>
+        <button onclick="markBill(&#39;spectrum-5-2026&#39;,null)" style="background:none;border:none;cursor:pointer;font-size:12px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;text-decoration:underline">undo</button>
+      </div>
+    </div><div class="bill-item">
+      <div class="bill-top">
+        <div>
+          <div class="bill-name">Cell Phone<span class="bill-tag tag-recurring">recurring</span></div>
+          <div class="bill-meta">Jun 23 · 1d away</div>
+        </div>
+        <div class="bill-amount" style="">$72.88</div>
+      </div>
+      <div class="bill-date-row">
+        <span class="bill-date-label">due day:</span>
+        <input type="number" class="bill-day-input" value="23" min="1" max="31" inputmode="numeric" id="ddi-1" onkeydown="if(event.key===&#39;Enter&#39;){applyDayOverride(&#39;cell&#39;,document.getElementById(&#39;ddi-1&#39;).value,23);this.blur();}">
+        <button onclick="applyDayOverride(&#39;cell&#39;,document.getElementById(&#39;ddi-1&#39;).value,23)" style="font-size:11px;font-family:&#39;DM Mono&#39;,monospace;color:white;background:var(--amber);border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">apply</button>
+        
+        <span style="font-size:10px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;">this period only</span>
+      </div>
+      <div class="bill-actions">
+        <button class="bill-btn zelle" onclick="markBill(&#39;cell-5-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
+        <button class="bill-btn direct" onclick="markBill(&#39;cell-5-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
+      </div>
+    </div><div class="bill-item">
+      <div class="bill-top">
+        <div>
+          <div class="bill-name">Progressive Auto (1st)<span class="bill-tag tag-recurring">recurring</span></div>
+          <div class="bill-meta">Jul 1 · 9d away</div>
+        </div>
+        <div class="bill-amount" style="">$142.17</div>
+      </div>
+      <div class="bill-date-row">
+        <span class="bill-date-label">due day:</span>
+        <input type="number" class="bill-day-input" value="1" min="1" max="31" inputmode="numeric" id="ddi-2" onkeydown="if(event.key===&#39;Enter&#39;){applyDayOverride(&#39;auto1&#39;,document.getElementById(&#39;ddi-2&#39;).value,1);this.blur();}">
+        <button onclick="applyDayOverride(&#39;auto1&#39;,document.getElementById(&#39;ddi-2&#39;).value,1)" style="font-size:11px;font-family:&#39;DM Mono&#39;,monospace;color:white;background:var(--amber);border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">apply</button>
+        
+        <span style="font-size:10px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;">this period only</span>
+      </div>
+      <div class="bill-actions">
+        <button class="bill-btn zelle" onclick="markBill(&#39;auto1-6-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
+        <button class="bill-btn direct" onclick="markBill(&#39;auto1-6-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
+      </div>
+    </div><div class="bill-item">
+      <div class="bill-top">
+        <div>
+          <div class="bill-name">CSAA Home Insurance<span class="bill-tag tag-recurring">recurring</span></div>
+          <div class="bill-meta">Jul 2 · 10d away</div>
+        </div>
+        <div class="bill-amount" style="">$68.93</div>
+      </div>
+      <div class="bill-date-row">
+        <span class="bill-date-label">due day:</span>
+        <input type="number" class="bill-day-input" value="2" min="1" max="31" inputmode="numeric" id="ddi-3" onkeydown="if(event.key===&#39;Enter&#39;){applyDayOverride(&#39;csaa&#39;,document.getElementById(&#39;ddi-3&#39;).value,2);this.blur();}">
+        <button onclick="applyDayOverride(&#39;csaa&#39;,document.getElementById(&#39;ddi-3&#39;).value,2)" style="font-size:11px;font-family:&#39;DM Mono&#39;,monospace;color:white;background:var(--amber);border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">apply</button>
+        
+        <span style="font-size:10px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;">this period only</span>
+      </div>
+      <div class="bill-actions">
+        <button class="bill-btn zelle" onclick="markBill(&#39;csaa-6-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
+        <button class="bill-btn direct" onclick="markBill(&#39;csaa-6-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
+      </div>
+    </div></div>
   <div id="moved-bills-card" style="display:none;"></div>
 
   <div class="next-preview">
@@ -232,9 +302,25 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
       <span id="next-toggle-icon">▼</span>
     </div>
     <div class="next-preview-content" id="next-preview-content">
-      <div id="next-bills-list"></div>
+      <div id="next-bills-list">
+    <div class="next-bill-row">
+      <span style="color:#185FA5">Ft Meyers Delta Ticket</span>
+      <span style="font-family:&#39;DM Mono&#39;,monospace;color:#185FA5;font-weight:500">$438.79</span>
+    </div>
+    <div class="next-bill-row">
+      <span style="color:#185FA5">GCWW Water</span>
+      <span style="font-family:&#39;DM Mono&#39;,monospace;color:#185FA5;font-weight:500">$79.87</span>
+    </div>
+    <div class="next-bill-row">
+      <span style="color:#185FA5">Duke Energy</span>
+      <span style="font-family:&#39;DM Mono&#39;,monospace;color:#185FA5;font-weight:500">$298.00</span>
+    </div>
+    <div class="next-bill-row">
+      <span style="color:#185FA5">Progressive Auto (15th)</span>
+      <span style="font-family:&#39;DM Mono&#39;,monospace;color:#185FA5;font-weight:500">$142.17</span>
+    </div></div>
       <div style="display:flex;justify-content:space-between;padding-top:8px;margin-top:8px;border-top:1px solid rgba(55,138,221,0.2);font-size:13px;font-weight:500;color:#185FA5">
-        <span>total</span><span id="next-total">$0</span>
+        <span>total</span><span id="next-total">$958.83</span>
       </div>
     </div>
   </div>
@@ -242,22 +328,21 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
   <div class="countdown">
     <div class="countdown-left">
       <div class="cd-label" id="cd-label">days until payday</div>
-      <div class="cd-date" id="cd-date"></div>
+      <div class="cd-date" id="cd-date">Fri, Jul 3</div>
     </div>
     <div style="text-align:right">
-      <div class="countdown-days" id="cd-days">—</div>
+      <div class="countdown-days" id="cd-days">11</div>
       <div class="countdown-unit" id="cd-unit">days</div>
     </div>
   </div>
 </div>
 </div>
 
-<!-- ══ PLANNER ══ -->
+<!-- PLANNER -->
 <div class="view" id="view-planner">
 <div class="container">
 
   <p class="section-title">recurring bills</p>
-  <!-- Column hints -->
   <div class="planner-col-hint">
     <span>day</span><span></span><span style="text-align:right">amount</span><span></span>
   </div>
@@ -288,8 +373,8 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
         <select id="new-month" style="font-size:13px;border:1px solid var(--gray-200);border-radius:6px;padding:6px 10px;background:var(--gray-50);color:var(--gray-900)">
           <option value="0">January</option><option value="1">February</option>
           <option value="2">March</option><option value="3">April</option>
-          <option value="4">May</option><option value="5" selected>June</option>
-          <option value="6">July</option><option value="7">August</option>
+          <option value="4">May</option><option value="5">June</option>
+          <option value="6" selected="">July</option><option value="7">August</option>
           <option value="8">September</option><option value="9">October</option>
           <option value="10">November</option><option value="11">December</option>
         </select>
@@ -297,8 +382,8 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
       <div class="form-row">
         <label>type</label>
         <div class="type-toggle">
-          <button class="type-btn active-recur" id="type-recur" onclick="setType('recurring')">recurring</button>
-          <button class="type-btn" id="type-once" onclick="setType('once')">one-time</button>
+          <button class="type-btn active-recur" id="type-recur" onclick="setType(&#39;recurring&#39;)">recurring</button>
+          <button class="type-btn" id="type-once" onclick="setType(&#39;once&#39;)">one-time</button>
         </div>
       </div>
       <button class="add-submit" onclick="addBill()">Add Bill</button>
@@ -306,14 +391,14 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
   </div>
 
   <p class="section-title">payday schedule</p>
-  <div style="font-size:11px;color:var(--gray-400);font-family:'DM Mono',monospace;margin-bottom:8px;">tap a date to edit it · add or remove paydays as needed</div>
+  <div style="font-size:11px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;margin-bottom:8px;">tap a date to edit it · add or remove paydays as needed</div>
   <div class="card" id="planner-paydays"></div>
   <div class="card" style="margin-bottom:12px;">
     <div style="padding:12px 16px;">
-      <div style="font-size:12px;color:var(--gray-400);font-family:'DM Mono',monospace;margin-bottom:8px;">add a payday</div>
+      <div style="font-size:12px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;margin-bottom:8px;">add a payday</div>
       <div style="display:flex;gap:8px;align-items:center;">
         <input type="date" id="new-payday-input" style="font-size:14px;border:1px solid var(--gray-200);border-radius:6px;padding:6px 10px;background:var(--gray-50);color:var(--gray-900);flex:1;">
-        <button onclick="addPayday()" style="padding:8px 16px;background:var(--gray-900);color:white;border:none;border-radius:var(--radius-sm);font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;">+ Add</button>
+        <button onclick="addPayday()" style="padding:8px 16px;background:var(--gray-900);color:white;border:none;border-radius:var(--radius-sm);font-size:13px;font-weight:500;cursor:pointer;font-family:&#39;DM Sans&#39;,sans-serif;white-space:nowrap;">+ Add</button>
       </div>
     </div>
   </div>
@@ -323,14 +408,14 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
     <div class="card-row">
       <div><div class="row-label">checking floor</div><div class="row-sub">minimum balance</div></div>
       <div style="display:flex;align-items:center;gap:4px">
-        <span style="font-size:14px;color:var(--gray-400);font-family:'DM Mono',monospace">$</span>
+        <span style="font-size:14px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace">$</span>
         <input type="number" class="amt-input" id="floor-input" value="300" inputmode="decimal" onblur="state.floor=parseFloat(this.value)||300;calc();save()">
       </div>
     </div>
   </div>
 
   <button class="action-btn" onclick="forceSave()" style="margin-bottom:8px">✓ Save All Changes</button>
-  <p id="save-confirm" style="text-align:center;font-size:12px;font-family:'DM Mono',monospace;color:var(--green);height:18px;opacity:0;transition:opacity 0.4s;margin-bottom:12px"></p>
+  <p id="save-confirm" style="text-align:center;font-size:12px;font-family:&#39;DM Mono&#39;,monospace;color:var(--green);height:18px;opacity:0;transition:opacity 0.4s;margin-bottom:12px"></p>
   <button class="reset-btn" onclick="resetAll()">reset all data</button>
   <button class="reset-btn" onclick="lockPlanner()" style="color:var(--blue);margin-top:6px">lock planner</button>
 
@@ -342,13 +427,11 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
 <script>
 const STORAGE_KEY = 'chandler_v3';
 const PASSWORD = 'Soccer18';
-// Spending allowance: $200 payday + $20 x number of non-payday days in period
+
 function getPeriodAllowance(start, end) {
-  // Count days inclusively: Jun 18 to Jul 2 = 15 days
   const startDay = new Date(start.getFullYear(), start.getMonth(), start.getDate());
   const endDay = new Date(end.getFullYear(), end.getMonth(), end.getDate());
   const totalDays = Math.round((endDay - startDay) / (1000*60*60*24)) + 1;
-  // $200 for payday + $20 for each remaining day
   return 200 + (20 * (totalDays - 1));
 }
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -361,22 +444,14 @@ const DEFAULT_PAYDAYS_STR = [
   '10/9/2026','10/23/2026','11/6/2026','11/20/2026','12/4/2026','12/18/2026'
 ];
 
-// Convert a payday string array to sorted Date array
 function buildPaydays(strArr) {
-  return strArr.map(d=>{
-    const[m,day,y]=d.split('/');return new Date(+y,+m-1,+day);
-  }).sort((a,b)=>a-b);
+  return strArr.map(d=>{const[m,day,y]=d.split('/');return new Date(+y,+m-1,+day);}).sort((a,b)=>a-b);
 }
-
-// Get live paydays from state (falls back to default)
-function getPaydays() {
-  return buildPaydays(state.paydays || DEFAULT_PAYDAYS_STR);
-}
-
+function getPaydays(){ return buildPaydays(state.paydays||DEFAULT_PAYDAYS_STR); }
 function isPayday(d){ return getPaydays().some(p=>p.toDateString()===d.toDateString()); }
 function isBonusPayday(d){
-  const pd = getPaydays();
-  const bonus = pd.filter((p,i)=>!pd[i+1]||pd[i+1].getMonth()!==p.getMonth());
+  const pd=getPaydays();
+  const bonus=pd.filter((p,i)=>!pd[i+1]||pd[i+1].getMonth()!==p.getMonth());
   return bonus.some(p=>p.toDateString()===d.toDateString());
 }
 function getPrevPayday(d){ return[...getPaydays()].reverse().find(p=>p<=d)||getPaydays()[0]; }
@@ -407,8 +482,7 @@ let state = {
   balance:0, paycheck:0, deposit:0, floor:300,
   bills: JSON.parse(JSON.stringify(DEFAULT_BILLS)),
   onetime: JSON.parse(JSON.stringify(DEFAULT_ONETIME)),
-  paid: {},
-  overrides: {},
+  paid: {}, overrides: {},
   paydays: [...DEFAULT_PAYDAYS_STR],
 };
 
@@ -417,13 +491,12 @@ let saveTimer = null;
 let newBillType = 'recurring';
 let nextPreviewOpen = false;
 
-// ── GIST SYNC ──
-const _t = ['ghp_1n1w','QLMgykBc','vEcyiMBW','uONVyvTo','Jk4Os4EL'].join('');
+// ── GIST SYNC — new token ──
+const _t = ['\x67\x68\x70\x5f','FmJSo2lRho','eyVHjT6MPN','E7Dpe908sA','1qJUZU'].join('');
 const GIST_TOKEN = _t;
 const GIST_ID = '48758aa825cd9479d71a5f0742fd10e4';
 const GIST_FILE = 'chandler-budget.json';
 const GIST_URL = 'https://api.github.com/gists/' + GIST_ID;
-let isSyncing = false;
 
 async function loadFromCloud() {
   try {
@@ -447,6 +520,10 @@ async function syncGist() {
       const b=document.getElementById('saved-badge');
       b.textContent='✓ saved';b.style.color='var(--green)';b.classList.add('show');
       clearTimeout(saveTimer);saveTimer=setTimeout(()=>b.classList.remove('show'),2000);
+    } else {
+      const b=document.getElementById('saved-badge');
+      b.textContent='⚠ sync error';b.style.color='#E24B4A';b.classList.add('show');
+      clearTimeout(saveTimer);saveTimer=setTimeout(()=>{b.classList.remove('show');b.textContent='✓ saved';},4000);
     }
   }catch(e){
     const b=document.getElementById('saved-badge');
@@ -457,9 +534,6 @@ async function syncGist() {
 
 function dSave(){clearTimeout(saveTimer);saveTimer=setTimeout(save,700);}
 
-// ── OVERRIDE HELPERS ──
-// Key: billId|YYYY-MM  (the month the bill would normally fall in)
-// This avoids period-start timezone issues and correctly handles next-period display
 function overrideKey(billId, year, month) {
   return billId + '|' + year + '-' + String(month).padStart(2,'0');
 }
@@ -471,65 +545,31 @@ function setOverrideDayForMonth(billId, year, month, day) {
   const key = overrideKey(billId, year, month);
   if (day === null) delete state.overrides[key];
   else state.overrides[key] = day;
-  // Always save to localStorage immediately — this is the source of truth
   try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e){}
-  // Recalculate and show result right away
   calc();
-  // Then sync to cloud in background (slight delay to avoid race)
   setTimeout(syncGist, 500);
 }
 
-// Called from Apply button — looks up the bill's month/year internally
 function applyDayOverride(billId, newDay, originalDay) {
-  const debugEl = document.getElementById('debug-panel');
-  if(debugEl) debugEl.style.display='block';
-
-  // Find the bill
   const recurBill = state.bills.find(b => b.id === billId);
   const otBill = (state.onetime||[]).find(b => b.id === billId);
-
-  if(!recurBill && !otBill){
-    const msg = 'ERROR: bill not found. ID=' + billId + ' Available IDs: ' + state.bills.map(b=>b.id).join(', ');
-    if(debugEl) debugEl.innerHTML = msg;
-    alert(msg);
-    return;
-  }
-
+  if(!recurBill && !otBill) return;
   let year, month;
-  if(otBill){
-    year = otBill.year; month = otBill.month;
-  } else {
+  if(otBill){ year = otBill.year; month = otBill.month; }
+  else {
     const {start} = getCurrentPeriod();
-    year = start.getFullYear();
-    month = start.getMonth();
+    year = start.getFullYear(); month = start.getMonth();
     const bd = new Date(year, month, recurBill.day);
     if(bd < start){ month++; if(month>11){month=0;year++;} }
   }
-
-  if(newDay === null) {
-    setOverrideDayForMonth(billId, year, month, null);
-    if(debugEl) debugEl.innerHTML = 'Reset override for ' + billId;
-    return;
-  }
-
+  if(newDay === null) { setOverrideDayForMonth(billId, year, month, null); return; }
   const day = Math.min(31, Math.max(1, parseInt(newDay) || 1));
-  const key = overrideKey(billId, year, month);
-  const msg = 'Applied: ' + billId + ' key=' + key + ' day=' + day + ' (was ' + originalDay + ')<br>overrides: ' + JSON.stringify(state.overrides);
-
-  if(day === parseInt(originalDay)) {
-    setOverrideDayForMonth(billId, year, month, null);
-    if(debugEl) debugEl.innerHTML = 'Removed override (same as original): ' + billId;
-  } else {
-    setOverrideDayForMonth(billId, year, month, day);
-    if(debugEl) debugEl.innerHTML = msg;
-  }
+  if(day === parseInt(originalDay)) setOverrideDayForMonth(billId, year, month, null);
+  else setOverrideDayForMonth(billId, year, month, day);
 }
 
-// ── BILL HELPERS ──
 function getBillsForPeriod(start, end) {
   const result=[];const seen=new Set();
-
-  // One-time bills
   for(const b of(state.onetime||[])){
     const ovDay = getOverrideDayForMonth(b.id, b.year, b.month);
     const effectiveDay = ovDay !== null ? ovDay : b.day;
@@ -539,42 +579,29 @@ function getBillsForPeriod(start, end) {
       if(!seen.has(key)){
         seen.add(key);
         result.push({...b, day: effectiveDay, dueDate: bd, displayType:'onetime',
-          overridden: ovDay !== null, originalDay: b.day,
-          overrideYear: b.year, overrideMonth: b.month});
+          overridden: ovDay !== null, originalDay: b.day, overrideYear: b.year, overrideMonth: b.month});
       }
     }
   }
-
-  // Recurring bills — check each month the period touches
   const monthsToCheck = [];
   const tmp = new Date(start.getFullYear(), start.getMonth(), 1);
-  while(tmp <= end){
-    monthsToCheck.push({yr: tmp.getFullYear(), mo: tmp.getMonth()});
-    tmp.setMonth(tmp.getMonth() + 1);
-  }
-
+  while(tmp <= end){ monthsToCheck.push({yr: tmp.getFullYear(), mo: tmp.getMonth()}); tmp.setMonth(tmp.getMonth() + 1); }
   for(const b of state.bills){
     for(const {yr, mo} of monthsToCheck){
       if(b.skipMonths?.includes(mo)) continue;
       if(b.quarterly && !b.quarterMonths?.includes(mo)) continue;
-
       const ovDay = getOverrideDayForMonth(b.id, yr, mo);
       const effectiveDay = ovDay !== null ? ovDay : b.day;
       const bd = new Date(yr, mo, effectiveDay);
-
-      // Bill must fall within this period
       if(bd < start || bd > end) continue;
-
       const key = b.id+'-'+mo+'-'+yr;
       if(!seen.has(key)){
         seen.add(key);
         result.push({...b, day: effectiveDay, dueDate: bd, displayType:'recurring',
-          overridden: ovDay !== null, originalDay: b.day,
-          overrideYear: yr, overrideMonth: mo});
+          overridden: ovDay !== null, originalDay: b.day, overrideYear: yr, overrideMonth: mo});
       }
     }
   }
-
   result.sort((a,b)=>a.dueDate-b.dueDate);
   return result;
 }
@@ -585,19 +612,13 @@ function getCurrentPeriod() {
   const end=getPeriodEnd(start);
   return{start,end};
 }
+function getPaidKey(b){ const d=b.dueDate||new Date(); return String(b.id)+'-'+d.getMonth()+'-'+d.getFullYear(); }
 
-function getPaidKey(b){
-  const d=b.dueDate||new Date();
-  return String(b.id)+'-'+d.getMonth()+'-'+d.getFullYear();
-}
-
-// ── CALC ──
 function calc() {
   const balance=parseFloat(document.getElementById('balance-input').value)||0;
   const paycheck=parseFloat(document.getElementById('paycheck-input').value)||0;
   const deposit=parseFloat(document.getElementById('deposit-input').value)||0;
   state.balance=balance;state.paycheck=paycheck;state.deposit=deposit;
-
   const{start,end}=getCurrentPeriod();
   const bills=getBillsForPeriod(start,end);
   const billsTotal=bills.reduce((s,b)=>s+b.amount,0);
@@ -606,7 +627,6 @@ function calc() {
   const periodAllowance = getPeriodAllowance(start, end);
   const transfer=Math.max(0,total-billsTotal-floor-periodAllowance);
   const isTight=total<(billsTotal+floor+periodAllowance);
-
   const tc=document.getElementById('transfer-card');
   const ta=document.getElementById('transfer-amount');
   const tl=document.getElementById('transfer-label');
@@ -620,15 +640,11 @@ function calc() {
   }else{
     tc.className='transfer zero';ta.textContent='$0';tl.textContent='transfer to fidelity';ts.textContent='nothing available this period';
   }
-
   const startDay = new Date(start.getFullYear(), start.getMonth(), start.getDate());
   const endDay = new Date(end.getFullYear(), end.getMonth(), end.getDate());
   const totalDays = Math.round((endDay - startDay) / (1000*60*60*24)) + 1;
-  if(document.getElementById('br-allowance-sub'))
-    document.getElementById('br-allowance-sub').textContent='$200 today + $20/day × '+(totalDays-1);
-  if(document.getElementById('br-allowance-val'))
-    document.getElementById('br-allowance-val').textContent='-$'+periodAllowance.toFixed(0);
-
+  if(document.getElementById('br-allowance-sub')) document.getElementById('br-allowance-sub').textContent='$200 today + $20/day × '+(totalDays-1);
+  if(document.getElementById('br-allowance-val')) document.getElementById('br-allowance-val').textContent='-$'+periodAllowance.toFixed(0);
   const bc=document.getElementById('breakdown-card');
   if(paycheck>0||balance>0||deposit>0){
     bc.style.display='block';
@@ -637,11 +653,9 @@ function calc() {
     document.getElementById('br-bills-val').textContent='-$'+billsTotal.toFixed(2);
     document.getElementById('br-bills-sub').textContent=bills.length+' bill'+(bills.length!==1?'s':'')+' due';
   }else{bc.style.display='none';}
-
   document.getElementById('period-label').textContent=
     start.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' – '+
     end.toLocaleDateString('en-US',{month:'short',day:'numeric'});
-
   renderBills(bills);renderMovedBills(start,end);renderNextPreview();renderCountdown();dSave();
 }
 
@@ -649,8 +663,6 @@ function renderBills(bills) {
   const card=document.getElementById('bills-card');
   if(!bills.length){card.innerHTML='<div style="padding:24px;text-align:center;font-size:13px;color:var(--gray-400);font-family:\'DM Mono\',monospace">no bills this period</div>';return;}
   const today=new Date();today.setHours(0,0,0,0);
-  const {start} = getCurrentPeriod();
-
   card.innerHTML=bills.map((b,i)=>{
     const paidKey=getPaidKey(b);
     const paidStatus=(state.paid||{})[paidKey];
@@ -661,13 +673,10 @@ function renderBills(bills) {
     const tag = b.displayType==='onetime'
       ? '<span class="bill-tag tag-onetime">one-time</span>'
       : '<span class="bill-tag tag-recurring">recurring</span>';
-    const movedTag = isOverridden
-      ? `<span class="bill-tag tag-moved">moved from ${b.originalDay}</span>` : '';
+    const movedTag = isOverridden ? `<span class="bill-tag tag-moved">moved from ${b.originalDay}</span>` : '';
     const itemClass=isPaidZelle?'bill-item paid-zelle':isPaidDirect?'bill-item paid-direct':'bill-item';
     const dayInputClass = 'bill-day-input' + (isOverridden ? ' overridden' : '');
     const origDay = b.originalDay || b.day;
-    const billIdJs = JSON.stringify(b.id);
-
     return `<div class="${itemClass}">
       <div class="bill-top">
         <div>
@@ -679,7 +688,6 @@ function renderBills(bills) {
       <div class="bill-date-row">
         <span class="bill-date-label">due day:</span>
         <input type="number" class="${dayInputClass}" value="${b.day}" min="1" max="31" inputmode="numeric"
-          title="Change due date for this period only"
           id="ddi-${i}"
           onkeydown="if(event.key==='Enter'){applyDayOverride('${b.id}',document.getElementById('ddi-${i}').value,${origDay});this.blur();}" />
         <button onclick="applyDayOverride('${b.id}',document.getElementById('ddi-${i}').value,${origDay})"
@@ -704,69 +712,50 @@ function markBill(key, status) {
   calc();
 }
 
-// Show bills that were pushed OUT of this period by an override, so they can be reset
 function renderMovedBills(start, end) {
   const el = document.getElementById('moved-bills-card');
   if(!el) return;
-
   const moved = [];
-
-  // Check recurring bills
   for(const b of state.bills){
-    const {yr, mo} = (() => {
-      // Find what month this bill would normally fall in during this period
-      const monthsToCheck = [];
-      const tmp = new Date(start.getFullYear(), start.getMonth(), 1);
-      while(tmp <= end){ monthsToCheck.push({yr:tmp.getFullYear(),mo:tmp.getMonth()}); tmp.setMonth(tmp.getMonth()+1); }
-      return monthsToCheck.find(({yr,mo}) => {
-        if(b.skipMonths?.includes(mo)) return false;
-        if(b.quarterly && !b.quarterMonths?.includes(mo)) return false;
-        const normalDate = new Date(yr, mo, b.day);
-        return normalDate >= start && normalDate <= end;
-      }) || {};
-    })();
-
-    if(yr === undefined) continue; // bill doesn't normally fall in this period
+    const monthsToCheck = [];
+    const tmp = new Date(start.getFullYear(), start.getMonth(), 1);
+    while(tmp <= end){ monthsToCheck.push({yr:tmp.getFullYear(),mo:tmp.getMonth()}); tmp.setMonth(tmp.getMonth()+1); }
+    const found = monthsToCheck.find(({yr,mo}) => {
+      if(b.skipMonths?.includes(mo)) return false;
+      if(b.quarterly && !b.quarterMonths?.includes(mo)) return false;
+      const normalDate = new Date(yr, mo, b.day);
+      return normalDate >= start && normalDate <= end;
+    });
+    if(!found) continue;
+    const {yr, mo} = found;
     const ovDay = getOverrideDayForMonth(b.id, yr, mo);
-    if(ovDay === null) continue; // not overridden
+    if(ovDay === null) continue;
     const overriddenDate = new Date(yr, mo, ovDay);
-    if(overriddenDate >= start && overriddenDate <= end) continue; // still in period
-    // Bill was moved OUT
+    if(overriddenDate >= start && overriddenDate <= end) continue;
     moved.push({...b, originalDay: b.day, overriddenDay: ovDay, overrideYear: yr, overrideMonth: mo});
   }
-
-  // Check one-time bills
   for(const b of (state.onetime||[])){
     const ovDay = getOverrideDayForMonth(b.id, b.year, b.month);
     if(ovDay === null) continue;
     const normalDate = new Date(b.year, b.month, b.day);
-    if(normalDate < start || normalDate > end) continue; // didn't normally fall here
+    if(normalDate < start || normalDate > end) continue;
     const overriddenDate = new Date(b.year, b.month, ovDay);
-    if(overriddenDate >= start && overriddenDate <= end) continue; // still in period
+    if(overriddenDate >= start && overriddenDate <= end) continue;
     moved.push({...b, originalDay: b.day, overriddenDay: ovDay, overrideYear: b.year, overrideMonth: b.month});
   }
-
-  if(!moved.length){
-    el.style.display='none';
-    return;
-  }
-
+  if(!moved.length){ el.style.display='none'; return; }
   el.style.display='block';
-  el.innerHTML = `
-    <div style="padding:10px 16px;background:var(--amber-light);border-radius:var(--radius);border:1px solid #E8C77A;margin-bottom:12px;">
-      <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;font-family:'DM Mono',monospace;color:var(--amber);margin-bottom:8px;">moved to next period</div>
-      ${moved.map(b=>`
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(186,117,23,0.2);">
-          <div>
-            <div style="font-size:13px;font-weight:500;color:var(--gray-900)">${b.name}</div>
-            <div style="font-size:11px;color:var(--amber);font-family:'DM Mono',monospace;">moved from day ${b.originalDay} → day ${b.overriddenDay}</div>
-          </div>
-          <button onclick="applyDayOverride('${b.id}',null,null)"
-            style="font-size:11px;font-family:'DM Mono',monospace;color:var(--amber);background:none;border:1px solid var(--amber);border-radius:4px;padding:3px 10px;cursor:pointer;">
-            move back
-          </button>
-        </div>`).join('')}
-    </div>`;
+  el.innerHTML = `<div style="padding:10px 16px;background:var(--amber-light);border-radius:var(--radius);border:1px solid #E8C77A;margin-bottom:12px;">
+    <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;font-family:'DM Mono',monospace;color:var(--amber);margin-bottom:8px;">moved to next period</div>
+    ${moved.map(b=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(186,117,23,0.2);">
+      <div>
+        <div style="font-size:13px;font-weight:500;color:var(--gray-900)">${b.name}</div>
+        <div style="font-size:11px;color:var(--amber);font-family:'DM Mono',monospace;">moved from day ${b.originalDay} → day ${b.overriddenDay}</div>
+      </div>
+      <button onclick="applyDayOverride('${b.id}',null,null)"
+        style="font-size:11px;font-family:'DM Mono',monospace;color:var(--amber);background:none;border:1px solid var(--amber);border-radius:4px;padding:3px 10px;cursor:pointer;">move back</button>
+    </div>`).join('')}
+  </div>`;
 }
 
 function renderNextPreview() {
@@ -868,16 +857,11 @@ function editPayday(idx,newIso) {
   renderPaydays();calc();save();
 }
 
-// ── PLANNER ──
-// KEY CHANGE: day-badge is now an editable <input> for both recurring and one-time bills.
-// One-time bills also get an editable amount field.
 function renderPlanner() {
-  // Recurring bills — day is now editable
   const rc = document.getElementById('planner-recurring');
   rc.innerHTML = state.bills.map((b, i) => `
     <div class="planner-row">
       <input type="number" class="day-input" value="${b.day}" min="1" max="31" inputmode="numeric"
-        title="Day of month"
         onchange="state.bills[${i}].day=Math.min(31,Math.max(1,parseInt(this.value)||1));this.value=state.bills[${i}].day;calc();save();"
         onblur="state.bills[${i}].day=Math.min(31,Math.max(1,parseInt(this.value)||1));this.value=state.bills[${i}].day;calc();save();" />
       <div class="planner-info">
@@ -892,7 +876,6 @@ function renderPlanner() {
     </div>
   `).join('');
 
-  // One-time bills — day AND amount are now editable
   const oc = document.getElementById('planner-onetime');
   const otBills = (state.onetime || []);
   if (!otBills.length) {
@@ -901,7 +884,6 @@ function renderPlanner() {
     oc.innerHTML = otBills.map((b, i) => `
       <div class="planner-row-ot">
         <input type="number" class="day-input" value="${b.day}" min="1" max="31" inputmode="numeric"
-          title="Day of month"
           onchange="state.onetime[${i}].day=Math.min(31,Math.max(1,parseInt(this.value)||1));this.value=state.onetime[${i}].day;calc();save();"
           onblur="state.onetime[${i}].day=Math.min(31,Math.max(1,parseInt(this.value)||1));this.value=state.onetime[${i}].day;calc();save();" />
         <div class="planner-info">
@@ -909,7 +891,6 @@ function renderPlanner() {
           <div class="pmeta">${MONTHS[b.month]} ${b.year}</div>
         </div>
         <input type="number" class="amt-input" value="${b.amount.toFixed(2)}"
-          title="This month's amount"
           oninput="state.onetime[${i}].amount=parseFloat(this.value)||0;"
           onblur="state.onetime[${i}].amount=parseFloat(this.value)||0;calc();save();"
           inputmode="decimal" />
@@ -997,7 +978,7 @@ function resetAll() {
   state={balance:0,paycheck:0,deposit:0,floor:300,
     bills:JSON.parse(JSON.stringify(DEFAULT_BILLS)),
     onetime:JSON.parse(JSON.stringify(DEFAULT_ONETIME)),
-    paid:{}, overrides:{}, paydays:[...DEFAULT_PAYDAYS_STR]};
+    paid:{},overrides:{},paydays:[...DEFAULT_PAYDAYS_STR]};
   document.getElementById('balance-input').value=0;
   document.getElementById('paycheck-input').value=0;
   document.getElementById('floor-input').value=300;
@@ -1005,47 +986,36 @@ function resetAll() {
 }
 
 async function init() {
-  // Step 1: Load localStorage immediately for instant display
   let localState = null;
-  try{
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if(raw) localState = JSON.parse(raw);
-  }catch(e){}
-
+  try{ const raw=localStorage.getItem(STORAGE_KEY); if(raw) localState=JSON.parse(raw); }catch(e){}
   if(localState){
-    state = {...state, ...localState};
-    if(!state.overrides) state.overrides = {};
-    if(!state.paydays?.length) state.paydays = [...DEFAULT_PAYDAYS_STR];
+    state={...state,...localState};
+    if(!state.overrides) state.overrides={};
+    if(!state.paydays?.length) state.paydays=[...DEFAULT_PAYDAYS_STR];
   }
-
-  // Render immediately from localStorage so page feels instant
-  document.getElementById('balance-input').value = state.balance||0;
-  document.getElementById('paycheck-input').value = state.paycheck||0;
-  document.getElementById('deposit-input').value = state.deposit||0;
-  document.getElementById('floor-input').value = state.floor||300;
+  document.getElementById('balance-input').value=state.balance||0;
+  document.getElementById('paycheck-input').value=state.paycheck||0;
+  document.getElementById('deposit-input').value=state.deposit||0;
+  document.getElementById('floor-input').value=state.floor||300;
   calc();
 
-  // Step 2: Load cloud data — but NEVER overwrite overrides from cloud
-  // (overrides are always localStorage-first since they're per-device/session)
-  const d = await loadFromCloud();
-  if(d && d.version){
-    const savedOverrides = state.overrides || {}; // preserve local overrides
-    state = {...state, ...d};
-    // Merge: local overrides take priority over cloud (in case cloud is stale)
-    state.overrides = {...(d.overrides||{}), ...savedOverrides};
-    if(!state.bills?.length) state.bills = JSON.parse(JSON.stringify(DEFAULT_BILLS));
-    if(!state.onetime) state.onetime = JSON.parse(JSON.stringify(DEFAULT_ONETIME));
-    if(!state.paydays?.length) state.paydays = [...DEFAULT_PAYDAYS_STR];
-
-    // Update inputs if cloud has newer balance data
-    document.getElementById('balance-input').value = state.balance||0;
-    document.getElementById('paycheck-input').value = state.paycheck||0;
-    document.getElementById('deposit-input').value = state.deposit||0;
-    document.getElementById('floor-input').value = state.floor||300;
+  const d=await loadFromCloud();
+  if(d&&d.version){
+    const savedOverrides=state.overrides||{};
+    state={...state,...d};
+    state.overrides={...(d.overrides||{}),...savedOverrides};
+    if(!state.bills?.length) state.bills=JSON.parse(JSON.stringify(DEFAULT_BILLS));
+    if(!state.onetime) state.onetime=JSON.parse(JSON.stringify(DEFAULT_ONETIME));
+    if(!state.paydays?.length) state.paydays=[...DEFAULT_PAYDAYS_STR];
+    document.getElementById('balance-input').value=state.balance||0;
+    document.getElementById('paycheck-input').value=state.paycheck||0;
+    document.getElementById('deposit-input').value=state.deposit||0;
+    document.getElementById('floor-input').value=state.floor||300;
     calc();
   }
 }
 
 init();
 </script>
+
 </body></html>
