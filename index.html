@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0052)file:///C:/Users/hatch/Downloads/chandler-index.html -->
+<!-- saved from url=(0046)file:///C:/Users/hatch/Downloads/index_28.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -171,9 +171,14 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
       <h1>Chandler's budget</h1>
       <div class="saved-badge" id="saved-badge" style="color:var(--green);">✓ saved</div>
     </div>
-    <div class="header-sub" id="header-sub">period: Jun 18 – Jul 2</div>
+    <div class="header-sub" id="header-sub">period: Jul 3 – Jul 16</div>
   </div>
 </header>
+
+<div id="sync-warning" style="display:none;background:#3a2a12;border-bottom:2px solid #BA7517;color:#F2C572;font-family:&#39;DM Mono&#39;,monospace;font-size:12px;padding:8px 16px;text-align:center;">
+  ⚠ Couldn't reach cloud sync — showing data saved on this device only.
+  <button onclick="retrySync()" style="margin-left:8px;background:#BA7517;color:#1a1208;border:none;border-radius:4px;padding:3px 10px;font-family:inherit;font-size:11px;cursor:pointer;">Retry</button>
+</div>
 
 <div class="tab-bar">
   <button class="tab-btn active" onclick="switchTab(&#39;home&#39;,this)">Home</button>
@@ -205,93 +210,112 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
 
   <div class="transfer positive" id="transfer-card">
     <div class="transfer-label" id="transfer-label">transfer to fidelity today</div>
-    <div class="transfer-amount" id="transfer-amount">$1282.50</div>
+    <div class="transfer-amount" id="transfer-amount">$1399.51</div>
     <div class="transfer-sub" id="transfer-sub">transfer this immediately after paycheck clears</div>
   </div>
 
   <div class="card" id="breakdown-card" style="display: block;">
-    <div class="card-row"><div class="row-label" id="br-balance-lbl">balance + paycheck</div><div class="row-val green" id="br-balance-val">$2454.99</div></div>
-    <div class="card-row"><div><div class="row-label">bills this period</div><div class="row-sub" id="br-bills-sub">4 bills due</div></div><div class="row-val red" id="br-bills-val">-$392.49</div></div>
+    <div class="card-row"><div class="row-label" id="br-balance-lbl">balance + paycheck</div><div class="row-val green" id="br-balance-val">$3618.34</div></div>
+    <div class="card-row"><div><div class="row-label">bills this period</div><div class="row-sub" id="br-bills-sub">5 bills due</div></div><div class="row-val red" id="br-bills-val">-$1458.83</div></div>
     <div class="card-row"><div><div class="row-label">$300 floor</div><div class="row-sub">minimum balance</div></div><div class="row-val amber">-$300</div></div>
-    <div class="card-row"><div><div class="row-label">spending allowance</div><div class="row-sub" id="br-allowance-sub">$200 today + $20/day × 14</div></div><div class="row-val amber" id="br-allowance-val">-$480</div></div>
+    <div class="card-row"><div><div class="row-label">spending allowance</div><div class="row-sub" id="br-allowance-sub">$200 today + $20/day × 13</div></div><div class="row-val amber" id="br-allowance-val">-$460</div></div>
   </div>
 
-  <p class="section-title">bills this period — <span id="period-label" style="color:var(--gray-600)">Jun 18 – Jul 2</span></p>
-  <div class="card" id="bills-card"><div class="bill-item paid-zelle">
+  <p class="section-title">bills this period — <span id="period-label" style="color:var(--gray-600)">Jul 3 – Jul 16</span></p>
+  <div class="card" id="bills-card"><div class="bill-item">
       <div class="bill-top">
         <div>
-          <div class="bill-name paid">Spectrum<span class="bill-tag tag-recurring">recurring</span><span class="bill-tag tag-moved">moved from 17</span></div>
-          <div class="bill-meta">Jun 20 · 2d ago</div>
+          <div class="bill-name">Delta Ticket Ft Meyers<span class="bill-tag tag-onetime">one-time</span></div>
+          <div class="bill-meta">Jul 6 · 3d away</div>
         </div>
-        <div class="bill-amount" style="color:var(--gray-400)">$108.51</div>
+        <div class="bill-amount" style="">$438.79</div>
       </div>
       <div class="bill-date-row">
         <span class="bill-date-label">due day:</span>
-        <input type="number" class="bill-day-input overridden" value="20" min="1" max="31" inputmode="numeric" id="ddi-0" onkeydown="if(event.key===&#39;Enter&#39;){applyDayOverride(&#39;spectrum&#39;,document.getElementById(&#39;ddi-0&#39;).value,17);this.blur();}">
-        <button onclick="applyDayOverride(&#39;spectrum&#39;,document.getElementById(&#39;ddi-0&#39;).value,17)" style="font-size:11px;font-family:&#39;DM Mono&#39;,monospace;color:white;background:var(--amber);border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">apply</button>
-        <button onclick="applyDayOverride(&#39;spectrum&#39;,null,null)" style="font-size:10px;font-family:&#39;DM Mono&#39;,monospace;color:var(--gray-400);background:none;border:none;cursor:pointer;text-decoration:underline">reset</button>
-        <span style="font-size:10px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;">this period only</span>
-      </div>
-      <div style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace;color:var(--purple);display:flex;justify-content:space-between;align-items:center">
-        <span>✓ zelled to dad</span>
-        <button onclick="markBill(&#39;spectrum-5-2026&#39;,null)" style="background:none;border:none;cursor:pointer;font-size:12px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;text-decoration:underline">undo</button>
-      </div>
-    </div><div class="bill-item">
-      <div class="bill-top">
-        <div>
-          <div class="bill-name">Cell Phone<span class="bill-tag tag-recurring">recurring</span></div>
-          <div class="bill-meta">Jun 23 · 1d away</div>
-        </div>
-        <div class="bill-amount" style="">$72.88</div>
-      </div>
-      <div class="bill-date-row">
-        <span class="bill-date-label">due day:</span>
-        <input type="number" class="bill-day-input" value="23" min="1" max="31" inputmode="numeric" id="ddi-1" onkeydown="if(event.key===&#39;Enter&#39;){applyDayOverride(&#39;cell&#39;,document.getElementById(&#39;ddi-1&#39;).value,23);this.blur();}">
-        <button onclick="applyDayOverride(&#39;cell&#39;,document.getElementById(&#39;ddi-1&#39;).value,23)" style="font-size:11px;font-family:&#39;DM Mono&#39;,monospace;color:white;background:var(--amber);border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">apply</button>
+        <input type="number" class="bill-day-input" value="6" min="1" max="31" inputmode="numeric" id="ddi-0" onkeydown="if(event.key===&#39;Enter&#39;){applyDayOverride(&#39;one1782134667580&#39;,document.getElementById(&#39;ddi-0&#39;).value,6);this.blur();}">
+        <button onclick="applyDayOverride(&#39;one1782134667580&#39;,document.getElementById(&#39;ddi-0&#39;).value,6)" style="font-size:11px;font-family:&#39;DM Mono&#39;,monospace;color:white;background:var(--amber);border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">apply</button>
         
         <span style="font-size:10px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;">this period only</span>
       </div>
       <div class="bill-actions">
-        <button class="bill-btn zelle" onclick="markBill(&#39;cell-5-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
-        <button class="bill-btn direct" onclick="markBill(&#39;cell-5-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
+        <button class="bill-btn zelle" onclick="markBill(&#39;one1782134667580-6-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
+        <button class="bill-btn direct" onclick="markBill(&#39;one1782134667580-6-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
       </div>
     </div><div class="bill-item">
       <div class="bill-top">
         <div>
-          <div class="bill-name">Progressive Auto (1st)<span class="bill-tag tag-recurring">recurring</span></div>
-          <div class="bill-meta">Jul 1 · 9d away</div>
+          <div class="bill-name">Vacation Cash<span class="bill-tag tag-onetime">one-time</span></div>
+          <div class="bill-meta">Jul 7 · 4d away</div>
+        </div>
+        <div class="bill-amount" style="">$500.00</div>
+      </div>
+      <div class="bill-date-row">
+        <span class="bill-date-label">due day:</span>
+        <input type="number" class="bill-day-input" value="7" min="1" max="31" inputmode="numeric" id="ddi-1" onkeydown="if(event.key===&#39;Enter&#39;){applyDayOverride(&#39;one1783032584933&#39;,document.getElementById(&#39;ddi-1&#39;).value,7);this.blur();}">
+        <button onclick="applyDayOverride(&#39;one1783032584933&#39;,document.getElementById(&#39;ddi-1&#39;).value,7)" style="font-size:11px;font-family:&#39;DM Mono&#39;,monospace;color:white;background:var(--amber);border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">apply</button>
+        
+        <span style="font-size:10px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;">this period only</span>
+      </div>
+      <div class="bill-actions">
+        <button class="bill-btn zelle" onclick="markBill(&#39;one1783032584933-6-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
+        <button class="bill-btn direct" onclick="markBill(&#39;one1783032584933-6-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
+      </div>
+    </div><div class="bill-item">
+      <div class="bill-top">
+        <div>
+          <div class="bill-name">GCWW Water<span class="bill-tag tag-recurring">recurring</span></div>
+          <div class="bill-meta">Jul 7 · 4d away</div>
+        </div>
+        <div class="bill-amount" style="">$79.87</div>
+      </div>
+      <div class="bill-date-row">
+        <span class="bill-date-label">due day:</span>
+        <input type="number" class="bill-day-input" value="7" min="1" max="31" inputmode="numeric" id="ddi-2" onkeydown="if(event.key===&#39;Enter&#39;){applyDayOverride(&#39;gcww&#39;,document.getElementById(&#39;ddi-2&#39;).value,7);this.blur();}">
+        <button onclick="applyDayOverride(&#39;gcww&#39;,document.getElementById(&#39;ddi-2&#39;).value,7)" style="font-size:11px;font-family:&#39;DM Mono&#39;,monospace;color:white;background:var(--amber);border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">apply</button>
+        
+        <span style="font-size:10px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;">this period only</span>
+      </div>
+      <div class="bill-actions">
+        <button class="bill-btn zelle" onclick="markBill(&#39;gcww-6-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
+        <button class="bill-btn direct" onclick="markBill(&#39;gcww-6-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
+      </div>
+    </div><div class="bill-item">
+      <div class="bill-top">
+        <div>
+          <div class="bill-name">Duke Energy<span class="bill-tag tag-recurring">recurring</span></div>
+          <div class="bill-meta">Jul 13 · 10d away</div>
+        </div>
+        <div class="bill-amount" style="">$298.00</div>
+      </div>
+      <div class="bill-date-row">
+        <span class="bill-date-label">due day:</span>
+        <input type="number" class="bill-day-input" value="13" min="1" max="31" inputmode="numeric" id="ddi-3" onkeydown="if(event.key===&#39;Enter&#39;){applyDayOverride(&#39;duke&#39;,document.getElementById(&#39;ddi-3&#39;).value,13);this.blur();}">
+        <button onclick="applyDayOverride(&#39;duke&#39;,document.getElementById(&#39;ddi-3&#39;).value,13)" style="font-size:11px;font-family:&#39;DM Mono&#39;,monospace;color:white;background:var(--amber);border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">apply</button>
+        
+        <span style="font-size:10px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;">this period only</span>
+      </div>
+      <div class="bill-actions">
+        <button class="bill-btn zelle" onclick="markBill(&#39;duke-6-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
+        <button class="bill-btn direct" onclick="markBill(&#39;duke-6-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
+      </div>
+    </div><div class="bill-item">
+      <div class="bill-top">
+        <div>
+          <div class="bill-name">Progressive Auto (15th)<span class="bill-tag tag-recurring">recurring</span></div>
+          <div class="bill-meta">Jul 15 · 12d away</div>
         </div>
         <div class="bill-amount" style="">$142.17</div>
       </div>
       <div class="bill-date-row">
         <span class="bill-date-label">due day:</span>
-        <input type="number" class="bill-day-input" value="1" min="1" max="31" inputmode="numeric" id="ddi-2" onkeydown="if(event.key===&#39;Enter&#39;){applyDayOverride(&#39;auto1&#39;,document.getElementById(&#39;ddi-2&#39;).value,1);this.blur();}">
-        <button onclick="applyDayOverride(&#39;auto1&#39;,document.getElementById(&#39;ddi-2&#39;).value,1)" style="font-size:11px;font-family:&#39;DM Mono&#39;,monospace;color:white;background:var(--amber);border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">apply</button>
+        <input type="number" class="bill-day-input" value="15" min="1" max="31" inputmode="numeric" id="ddi-4" onkeydown="if(event.key===&#39;Enter&#39;){applyDayOverride(&#39;auto15&#39;,document.getElementById(&#39;ddi-4&#39;).value,15);this.blur();}">
+        <button onclick="applyDayOverride(&#39;auto15&#39;,document.getElementById(&#39;ddi-4&#39;).value,15)" style="font-size:11px;font-family:&#39;DM Mono&#39;,monospace;color:white;background:var(--amber);border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">apply</button>
         
         <span style="font-size:10px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;">this period only</span>
       </div>
       <div class="bill-actions">
-        <button class="bill-btn zelle" onclick="markBill(&#39;auto1-6-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
-        <button class="bill-btn direct" onclick="markBill(&#39;auto1-6-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
-      </div>
-    </div><div class="bill-item">
-      <div class="bill-top">
-        <div>
-          <div class="bill-name">CSAA Home Insurance<span class="bill-tag tag-recurring">recurring</span></div>
-          <div class="bill-meta">Jul 2 · 10d away</div>
-        </div>
-        <div class="bill-amount" style="">$68.93</div>
-      </div>
-      <div class="bill-date-row">
-        <span class="bill-date-label">due day:</span>
-        <input type="number" class="bill-day-input" value="2" min="1" max="31" inputmode="numeric" id="ddi-3" onkeydown="if(event.key===&#39;Enter&#39;){applyDayOverride(&#39;csaa&#39;,document.getElementById(&#39;ddi-3&#39;).value,2);this.blur();}">
-        <button onclick="applyDayOverride(&#39;csaa&#39;,document.getElementById(&#39;ddi-3&#39;).value,2)" style="font-size:11px;font-family:&#39;DM Mono&#39;,monospace;color:white;background:var(--amber);border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">apply</button>
-        
-        <span style="font-size:10px;color:var(--gray-400);font-family:&#39;DM Mono&#39;,monospace;">this period only</span>
-      </div>
-      <div class="bill-actions">
-        <button class="bill-btn zelle" onclick="markBill(&#39;csaa-6-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
-        <button class="bill-btn direct" onclick="markBill(&#39;csaa-6-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
+        <button class="bill-btn zelle" onclick="markBill(&#39;auto15-6-2026&#39;,&#39;zelle&#39;)">Zelle Dad</button>
+        <button class="bill-btn direct" onclick="markBill(&#39;auto15-6-2026&#39;,&#39;direct&#39;)">Pay Direct</button>
       </div>
     </div></div>
   <div id="moved-bills-card" style="display:none;"></div>
@@ -304,35 +328,27 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
     <div class="next-preview-content" id="next-preview-content">
       <div id="next-bills-list">
     <div class="next-bill-row">
-      <span style="color:#185FA5">Ft Meyers Delta Ticket</span>
-      <span style="font-family:&#39;DM Mono&#39;,monospace;color:#185FA5;font-weight:500">$438.79</span>
+      <span style="color:#185FA5">Spectrum</span>
+      <span style="font-family:&#39;DM Mono&#39;,monospace;color:#185FA5;font-weight:500">$108.51</span>
     </div>
     <div class="next-bill-row">
-      <span style="color:#185FA5">GCWW Water</span>
-      <span style="font-family:&#39;DM Mono&#39;,monospace;color:#185FA5;font-weight:500">$79.87</span>
-    </div>
-    <div class="next-bill-row">
-      <span style="color:#185FA5">Duke Energy</span>
-      <span style="font-family:&#39;DM Mono&#39;,monospace;color:#185FA5;font-weight:500">$298.00</span>
-    </div>
-    <div class="next-bill-row">
-      <span style="color:#185FA5">Progressive Auto (15th)</span>
-      <span style="font-family:&#39;DM Mono&#39;,monospace;color:#185FA5;font-weight:500">$142.17</span>
+      <span style="color:#185FA5">Cell Phone</span>
+      <span style="font-family:&#39;DM Mono&#39;,monospace;color:#185FA5;font-weight:500">$72.88</span>
     </div></div>
       <div style="display:flex;justify-content:space-between;padding-top:8px;margin-top:8px;border-top:1px solid rgba(55,138,221,0.2);font-size:13px;font-weight:500;color:#185FA5">
-        <span>total</span><span id="next-total">$958.83</span>
+        <span>total</span><span id="next-total">$181.39</span>
       </div>
     </div>
   </div>
 
   <div class="countdown">
     <div class="countdown-left">
-      <div class="cd-label" id="cd-label">days until payday</div>
-      <div class="cd-date" id="cd-date">Fri, Jul 3</div>
+      <div class="cd-label" id="cd-label">payday today!</div>
+      <div class="cd-date" id="cd-date">enter your paycheck above</div>
     </div>
     <div style="text-align:right">
-      <div class="countdown-days" id="cd-days">11</div>
-      <div class="countdown-unit" id="cd-unit">days</div>
+      <div class="countdown-days" id="cd-days">🎉</div>
+      <div class="countdown-unit" id="cd-unit"></div>
     </div>
   </div>
 </div>
@@ -498,12 +514,85 @@ const GIST_ID = '48758aa825cd9479d71a5f0742fd10e4';
 const GIST_FILE = 'chandler-budget.json';
 const GIST_URL = 'https://api.github.com/gists/' + GIST_ID;
 
+// Generic retry+timeout wrapper for Gist calls. Retries transient failures
+// (network drop, timeout, GitHub 5xx/rate-limit) with backoff; does NOT
+// retry auth/permission errors since those won't fix themselves.
+async function gistFetch(opts, { retries = 2, timeoutMs = 12000 } = {}) {
+  let lastErr;
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const resp = await fetch(GIST_URL, { ...opts, signal: controller.signal });
+      clearTimeout(timer);
+
+      if ((resp.status === 429 || resp.status >= 500) && attempt < retries) {
+        lastErr = new Error('gist-transient-' + resp.status);
+        await new Promise(r => setTimeout(r, 600 * Math.pow(2, attempt)));
+        continue;
+      }
+      return resp; // includes 401/403/404 — caller decides what to do
+    } catch (e) {
+      clearTimeout(timer);
+      const retryable = e.name === 'AbortError' || e instanceof TypeError;
+      if (retryable && attempt < retries) {
+        lastErr = e;
+        await new Promise(r => setTimeout(r, 600 * Math.pow(2, attempt)));
+        continue;
+      }
+      throw e;
+    }
+  }
+  throw lastErr;
+}
+
 async function loadFromCloud() {
   try {
-    const resp = await fetch(GIST_URL, {headers:{'Authorization':'token '+GIST_TOKEN,'Accept':'application/vnd.github.v3+json'}});
-    if(resp.ok){const data=await resp.json();const content=data.files[GIST_FILE]?.content;if(content){const d=JSON.parse(content);if(d&&d.version)return d;}}
-  } catch(e){}
-  return null;
+    const resp = await gistFetch({ headers: { 'Authorization': 'token ' + GIST_TOKEN, 'Accept': 'application/vnd.github.v3+json' } });
+    if (resp.ok) {
+      const data = await resp.json();
+      const content = data.files[GIST_FILE]?.content;
+      if (content) {
+        const d = JSON.parse(content);
+        if (d && d.version) { hideSyncWarning(); return d; }
+      }
+      hideSyncWarning();
+      return null;
+    }
+    // Reached GitHub but got an error status (bad token, gist missing, etc.)
+    showSyncWarning();
+    return null;
+  } catch (e) {
+    // Never reached GitHub at all — network down, timed out after retries, etc.
+    showSyncWarning();
+    return null;
+  }
+}
+
+function showSyncWarning() {
+  const el = document.getElementById('sync-warning');
+  if (el) el.style.display = 'block';
+}
+function hideSyncWarning() {
+  const el = document.getElementById('sync-warning');
+  if (el) el.style.display = 'none';
+}
+async function retrySync() {
+  const d = await loadFromCloud();
+  if (d && d.version) {
+    const savedOverrides = state.overrides || {};
+    state = { ...state, ...d };
+    state.overrides = { ...(d.overrides || {}), ...savedOverrides };
+    if (!state.bills?.length) state.bills = JSON.parse(JSON.stringify(DEFAULT_BILLS));
+    if (!state.onetime) state.onetime = JSON.parse(JSON.stringify(DEFAULT_ONETIME));
+    if (!state.paydays?.length) state.paydays = [...DEFAULT_PAYDAYS_STR];
+    document.getElementById('balance-input').value = state.balance || 0;
+    document.getElementById('paycheck-input').value = state.paycheck || 0;
+    document.getElementById('deposit-input').value = state.deposit || 0;
+    document.getElementById('floor-input').value = state.floor || 0;
+    calc();
+  }
+  syncGist();
 }
 
 function save() {
@@ -512,21 +601,26 @@ function save() {
 }
 
 async function syncGist() {
-  try{
-    const body={files:{}};
-    body.files[GIST_FILE]={content:JSON.stringify({...state,version:1})};
-    const resp=await fetch(GIST_URL,{method:'PATCH',headers:{'Authorization':'token '+GIST_TOKEN,'Content-Type':'application/json','Accept':'application/vnd.github.v3+json'},body:JSON.stringify(body)});
-    if(resp.ok){
-      const b=document.getElementById('saved-badge');
+  const b = document.getElementById('saved-badge');
+  try {
+    const body = { files: {} };
+    body.files[GIST_FILE] = { content: JSON.stringify({ ...state, version: 1 }) };
+    const resp = await gistFetch({
+      method: 'PATCH',
+      headers: { 'Authorization': 'token ' + GIST_TOKEN, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
+      body: JSON.stringify(body)
+    });
+    if (resp.ok) {
+      hideSyncWarning();
       b.textContent='✓ saved';b.style.color='var(--green)';b.classList.add('show');
       clearTimeout(saveTimer);saveTimer=setTimeout(()=>b.classList.remove('show'),2000);
     } else {
-      const b=document.getElementById('saved-badge');
+      showSyncWarning();
       b.textContent='⚠ sync error';b.style.color='#E24B4A';b.classList.add('show');
       clearTimeout(saveTimer);saveTimer=setTimeout(()=>{b.classList.remove('show');b.textContent='✓ saved';},4000);
     }
-  }catch(e){
-    const b=document.getElementById('saved-badge');
+  } catch(e) {
+    showSyncWarning();
     b.textContent='⚠ offline';b.style.color='#BA7517';b.classList.add('show');
     clearTimeout(saveTimer);saveTimer=setTimeout(()=>{b.classList.remove('show');b.textContent='✓ saved';},3000);
   }
