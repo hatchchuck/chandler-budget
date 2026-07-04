@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)file:///C:/Users/hatch/Downloads/index_28.html -->
+<!-- saved from url=(0054)file:///C:/Users/hatch/Downloads/chandler-index_1.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -169,13 +169,13 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
   <div class="container">
     <div class="header-top">
       <h1>Chandler's budget</h1>
-      <div class="saved-badge" id="saved-badge" style="color:var(--green);">✓ saved</div>
+      <div class="saved-badge" id="saved-badge" style="color: rgb(186, 117, 23);">✓ saved</div>
     </div>
     <div class="header-sub" id="header-sub">period: Jul 3 – Jul 16</div>
   </div>
 </header>
 
-<div id="sync-warning" style="display:none;background:#3a2a12;border-bottom:2px solid #BA7517;color:#F2C572;font-family:&#39;DM Mono&#39;,monospace;font-size:12px;padding:8px 16px;text-align:center;">
+<div id="sync-warning" style="display: block; background: rgb(58, 42, 18); border-bottom: 2px solid rgb(186, 117, 23); color: rgb(242, 197, 114); font-family: &quot;DM Mono&quot;, monospace; font-size: 12px; padding: 8px 16px; text-align: center;">
   ⚠ Couldn't reach cloud sync — showing data saved on this device only.
   <button onclick="retrySync()" style="margin-left:8px;background:#BA7517;color:#1a1208;border:none;border-radius:4px;padding:3px 10px;font-family:inherit;font-size:11px;cursor:pointer;">Retry</button>
 </div>
@@ -226,7 +226,7 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
       <div class="bill-top">
         <div>
           <div class="bill-name">Delta Ticket Ft Meyers<span class="bill-tag tag-onetime">one-time</span></div>
-          <div class="bill-meta">Jul 6 · 3d away</div>
+          <div class="bill-meta">Jul 6 · 2d away</div>
         </div>
         <div class="bill-amount" style="">$438.79</div>
       </div>
@@ -245,7 +245,7 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
       <div class="bill-top">
         <div>
           <div class="bill-name">Vacation Cash<span class="bill-tag tag-onetime">one-time</span></div>
-          <div class="bill-meta">Jul 7 · 4d away</div>
+          <div class="bill-meta">Jul 7 · 3d away</div>
         </div>
         <div class="bill-amount" style="">$500.00</div>
       </div>
@@ -264,7 +264,7 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
       <div class="bill-top">
         <div>
           <div class="bill-name">GCWW Water<span class="bill-tag tag-recurring">recurring</span></div>
-          <div class="bill-meta">Jul 7 · 4d away</div>
+          <div class="bill-meta">Jul 7 · 3d away</div>
         </div>
         <div class="bill-amount" style="">$79.87</div>
       </div>
@@ -283,7 +283,7 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
       <div class="bill-top">
         <div>
           <div class="bill-name">Duke Energy<span class="bill-tag tag-recurring">recurring</span></div>
-          <div class="bill-meta">Jul 13 · 10d away</div>
+          <div class="bill-meta">Jul 13 · 9d away</div>
         </div>
         <div class="bill-amount" style="">$298.00</div>
       </div>
@@ -302,7 +302,7 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
       <div class="bill-top">
         <div>
           <div class="bill-name">Progressive Auto (15th)<span class="bill-tag tag-recurring">recurring</span></div>
-          <div class="bill-meta">Jul 15 · 12d away</div>
+          <div class="bill-meta">Jul 15 · 11d away</div>
         </div>
         <div class="bill-amount" style="">$142.17</div>
       </div>
@@ -343,12 +343,12 @@ footer{text-align:center;padding:32px 16px 0;font-size:12px;color:var(--gray-400
 
   <div class="countdown">
     <div class="countdown-left">
-      <div class="cd-label" id="cd-label">payday today!</div>
-      <div class="cd-date" id="cd-date">enter your paycheck above</div>
+      <div class="cd-label" id="cd-label">days until payday</div>
+      <div class="cd-date" id="cd-date">Fri, Jul 17</div>
     </div>
     <div style="text-align:right">
-      <div class="countdown-days" id="cd-days">🎉</div>
-      <div class="countdown-unit" id="cd-unit"></div>
+      <div class="countdown-days" id="cd-days">13</div>
+      <div class="countdown-unit" id="cd-unit">days</div>
     </div>
   </div>
 </div>
@@ -507,27 +507,31 @@ let saveTimer = null;
 let newBillType = 'recurring';
 let nextPreviewOpen = false;
 
-// ── GIST SYNC — new token ──
-const _t = ['\x67\x68\x70\x5f','FmJSo2lRho','eyVHjT6MPN','E7Dpe908sA','1qJUZU'].join('');
-const GIST_TOKEN = _t;
+// ── GIST SYNC — via shared proxy (token lives server-side now) ──
 const GIST_ID = '48758aa825cd9479d71a5f0742fd10e4';
 const GIST_FILE = 'chandler-budget.json';
-const GIST_URL = 'https://api.github.com/gists/' + GIST_ID;
+const PROXY_URL = 'https://carsen-dashboard.netlify.app/.netlify/functions/gist-proxy';
+const PROXY_SECRET = 'wKvHQAl1oESH_ZZVN6JYlytdc3aKn_6l';
 
-// Generic retry+timeout wrapper for Gist calls. Retries transient failures
-// (network drop, timeout, GitHub 5xx/rate-limit) with backoff; does NOT
-// retry auth/permission errors since those won't fix themselves.
-async function gistFetch(opts, { retries = 2, timeoutMs = 12000 } = {}) {
+// Generic retry+timeout wrapper for proxy calls. Retries transient failures
+// (network drop, timeout, 5xx/rate-limit) with backoff; does NOT retry
+// auth/permission errors since those won't fix themselves.
+async function gistFetch(body, { retries = 2, timeoutMs = 12000 } = {}) {
   let lastErr;
   for (let attempt = 0; attempt <= retries; attempt++) {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), timeoutMs);
     try {
-      const resp = await fetch(GIST_URL, { ...opts, signal: controller.signal });
+      const resp = await fetch(PROXY_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+        signal: controller.signal
+      });
       clearTimeout(timer);
 
       if ((resp.status === 429 || resp.status >= 500) && attempt < retries) {
-        lastErr = new Error('gist-transient-' + resp.status);
+        lastErr = new Error('proxy-transient-' + resp.status);
         await new Promise(r => setTimeout(r, 600 * Math.pow(2, attempt)));
         continue;
       }
@@ -548,10 +552,10 @@ async function gistFetch(opts, { retries = 2, timeoutMs = 12000 } = {}) {
 
 async function loadFromCloud() {
   try {
-    const resp = await gistFetch({ headers: { 'Authorization': 'token ' + GIST_TOKEN, 'Accept': 'application/vnd.github.v3+json' } });
+    const resp = await gistFetch({ secret: PROXY_SECRET, action: 'load', gistId: GIST_ID, file: GIST_FILE });
     if (resp.ok) {
       const data = await resp.json();
-      const content = data.files[GIST_FILE]?.content;
+      const content = data.content;
       if (content) {
         const d = JSON.parse(content);
         if (d && d.version) { hideSyncWarning(); return d; }
@@ -559,11 +563,11 @@ async function loadFromCloud() {
       hideSyncWarning();
       return null;
     }
-    // Reached GitHub but got an error status (bad token, gist missing, etc.)
+    // Reached the proxy but got an error status (bad secret, GitHub error, etc.)
     showSyncWarning();
     return null;
   } catch (e) {
-    // Never reached GitHub at all — network down, timed out after retries, etc.
+    // Never reached the proxy at all — network down, timed out after retries, etc.
     showSyncWarning();
     return null;
   }
@@ -603,13 +607,7 @@ function save() {
 async function syncGist() {
   const b = document.getElementById('saved-badge');
   try {
-    const body = { files: {} };
-    body.files[GIST_FILE] = { content: JSON.stringify({ ...state, version: 1 }) };
-    const resp = await gistFetch({
-      method: 'PATCH',
-      headers: { 'Authorization': 'token ' + GIST_TOKEN, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
-      body: JSON.stringify(body)
-    });
+    const resp = await gistFetch({ secret: PROXY_SECRET, action: 'save', gistId: GIST_ID, file: GIST_FILE, data: { ...state, version: 1 } });
     if (resp.ok) {
       hideSyncWarning();
       b.textContent='✓ saved';b.style.color='var(--green)';b.classList.add('show');
