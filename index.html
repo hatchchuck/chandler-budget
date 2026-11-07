@@ -460,6 +460,43 @@ const DEFAULT_PAYDAYS_STR = [
   '10/9/2026','10/23/2026','11/6/2026','11/20/2026','12/4/2026','12/18/2026'
 ];
 
+// Paydays come every other Friday and are generated about a year ahead, so the list never runs out.
+// A payday that lands on a bank holiday falling on a Friday (Jan 1, Jun 19, Jul 4, Nov 11, Dec 25) moves to Thursday.
+// Any payday can still be moved or removed by hand on the payday schedule; generated dates are never re-added.
+const PAY_ANCHOR = '6/5/2026'; // a regular Friday payday: the every-other-Friday cadence counts from here
+const PAY_HOLIDAYS = ['1/1','6/19','7/4','11/11','12/25'];
+function pdDate(s){const[m,d,y]=s.split('/');return new Date(+y,+m-1,+d);}
+function pdStr(dt){return `${dt.getMonth()+1}/${dt.getDate()}/${dt.getFullYear()}`;}
+function holidayShift(dt){
+  if(dt.getDay()===5 && PAY_HOLIDAYS.includes((dt.getMonth()+1)+'/'+dt.getDate())){const x=new Date(dt);x.setDate(x.getDate()-1);return x;}
+  return dt;
+}
+function ensurePaydays(){
+  let changed=false;
+  if(!state.paydays?.length) state.paydays=[...DEFAULT_PAYDAYS_STR];
+  // one-time fix: June 2026 was paid Thursday the 18th (Juneteenth), so the original Friday the 19th comes out
+  if(!(state.payFixes||[]).includes('jun19-2026')){
+    if(state.paydays.includes('6/18/2026')) state.paydays=state.paydays.filter(p=>p!=='6/19/2026');
+    state.payFixes=[...(state.payFixes||[]),'jun19-2026']; changed=true;
+  }
+  // the last regular Friday already generated
+  let through=state.paydaysGenThrough?pdDate(state.paydaysGenThrough):null;
+  if(!through){
+    const last=state.paydays.map(pdDate).sort((a,b)=>a-b).pop();
+    through=pdDate(PAY_ANCHOR);
+    for(;;){const n=new Date(through);n.setDate(n.getDate()+14);if(n>last)break;through=n;}
+  }
+  const horizon=new Date();horizon.setHours(0,0,0,0);horizon.setDate(horizon.getDate()+400);
+  for(;;){
+    const n=new Date(through);n.setDate(n.getDate()+14);if(n>horizon)break;
+    through=n;const ds=pdStr(holidayShift(n));
+    if(!state.paydays.includes(ds)) state.paydays.push(ds);
+    changed=true;
+  }
+  const t=pdStr(through);if(state.paydaysGenThrough!==t){state.paydaysGenThrough=t;changed=true;}
+  return changed;
+}
+
 function buildPaydays(strArr) {
   return strArr.map(d=>{const[m,day,y]=d.split('/');return new Date(+y,+m-1,+day);}).sort((a,b)=>a-b);
 }
@@ -1109,6 +1146,7 @@ async function init() {
     calc();
   }
   initialLoadComplete = true;
+  if(ensurePaydays()){calc();save();}
 }
 
 init();
